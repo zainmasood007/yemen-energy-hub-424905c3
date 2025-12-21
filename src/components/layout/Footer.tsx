@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
-import { Sun, Zap, Phone, Mail, MapPin, Facebook, Instagram, Youtube } from 'lucide-react';
+import { Phone, Mail, MapPin, Facebook, Instagram, Youtube } from 'lucide-react';
 import { useLanguage } from '@/i18n/LanguageContext';
+import logo from '@/assets/logo.png';
 
 export default function Footer() {
   const { t, isRTL } = useLanguage();
@@ -15,34 +16,34 @@ export default function Footer() {
   ];
 
   const serviceLinks = [
-    { key: 'services.items.design.title', path: '/services/design' },
-    { key: 'services.items.installation.title', path: '/services/installation' },
-    { key: 'services.items.storage.title', path: '/services/storage' },
-    { key: 'services.items.maintenance.title', path: '/services/maintenance' },
+    { key: 'services.items.design.title', path: '/services' },
+    { key: 'services.items.installation.title', path: '/services' },
+    { key: 'services.items.storage.title', path: '/services' },
+    { key: 'services.items.maintenance.title', path: '/services' },
+  ];
+
+  const locationLinks = [
+    { name: { ar: 'صنعاء', en: "Sana'a" }, path: '/locations/sanaa' },
+    { name: { ar: 'عدن', en: 'Aden' }, path: '/locations/aden' },
+    { name: { ar: 'تعز', en: 'Taiz' }, path: '/locations/taiz' },
+    { name: { ar: 'الحديدة', en: 'Hudaydah' }, path: '/locations/hudaydah' },
   ];
 
   return (
     <footer className="bg-foreground text-background">
       {/* Main Footer */}
       <div className="container py-12 md:py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-12">
           {/* Brand */}
-          <div className="lg:col-span-1">
-            <Link to="/" className="flex items-center gap-2 mb-4">
-              <div className="relative flex h-10 w-10 items-center justify-center rounded-md bg-secondary">
-                <Sun className="h-5 w-5 text-secondary-foreground" />
-                <Zap className="absolute -bottom-0.5 -right-0.5 h-4 w-4 text-secondary-foreground" />
-              </div>
-              <div className="flex flex-col">
-                <span className="text-lg font-bold leading-tight">
-                  {isRTL ? 'القطع' : 'Al-Qatta'}
-                </span>
-                <span className="text-xs opacity-80 leading-tight">
-                  {isRTL ? 'للطاقة الشمسية' : 'Solar Energy'}
-                </span>
-              </div>
+          <div className="lg:col-span-2">
+            <Link to="/" className="inline-block mb-4">
+              <img 
+                src={logo} 
+                alt={isRTL ? 'القطاع لأنظمة الطاقة الشمسية والكهرباء' : 'Al-Qatta Solar Energy Systems'} 
+                className="h-14 w-auto brightness-0 invert"
+              />
             </Link>
-            <p className="text-sm opacity-80 mb-4 leading-relaxed">
+            <p className="text-sm opacity-80 mb-4 leading-relaxed max-w-sm">
               {t('footer.description')}
             </p>
             <div className="flex gap-3">
@@ -84,17 +85,17 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Services */}
+          {/* Locations */}
           <div>
-            <h4 className="font-bold mb-4">{t('footer.ourServices')}</h4>
+            <h4 className="font-bold mb-4">{isRTL ? 'مواقعنا' : 'Our Locations'}</h4>
             <ul className="space-y-2">
-              {serviceLinks.map((link) => (
+              {locationLinks.map((link) => (
                 <li key={link.path}>
                   <Link 
                     to={link.path}
                     className="text-sm opacity-80 hover:opacity-100 hover:text-secondary transition-colors"
                   >
-                    {t(link.key)}
+                    {isRTL ? link.name.ar : link.name.en}
                   </Link>
                 </li>
               ))}
@@ -136,7 +137,7 @@ export default function Footer() {
       <div className="border-t border-background/10">
         <div className="container py-4 flex flex-col sm:flex-row justify-between items-center gap-2 text-sm opacity-70">
           <p>
-            © {currentYear} {isRTL ? 'القطع للطاقة الشمسية' : 'Al-Qatta Solar Energy'}. {t('footer.rights')}.
+            © {currentYear} {isRTL ? 'القطاع لأنظمة الطاقة الشمسية والكهرباء' : 'Al-Qatta Solar Energy Systems'}. {t('footer.rights')}.
           </p>
           <p className="flex items-center gap-1">
             <span>{isRTL ? 'الوكيل المعتمد لـ' : 'Authorized Agent of'}</span>
