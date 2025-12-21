@@ -1,58 +1,151 @@
-import { Link } from 'react-router-dom';
 import Layout from '@/components/layout/Layout';
 import { useLanguage } from '@/i18n/LanguageContext';
-import { ArrowLeft, ArrowRight, CheckCircle } from 'lucide-react';
+import { 
+  ArrowLeft, ArrowRight, CheckCircle, Phone, Wrench, Sparkles,
+  PenTool, Settings, Battery, Lightbulb, ClipboardCheck, Gauge,
+  Clock, Shield, MapPin, Users, Zap, Star
+} from 'lucide-react';
+import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import SEO, { createBreadcrumbSchema, createServiceSchema } from '@/components/SEO';
+import { Link } from 'react-router-dom';
+
+interface ServiceFeature {
+  textEn: string;
+  textAr: string;
+}
+
+interface Service {
+  id: string;
+  key: string;
+  icon: typeof PenTool;
+  features: ServiceFeature[];
+  benefitsEn: string[];
+  benefitsAr: string[];
+}
+
+const services: Service[] = [
+  { 
+    id: 'design',
+    key: 'services.items.design', 
+    icon: PenTool,
+    features: [
+      { textEn: 'Energy consumption analysis', textAr: 'تحليل استهلاك الطاقة' },
+      { textEn: 'Professional engineering design', textAr: 'تصميم هندسي احترافي' },
+      { textEn: 'Equipment selection', textAr: 'اختيار المعدات المناسبة' },
+      { textEn: 'Implementation drawings', textAr: 'رسومات تنفيذية' },
+    ],
+    benefitsEn: ['Optimal system sizing', 'Cost efficiency', 'Maximum energy output'],
+    benefitsAr: ['حجم نظام مثالي', 'كفاءة التكلفة', 'أقصى إنتاج للطاقة']
+  },
+  { 
+    id: 'installation',
+    key: 'services.items.installation', 
+    icon: Settings,
+    features: [
+      { textEn: 'Professional installation', textAr: 'تركيب احترافي' },
+      { textEn: 'Specialized engineering team', textAr: 'فريق مهندسين متخصص' },
+      { textEn: 'Comprehensive testing', textAr: 'اختبار شامل' },
+      { textEn: 'Turnkey delivery', textAr: 'تسليم مفتاح' },
+    ],
+    benefitsEn: ['Quick installation', 'Safety compliance', 'System optimization'],
+    benefitsAr: ['تركيب سريع', 'معايير السلامة', 'تحسين النظام']
+  },
+  { 
+    id: 'storage',
+    key: 'services.items.storage', 
+    icon: Battery,
+    features: [
+      { textEn: 'Original Pylontech batteries', textAr: 'بطاريات Pylontech الأصلية' },
+      { textEn: 'Hybrid systems', textAr: 'أنظمة هجينة' },
+      { textEn: 'Off-grid solutions', textAr: 'حلول خارج الشبكة' },
+      { textEn: 'Smart energy storage', textAr: 'تخزين طاقة ذكي' },
+    ],
+    benefitsEn: ['24/7 power availability', 'Energy independence', 'Long battery life'],
+    benefitsAr: ['طاقة متاحة 24/7', 'استقلالية الطاقة', 'عمر بطارية طويل']
+  },
+  { 
+    id: 'consultation',
+    key: 'services.items.consultation', 
+    icon: Lightbulb,
+    features: [
+      { textEn: 'Free consultation', textAr: 'استشارة مجانية' },
+      { textEn: 'Proper sizing', textAr: 'تحديد الحجم المناسب' },
+      { textEn: 'Feasibility study', textAr: 'دراسة الجدوى' },
+      { textEn: 'Customized recommendations', textAr: 'توصيات مخصصة' },
+    ],
+    benefitsEn: ['Informed decisions', 'Budget planning', 'ROI calculation'],
+    benefitsAr: ['قرارات مدروسة', 'تخطيط الميزانية', 'حساب العائد']
+  },
+  { 
+    id: 'maintenance',
+    key: 'services.items.maintenance', 
+    icon: Wrench,
+    features: [
+      { textEn: 'Regular maintenance', textAr: 'صيانة دورية' },
+      { textEn: '24/7 technical support', textAr: 'دعم فني 24/7' },
+      { textEn: 'Original spare parts', textAr: 'قطع غيار أصلية' },
+      { textEn: 'Fast response', textAr: 'استجابة سريعة' },
+    ],
+    benefitsEn: ['System longevity', 'Peak performance', 'Peace of mind'],
+    benefitsAr: ['عمر نظام أطول', 'أداء مثالي', 'راحة البال']
+  },
+  { 
+    id: 'assessment',
+    key: 'services.items.assessment', 
+    icon: ClipboardCheck,
+    features: [
+      { textEn: 'Site evaluation', textAr: 'تقييم الموقع' },
+      { textEn: 'Solar radiation measurement', textAr: 'قياس الإشعاع الشمسي' },
+      { textEn: 'Shade analysis', textAr: 'تحليل الظل' },
+      { textEn: 'Comprehensive report', textAr: 'تقرير شامل' },
+    ],
+    benefitsEn: ['Accurate planning', 'Risk assessment', 'Optimal placement'],
+    benefitsAr: ['تخطيط دقيق', 'تقييم المخاطر', 'موقع مثالي']
+  },
+];
+
+const processSteps = [
+  {
+    stepEn: 'Consultation',
+    stepAr: 'الاستشارة',
+    descEn: 'Free consultation to understand your needs',
+    descAr: 'استشارة مجانية لفهم احتياجاتك',
+    icon: Lightbulb
+  },
+  {
+    stepEn: 'Site Assessment',
+    stepAr: 'تقييم الموقع',
+    descEn: 'Technical evaluation of your location',
+    descAr: 'تقييم فني لموقعك',
+    icon: ClipboardCheck
+  },
+  {
+    stepEn: 'Design & Quote',
+    stepAr: 'التصميم والعرض',
+    descEn: 'Custom system design and pricing',
+    descAr: 'تصميم نظام مخصص وتسعير',
+    icon: PenTool
+  },
+  {
+    stepEn: 'Installation',
+    stepAr: 'التركيب',
+    descEn: 'Professional installation by our team',
+    descAr: 'تركيب احترافي من فريقنا',
+    icon: Settings
+  },
+  {
+    stepEn: 'Support',
+    stepAr: 'الدعم',
+    descEn: 'Ongoing maintenance and support',
+    descAr: 'صيانة ودعم مستمر',
+    icon: Wrench
+  },
+];
 
 export default function Services() {
   const { t, isRTL } = useLanguage();
   const Arrow = isRTL ? ArrowLeft : ArrowRight;
-  
-  const services = [
-    { 
-      key: 'services.items.design', 
-      icon: '📐',
-      features: isRTL 
-        ? ['تحليل استهلاك الطاقة', 'تصميم هندسي احترافي', 'اختيار المعدات المناسبة', 'رسومات تنفيذية']
-        : ['Energy consumption analysis', 'Professional engineering design', 'Equipment selection', 'Implementation drawings']
-    },
-    { 
-      key: 'services.items.installation', 
-      icon: '🔧',
-      features: isRTL 
-        ? ['تركيب احترافي', 'فريق مهندسين متخصص', 'اختبار شامل', 'تسليم مفتاح']
-        : ['Professional installation', 'Specialized engineering team', 'Comprehensive testing', 'Turnkey delivery']
-    },
-    { 
-      key: 'services.items.storage', 
-      icon: '🔋',
-      features: isRTL 
-        ? ['بطاريات Pylontech الأصلية', 'أنظمة هجينة', 'حلول خارج الشبكة', 'تخزين طاقة ذكي']
-        : ['Original Pylontech batteries', 'Hybrid systems', 'Off-grid solutions', 'Smart energy storage']
-    },
-    { 
-      key: 'services.items.consultation', 
-      icon: '💡',
-      features: isRTL 
-        ? ['استشارة مجانية', 'تحديد الحجم المناسب', 'دراسة الجدوى', 'توصيات مخصصة']
-        : ['Free consultation', 'Proper sizing', 'Feasibility study', 'Customized recommendations']
-    },
-    { 
-      key: 'services.items.maintenance', 
-      icon: '🛠️',
-      features: isRTL 
-        ? ['صيانة دورية', 'دعم فني 24/7', 'قطع غيار أصلية', 'استجابة سريعة']
-        : ['Regular maintenance', '24/7 technical support', 'Original spare parts', 'Fast response']
-    },
-    { 
-      key: 'services.items.assessment', 
-      icon: '📊',
-      features: isRTL 
-        ? ['تقييم الموقع', 'قياس الإشعاع الشمسي', 'تحليل الظل', 'تقرير شامل']
-        : ['Site evaluation', 'Solar radiation measurement', 'Shade analysis', 'Comprehensive report']
-    },
-  ];
 
   const breadcrumbSchema = createBreadcrumbSchema([
     { name: isRTL ? 'الرئيسية' : 'Home', url: '/' },
@@ -69,7 +162,7 @@ export default function Services() {
     <Layout>
       <SEO
         title="Solar Energy Services in Yemen | Al-Qatta Solar Energy"
-        titleAr="خدمات الطاقة الشمسية في اليمن | القطع للطاقة الشمسية"
+        titleAr="خدمات الطاقة الشمسية في اليمن | القطاع للطاقة الشمسية"
         description="Complete solar energy services in Yemen: system design, professional installation, energy storage solutions, technical consultation, maintenance, and site assessment."
         descriptionAr="خدمات طاقة شمسية متكاملة في اليمن: تصميم الأنظمة، التركيب الاحترافي، حلول تخزين الطاقة، الاستشارات الفنية، الصيانة، ودراسة الجدوى."
         keywords="solar installation yemen, solar system design yemen, energy storage installation, solar maintenance yemen, solar consultation yemen"
@@ -79,66 +172,208 @@ export default function Services() {
       />
 
       {/* Hero */}
-      <section className="py-20 bg-primary text-primary-foreground">
+      <section className="py-16 md:py-20 bg-primary text-primary-foreground">
         <div className="container">
-          <div className="text-center max-w-3xl mx-auto">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">{t('services.title')}</h1>
-            <p className="text-lg opacity-90">{t('services.subtitle')}</p>
+          <div className="text-center max-w-2xl mx-auto">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-secondary/20 text-secondary text-sm font-medium mb-4">
+              <Sparkles className="h-4 w-4" />
+              <span>{isRTL ? 'خدمات متكاملة' : 'Complete Services'}</span>
+            </div>
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-black mb-4">{t('services.title')}</h1>
+            <p className="text-primary-foreground/80">{t('services.subtitle')}</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Quick Stats */}
+      <section className="py-8 bg-secondary">
+        <div className="container">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {[
+              { icon: Clock, valueEn: '24/7', valueAr: '24/7', labelEn: 'Support', labelAr: 'دعم' },
+              { icon: Shield, valueEn: '10', valueAr: '10', labelEn: 'Years Warranty', labelAr: 'سنوات ضمان' },
+              { icon: MapPin, valueEn: '18', valueAr: '18', labelEn: 'Governorates', labelAr: 'محافظة' },
+              { icon: Users, valueEn: '500+', valueAr: '+500', labelEn: 'Projects', labelAr: 'مشروع' },
+            ].map((stat, idx) => (
+              <div key={idx} className="text-center">
+                <div className="inline-flex items-center justify-center h-8 w-8 rounded-lg bg-secondary-foreground/10 mb-1">
+                  <stat.icon className="h-4 w-4 text-secondary-foreground" />
+                </div>
+                <div className="text-xl md:text-2xl font-black text-secondary-foreground">{isRTL ? stat.valueAr : stat.valueEn}</div>
+                <div className="text-xs text-secondary-foreground/75">{isRTL ? stat.labelAr : stat.labelEn}</div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* Services Grid */}
-      <section className="py-20 bg-surface">
+      <section className="py-16 md:py-20 bg-background">
         <div className="container">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="text-center mb-12">
+            <h2 className="text-2xl md:text-3xl font-black mb-3">
+              {isRTL ? 'خدماتنا الشاملة' : 'Our Complete Services'}
+            </h2>
+            <p className="text-muted-foreground max-w-lg mx-auto">
+              {isRTL 
+                ? 'نقدم حلولاً متكاملة من التصميم إلى الصيانة'
+                : 'We provide end-to-end solutions from design to maintenance'}
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {services.map((service) => (
               <article 
-                key={service.key} 
-                className="bg-card border border-border rounded-xl p-6 hover:shadow-lg hover:border-primary/30 transition-all"
+                key={service.id} 
+                className="group bg-card border border-border rounded-xl overflow-hidden hover:shadow-lg hover:border-primary/20 transition-all duration-300"
               >
-                <div className="text-5xl mb-4">{service.icon}</div>
-                <h2 className="text-xl font-bold mb-3">{t(`${service.key}.title`)}</h2>
-                <p className="text-muted-foreground mb-4">{t(`${service.key}.desc`)}</p>
-                
-                <ul className="space-y-2 mb-6">
-                  {service.features.map((feature, i) => (
-                    <li key={i} className="flex items-center gap-2 text-sm">
-                      <CheckCircle className="h-4 w-4 text-success flex-shrink-0" />
-                      <span>{feature}</span>
-                    </li>
-                  ))}
-                </ul>
+                {/* Header */}
+                <div className="p-6 border-b border-border bg-muted/30">
+                  <div className="flex items-start gap-4">
+                    <div className="inline-flex items-center justify-center h-12 w-12 rounded-xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                      <service.icon className="h-6 w-6" />
+                    </div>
+                    <div>
+                      <h2 className="text-lg font-bold mb-1">{t(`${service.key}.title`)}</h2>
+                      <p className="text-muted-foreground text-sm">{t(`${service.key}.desc`)}</p>
+                    </div>
+                  </div>
+                </div>
 
-                <Button asChild variant="outline" className="w-full group">
-                  <a href="https://wa.me/967777777777" target="_blank" rel="noopener noreferrer">
-                    {t('common.requestQuote')}
-                    <Arrow className="h-4 w-4 transition-transform group-hover:translate-x-1 rtl:group-hover:-translate-x-1" />
-                  </a>
-                </Button>
+                {/* Features */}
+                <div className="p-6">
+                  <div className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-3">
+                    {isRTL ? 'ما نقدمه' : 'What We Offer'}
+                  </div>
+                  <ul className="space-y-2 mb-5">
+                    {service.features.map((feature, i) => (
+                      <li key={i} className="flex items-center gap-2 text-sm">
+                        <CheckCircle className="h-4 w-4 text-success shrink-0" />
+                        <span>{isRTL ? feature.textAr : feature.textEn}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  {/* Benefits */}
+                  <div className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-2">
+                    {isRTL ? 'الفوائد' : 'Benefits'}
+                  </div>
+                  <div className="flex flex-wrap gap-1.5 mb-5">
+                    {(isRTL ? service.benefitsAr : service.benefitsEn).map((benefit, i) => (
+                      <span key={i} className="text-xs bg-secondary/10 text-secondary px-2 py-1 rounded-full">
+                        {benefit}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* CTA */}
+                  <Button asChild variant="outline" size="sm" className="w-full group-hover:bg-primary group-hover:text-primary-foreground group-hover:border-primary transition-colors">
+                    <a href="https://wa.me/967777777777" target="_blank" rel="noopener noreferrer">
+                      <Phone className="h-4 w-4" />
+                      {t('common.requestQuote')}
+                    </a>
+                  </Button>
+                </div>
               </article>
             ))}
           </div>
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-16">
+      {/* Process */}
+      <section className="py-16 md:py-20 bg-surface">
         <div className="container">
-          <div className="bg-gradient-to-br from-secondary to-warning rounded-2xl p-8 md:p-12 text-center">
-            <h2 className="text-2xl md:text-3xl font-bold text-secondary-foreground mb-4">
+          <div className="text-center mb-12">
+            <h2 className="text-2xl md:text-3xl font-black mb-3">
+              {isRTL ? 'كيف نعمل' : 'How We Work'}
+            </h2>
+            <p className="text-muted-foreground max-w-lg mx-auto">
+              {isRTL 
+                ? 'خطوات بسيطة للحصول على نظام طاقة شمسية متكامل'
+                : 'Simple steps to get your complete solar energy system'}
+            </p>
+          </div>
+
+          <div className="max-w-4xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
+              {processSteps.map((step, idx) => (
+                <div key={idx} className="relative text-center">
+                  {/* Connector line */}
+                  {idx < processSteps.length - 1 && (
+                    <div className="hidden md:block absolute top-6 start-1/2 w-full h-0.5 bg-border" />
+                  )}
+                  
+                  <div className="relative z-10">
+                    <div className="inline-flex items-center justify-center h-12 w-12 rounded-full bg-primary text-primary-foreground mb-3 mx-auto">
+                      <step.icon className="h-5 w-5" />
+                    </div>
+                    <div className="text-xs font-bold text-secondary mb-1">
+                      {isRTL ? `الخطوة ${idx + 1}` : `Step ${idx + 1}`}
+                    </div>
+                    <h3 className="font-bold text-sm mb-1">{isRTL ? step.stepAr : step.stepEn}</h3>
+                    <p className="text-muted-foreground text-xs">{isRTL ? step.descAr : step.descEn}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Why Choose Us */}
+      <section className="py-16 md:py-20 bg-primary text-primary-foreground">
+        <div className="container">
+          <div className="text-center mb-12">
+            <h2 className="text-2xl md:text-3xl font-black mb-3">
+              {isRTL ? 'لماذا تختار خدماتنا؟' : 'Why Choose Our Services?'}
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-4xl mx-auto">
+            {[
+              { icon: Shield, titleEn: 'Warranty', titleAr: 'ضمان', descEn: 'Up to 10 years warranty on all installations', descAr: 'ضمان حتى 10 سنوات على جميع التركيبات' },
+              { icon: Zap, titleEn: 'Fast Response', titleAr: 'استجابة سريعة', descEn: 'Same-day response for support requests', descAr: 'استجابة في نفس اليوم لطلبات الدعم' },
+              { icon: Star, titleEn: 'Quality', titleAr: 'جودة', descEn: 'Only original products and certified work', descAr: 'منتجات أصلية فقط وعمل معتمد' },
+              { icon: Gauge, titleEn: 'Experience', titleAr: 'خبرة', descEn: '10+ years in solar energy industry', descAr: '+10 سنوات في مجال الطاقة الشمسية' },
+            ].map((item, idx) => (
+              <div key={idx} className="text-center p-5 rounded-xl bg-primary-foreground/10 border border-primary-foreground/10">
+                <div className="inline-flex items-center justify-center h-10 w-10 rounded-lg bg-secondary/20 text-secondary mb-3">
+                  <item.icon className="h-5 w-5" />
+                </div>
+                <h3 className="font-bold text-sm mb-1">{isRTL ? item.titleAr : item.titleEn}</h3>
+                <p className="text-primary-foreground/70 text-xs">{isRTL ? item.descAr : item.descEn}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="py-12">
+        <div className="container">
+          <div className="bg-secondary rounded-2xl p-8 md:p-10 text-center">
+            <h2 className="text-xl md:text-2xl font-bold text-secondary-foreground mb-3">
               {isRTL ? 'هل تحتاج إلى استشارة مجانية؟' : 'Need a Free Consultation?'}
             </h2>
-            <p className="text-secondary-foreground/80 mb-6 max-w-xl mx-auto">
+            <p className="text-secondary-foreground/80 mb-6 max-w-lg mx-auto text-sm">
               {isRTL 
                 ? 'تواصل معنا الآن للحصول على استشارة مجانية وعرض سعر مخصص لمشروعك'
                 : 'Contact us now for a free consultation and a customized quote for your project'}
             </p>
-            <Button asChild size="lg" className="bg-foreground text-background hover:bg-foreground/90">
-              <a href="https://wa.me/967777777777" target="_blank" rel="noopener noreferrer">
-                {t('contact.whatsapp')}
-              </a>
-            </Button>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+              <Button asChild size="lg" className="bg-secondary-foreground text-secondary hover:bg-secondary-foreground/90">
+                <a href="https://wa.me/967777777777" target="_blank" rel="noopener noreferrer">
+                  <Phone className="h-4 w-4" />
+                  {t('contact.whatsapp')}
+                </a>
+              </Button>
+              <Button asChild size="lg" variant="outline" className="border-2 border-secondary-foreground/30 text-secondary-foreground hover:bg-secondary-foreground/10">
+                <Link to="/contact">
+                  {t('nav.contact')}
+                  <Arrow className="h-4 w-4" />
+                </Link>
+              </Button>
+            </div>
           </div>
         </div>
       </section>
