@@ -20,6 +20,7 @@ import InverterGuide from "./pages/knowledge/InverterGuide";
 import LithiumVsLeadAcid from "./pages/knowledge/LithiumVsLeadAcid";
 import SolarYemenGuide from "./pages/knowledge/SolarYemenGuide";
 import InverterSizingGuide from "./pages/knowledge/articles/InverterSizingGuide";
+import InverterCommonFaults from "./pages/knowledge/articles/InverterCommonFaults";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -51,6 +52,7 @@ const App = () => (
             <Route path="/knowledge/solar-yemen-guide" element={<SolarYemenGuide />} />
             {/* Supporting Articles */}
             <Route path="/knowledge/inverter-sizing" element={<InverterSizingGuide />} />
+            <Route path="/knowledge/inverter-common-faults" element={<InverterCommonFaults />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
