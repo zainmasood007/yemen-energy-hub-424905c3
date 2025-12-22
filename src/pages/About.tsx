@@ -9,6 +9,8 @@ import { cn } from '@/lib/utils';
 import SEO, { organizationSchema, createBreadcrumbSchema } from '@/components/SEO';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
+import PageHero from '@/components/ui/PageHero';
+import GlassCard from '@/components/ui/GlassCard';
 
 export default function About() {
   const { t, isRTL } = useLanguage();
@@ -140,33 +142,32 @@ export default function About() {
       />
 
       {/* Hero Section */}
-      <section className="py-16 md:py-20 bg-primary text-primary-foreground relative overflow-hidden">
-        <div className="container relative z-10">
-          <div className="max-w-3xl mx-auto text-center">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-secondary/20 text-secondary text-sm font-medium mb-4">
-              <Shield className="h-4 w-4" />
-              <span>{isRTL ? 'الوكيل المعتمد الوحيد لـ Pylontech' : 'Only Authorized Pylontech Agent'}</span>
-            </div>
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-black mb-5">
-              {isRTL ? 'قصة القطاع للطاقة الشمسية' : 'The Story of Al-Qatta Solar'}
-            </h1>
-            <p className="text-primary-foreground/80 text-base md:text-lg leading-relaxed max-w-2xl mx-auto">
-              {isRTL 
-                ? 'منذ عام 2014، نعمل على توفير حلول طاقة شمسية موثوقة ومستدامة لكل منزل وشركة في اليمن. نفخر بكوننا الوكيل المعتمد الوحيد لـ Pylontech في اليمن.'
-                : 'Since 2014, we have been providing reliable and sustainable solar energy solutions for every home and business in Yemen. We are proud to be the only authorized Pylontech agent in Yemen.'}
-            </p>
-          </div>
-        </div>
-      </section>
+      <PageHero
+        badge={isRTL ? 'الوكيل المعتمد الوحيد لـ Pylontech' : 'Only Authorized Pylontech Agent'}
+        badgeIcon={Shield}
+        title={isRTL ? 'قصة القطاع للطاقة الشمسية' : 'The Story of Al-Qatta Solar'}
+        subtitle={isRTL 
+          ? 'منذ عام 2014، نعمل على توفير حلول طاقة شمسية موثوقة ومستدامة لكل منزل وشركة في اليمن. نفخر بكوننا الوكيل المعتمد الوحيد لـ Pylontech في اليمن.'
+          : 'Since 2014, we have been providing reliable and sustainable solar energy solutions for every home and business in Yemen. We are proud to be the only authorized Pylontech agent in Yemen.'}
+      />
 
-      {/* Stats */}
-      <section className="py-10 bg-secondary">
-        <div className="container">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+      {/* Stats - with glass effect */}
+      <section className="py-10 bg-gradient-to-r from-secondary via-secondary/95 to-secondary relative overflow-hidden">
+        {/* Animated background blobs */}
+        <div className="absolute inset-0">
+          <div className="absolute top-0 start-1/4 w-40 h-40 bg-secondary-foreground/10 rounded-full blur-3xl animate-blob" />
+          <div className="absolute bottom-0 end-1/4 w-32 h-32 bg-secondary-foreground/5 rounded-full blur-2xl animate-blob delay-300" />
+        </div>
+        
+        <div className="container relative z-10">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
             {stats.map((stat, idx) => (
-              <div key={idx} className="text-center">
-                <div className="inline-flex items-center justify-center h-10 w-10 rounded-lg bg-secondary-foreground/10 mb-2">
-                  <stat.icon className="h-5 w-5 text-secondary-foreground" />
+              <div 
+                key={idx} 
+                className="group text-center p-4 rounded-xl bg-secondary-foreground/5 backdrop-blur-sm border border-secondary-foreground/10 hover:bg-secondary-foreground/10 transition-all duration-300"
+              >
+                <div className="inline-flex items-center justify-center h-12 w-12 rounded-xl bg-secondary-foreground/10 mb-3 group-hover:scale-110 transition-transform duration-300">
+                  <stat.icon className="h-5 w-5 text-secondary-foreground icon-bounce" />
                 </div>
                 <div className="text-2xl md:text-3xl font-black text-secondary-foreground">{stat.value}</div>
                 <div className="text-sm text-secondary-foreground/75">{isRTL ? stat.labelAr : stat.labelEn}</div>
@@ -214,11 +215,11 @@ export default function About() {
                     "ms-16 md:ms-0 md:w-[calc(50%-2rem)]",
                     idx % 2 === 0 ? "md:text-end md:pe-8" : "md:text-start md:ps-8"
                   )}>
-                    <div className="bg-card border border-border rounded-xl p-5">
+                    <GlassCard hover glow className="border-animated">
                       <div className="text-secondary font-bold text-sm mb-1">{item.year}</div>
                       <h3 className="font-bold text-lg mb-2">{isRTL ? item.titleAr : item.titleEn}</h3>
                       <p className="text-muted-foreground text-sm">{isRTL ? item.descAr : item.descEn}</p>
-                    </div>
+                    </GlassCard>
                   </div>
                 </div>
               ))}
@@ -228,12 +229,15 @@ export default function About() {
       </section>
 
       {/* Mission & Vision */}
-      <section className="py-16 md:py-20 bg-surface">
-        <div className="container">
+      <section className="py-16 md:py-20 bg-surface relative overflow-hidden">
+        {/* Background decoration */}
+        <div className="absolute inset-0 bg-dots opacity-30" />
+        
+        <div className="container relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-            <div className="bg-card border border-border rounded-xl p-6 md:p-8">
-              <div className="inline-flex items-center justify-center h-12 w-12 rounded-xl bg-primary text-primary-foreground mb-4">
-                <Target className="h-6 w-6" />
+            <GlassCard variant="bordered" className="group">
+              <div className="inline-flex items-center justify-center h-14 w-14 rounded-xl bg-primary text-primary-foreground mb-4 group-hover:scale-110 transition-transform duration-300 shadow-glow-primary">
+                <Target className="h-7 w-7 icon-pulse" />
               </div>
               <h2 className="text-xl md:text-2xl font-bold mb-3">{isRTL ? 'مهمتنا' : 'Our Mission'}</h2>
               <p className="text-muted-foreground leading-relaxed text-sm md:text-base">
@@ -241,10 +245,10 @@ export default function About() {
                   ? 'توفير حلول طاقة شمسية موثوقة وعالية الجودة لكل منزل وشركة في اليمن، مع ضمان أفضل خدمة ما بعد البيع ودعم فني على مدار الساعة. نسعى لجعل الطاقة النظيفة في متناول الجميع.'
                   : 'To provide reliable, high-quality solar energy solutions for every home and business in Yemen, ensuring the best after-sales service and 24/7 technical support. We strive to make clean energy accessible to everyone.'}
               </p>
-            </div>
-            <div className="bg-card border border-border rounded-xl p-6 md:p-8">
-              <div className="inline-flex items-center justify-center h-12 w-12 rounded-xl bg-secondary text-secondary-foreground mb-4">
-                <Eye className="h-6 w-6" />
+            </GlassCard>
+            <GlassCard variant="bordered" className="group">
+              <div className="inline-flex items-center justify-center h-14 w-14 rounded-xl bg-secondary text-secondary-foreground mb-4 group-hover:scale-110 transition-transform duration-300 shadow-glow">
+                <Eye className="h-7 w-7 icon-pulse" />
               </div>
               <h2 className="text-xl md:text-2xl font-bold mb-3">{isRTL ? 'رؤيتنا' : 'Our Vision'}</h2>
               <p className="text-muted-foreground leading-relaxed text-sm md:text-base">
@@ -252,14 +256,20 @@ export default function About() {
                   ? 'أن نكون الشركة الرائدة في مجال الطاقة الشمسية وتخزين الطاقة في اليمن والمنطقة. نطمح لمستقبل يعتمد على الطاقة النظيفة والمستدامة للجميع.'
                   : 'To be the leading company in solar energy and energy storage in Yemen and the region. We aspire to a future powered by clean and sustainable energy for all.'}
               </p>
-            </div>
+            </GlassCard>
           </div>
         </div>
       </section>
       
       {/* Values */}
-      <section className="py-16 md:py-20 bg-background">
-        <div className="container">
+      <section className="py-16 md:py-20 bg-background relative overflow-hidden">
+        {/* Background animated blobs */}
+        <div className="absolute inset-0">
+          <div className="absolute top-20 start-10 w-64 h-64 bg-primary/5 rounded-full blur-3xl animate-blob" />
+          <div className="absolute bottom-20 end-10 w-48 h-48 bg-secondary/5 rounded-full blur-3xl animate-blob delay-500" />
+        </div>
+        
+        <div className="container relative z-10">
           <div className="text-center mb-12">
             <h2 className="text-2xl md:text-3xl font-black mb-3">{isRTL ? 'قيمنا' : 'Our Values'}</h2>
             <p className="text-muted-foreground max-w-lg mx-auto">
@@ -270,16 +280,17 @@ export default function About() {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {values.map((item, i) => (
-              <div 
+              <GlassCard 
                 key={i} 
-                className="bg-card border border-border rounded-xl p-6 text-center hover:shadow-lg hover:border-primary/20 transition-all duration-300"
+                variant="frosted"
+                className="group text-center border-animated"
               >
-                <div className="inline-flex items-center justify-center h-12 w-12 rounded-xl bg-primary/10 text-primary mb-4">
+                <div className="inline-flex items-center justify-center h-14 w-14 rounded-xl bg-gradient-to-br from-primary/20 to-primary/5 text-primary mb-4 group-hover:from-primary group-hover:to-primary/80 group-hover:text-primary-foreground group-hover:scale-110 transition-all duration-300">
                   <item.icon className="h-6 w-6" />
                 </div>
                 <h3 className="text-lg font-bold mb-2">{isRTL ? item.titleAr : item.titleEn}</h3>
                 <p className="text-sm text-muted-foreground">{isRTL ? item.descAr : item.descEn}</p>
-              </div>
+              </GlassCard>
             ))}
           </div>
         </div>
