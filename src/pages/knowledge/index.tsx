@@ -35,7 +35,7 @@ const pillarPages = [
     titleEn: 'Solar Energy in Yemen - Complete Guide',
     descAr: 'كل ما تحتاج معرفته عن الطاقة الشمسية في اليمن: المناخ، التحديات، الحلول.',
     descEn: 'Everything you need to know about solar energy in Yemen: climate, challenges, solutions.',
-    status: 'coming',
+    status: 'published',
   },
 ];
 
