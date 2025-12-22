@@ -15,6 +15,8 @@ import Contact from "./pages/Contact";
 import Projects from "./pages/Projects";
 import LocationPage from "./pages/LocationPage";
 import Locations from "./pages/Locations";
+import KnowledgeHub from "./pages/knowledge";
+import InverterGuide from "./pages/knowledge/InverterGuide";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -39,6 +41,9 @@ const App = () => (
             <Route path="/projects" element={<Projects />} />
             <Route path="/locations" element={<Locations />} />
             <Route path="/locations/:citySlug" element={<LocationPage />} />
+            {/* Knowledge Hub Routes */}
+            <Route path="/knowledge" element={<KnowledgeHub />} />
+            <Route path="/knowledge/inverter-guide" element={<InverterGuide />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
