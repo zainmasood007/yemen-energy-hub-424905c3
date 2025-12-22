@@ -6,7 +6,8 @@ import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { 
   Zap, Battery, Sun, BookOpen, 
-  ArrowLeft, ArrowRight, Lightbulb
+  ArrowLeft, ArrowRight, Lightbulb,
+  Calculator, Wrench, RefreshCw, ArrowUpDown
 } from 'lucide-react';
 
 const pillarPages = [
@@ -36,6 +37,49 @@ const pillarPages = [
     descAr: 'كل ما تحتاج معرفته عن الطاقة الشمسية في اليمن: المناخ، التحديات، الحلول.',
     descEn: 'Everything you need to know about solar energy in Yemen: climate, challenges, solutions.',
     status: 'published',
+  },
+];
+
+const supportingArticles = [
+  {
+    slug: 'inverter-sizing',
+    icon: Calculator,
+    titleAr: 'كيف تحسب حجم الانفرتر المناسب',
+    titleEn: 'How to Calculate Inverter Size',
+    pillarAr: 'الانفرترات',
+    pillarEn: 'Inverters',
+  },
+  {
+    slug: 'inverter-common-faults',
+    icon: Wrench,
+    titleAr: 'أعطال الانفرتر الشائعة وحلولها',
+    titleEn: 'Common Inverter Faults & Solutions',
+    pillarAr: 'الانفرترات',
+    pillarEn: 'Inverters',
+  },
+  {
+    slug: 'lithium-battery-lifespan',
+    icon: RefreshCw,
+    titleAr: 'كم تدوم بطارية الليثيوم؟',
+    titleEn: 'How Long Do Lithium Batteries Last?',
+    pillarAr: 'البطاريات',
+    pillarEn: 'Batteries',
+  },
+  {
+    slug: 'series-vs-parallel-batteries',
+    icon: ArrowUpDown,
+    titleAr: 'توصيل البطاريات: توالي vs توازي',
+    titleEn: 'Battery Wiring: Series vs Parallel',
+    pillarAr: 'البطاريات',
+    pillarEn: 'Batteries',
+  },
+  {
+    slug: 'solar-system-cost-yemen',
+    icon: Calculator,
+    titleAr: 'تكلفة نظام الطاقة الشمسية في اليمن',
+    titleEn: 'Solar System Cost in Yemen',
+    pillarAr: 'الطاقة الشمسية',
+    pillarEn: 'Solar Energy',
   },
 ];
 
@@ -161,6 +205,53 @@ export default function KnowledgeHub() {
                         </CardContent>
                       )}
                     </Card>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Supporting Articles */}
+        <section className="py-12 md:py-16 bg-muted/30">
+          <div className="container">
+            <div className="max-w-4xl mx-auto">
+              <div className="flex items-center gap-3 mb-8">
+                <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
+                  <BookOpen className="h-5 w-5 text-primary" />
+                </div>
+                <h2 className="text-2xl font-bold">
+                  {language === 'ar' ? 'مقالات داعمة' : 'Supporting Articles'}
+                </h2>
+              </div>
+              
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                {supportingArticles.map((article) => {
+                  const Icon = article.icon;
+                  return (
+                    <Link 
+                      key={article.slug}
+                      to={`/knowledge/${article.slug}`}
+                      className="group"
+                    >
+                      <Card className="h-full transition-all hover:border-primary/50 hover:shadow-md">
+                        <CardContent className="p-4">
+                          <div className="flex items-start gap-3">
+                            <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
+                              <Icon className="h-5 w-5 text-primary" />
+                            </div>
+                            <div>
+                              <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors">
+                                {language === 'ar' ? article.titleAr : article.titleEn}
+                              </h3>
+                              <Badge variant="secondary" className="mt-2 text-xs">
+                                {language === 'ar' ? article.pillarAr : article.pillarEn}
+                              </Badge>
+                            </div>
+                          </div>
+                        </CardContent>
+                      </Card>
+                    </Link>
                   );
                 })}
               </div>

@@ -23,6 +23,7 @@ import InverterSizingGuide from "./pages/knowledge/articles/InverterSizingGuide"
 import InverterCommonFaults from "./pages/knowledge/articles/InverterCommonFaults";
 import LithiumBatteryLifespan from "./pages/knowledge/articles/LithiumBatteryLifespan";
 import SeriesVsParallelBatteries from "./pages/knowledge/articles/SeriesVsParallelBatteries";
+import SolarSystemCostYemen from "./pages/knowledge/articles/SolarSystemCostYemen";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -57,6 +58,7 @@ const App = () => (
             <Route path="/knowledge/inverter-common-faults" element={<InverterCommonFaults />} />
             <Route path="/knowledge/lithium-battery-lifespan" element={<LithiumBatteryLifespan />} />
             <Route path="/knowledge/series-vs-parallel-batteries" element={<SeriesVsParallelBatteries />} />
+            <Route path="/knowledge/solar-system-cost-yemen" element={<SolarSystemCostYemen />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
