@@ -1,10 +1,13 @@
 import { Users, Star, Quote } from 'lucide-react';
 import { useLanguage } from '@/i18n/LanguageContext';
 import { useParallax } from '@/hooks/use-parallax';
+import { ScrollReveal } from '@/components/ui/ScrollReveal';
+import { useScrollAnimation } from '@/hooks/use-scroll-animation';
 
 export function TestimonialsSection() {
   const { isRTL } = useLanguage();
   const parallaxOffset = useParallax({ speed: 0.1, direction: 'up' });
+  const { ref, isVisible } = useScrollAnimation({ threshold: 0.15 });
 
   const testimonials = [
     {
@@ -48,26 +51,33 @@ export function TestimonialsSection() {
       </div>
       
       <div className="container relative">
-        <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary/10 text-secondary text-sm font-medium mb-5 animate-fade-in">
-            <Users className="h-4 w-4" />
-            <span>{isRTL ? 'آراء عملائنا' : 'Customer Reviews'}</span>
+        <ScrollReveal animation="fade-in">
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary/10 text-secondary text-sm font-medium mb-5">
+              <Users className="h-4 w-4" />
+              <span>{isRTL ? 'آراء عملائنا' : 'Customer Reviews'}</span>
+            </div>
+            <h2 className="text-2xl md:text-4xl font-bold mb-3 tracking-tight">
+              {isRTL ? 'ماذا يقول عملاؤنا' : 'What Our Clients Say'}
+            </h2>
+            <p className="text-muted-foreground max-w-xl mx-auto">
+              {isRTL ? 'نفتخر بثقة عملائنا وشهاداتهم عن خدماتنا' : 'We are proud of our clients\' trust and testimonials'}
+            </p>
+            <div className="w-16 h-1 bg-secondary mx-auto rounded-full mt-5" />
           </div>
-          <h2 className="text-2xl md:text-4xl font-bold mb-3 animate-slide-up tracking-tight">
-            {isRTL ? 'ماذا يقول عملاؤنا' : 'What Our Clients Say'}
-          </h2>
-          <p className="text-muted-foreground max-w-xl mx-auto animate-slide-up delay-100">
-            {isRTL ? 'نفتخر بثقة عملائنا وشهاداتهم عن خدماتنا' : 'We are proud of our clients\' trust and testimonials'}
-          </p>
-          <div className="w-16 h-1 bg-secondary mx-auto rounded-full mt-5" />
-        </div>
+        </ScrollReveal>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5" ref={ref}>
           {testimonials.map((testimonial, index) => (
             <div 
               key={index}
-              className="group bg-card border border-border rounded-xl p-6 hover:border-primary/20 hover:shadow-md transition-all duration-300 animate-slide-up"
-              style={{ animationDelay: `${index * 80}ms` }}
+              className="group bg-card border border-border rounded-xl p-6 hover:border-primary/20 hover:shadow-md transition-all duration-500 will-change-transform relative"
+              style={{ 
+                opacity: isVisible ? 1 : 0,
+                transform: isVisible ? 'translateY(0)' : 'translateY(30px)',
+                transitionDelay: `${index * 120}ms`,
+                transitionTimingFunction: 'cubic-bezier(0.22, 1, 0.36, 1)'
+              }}
             >
               {/* Quote icon */}
               <div className="absolute top-5 end-5 h-10 w-10 rounded-lg bg-secondary/8 flex items-center justify-center">

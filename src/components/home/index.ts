@@ -8,3 +8,4 @@ export { ApplicationsSection } from './ApplicationsSection';
 export { TestimonialsSection } from './TestimonialsSection';
 export { CTASection } from './CTASection';
 export { FAQSection } from './FAQSection';
+export { ScrollReveal, ScrollRevealGroup } from '@/components/ui/ScrollReveal';

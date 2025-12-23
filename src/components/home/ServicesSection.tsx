@@ -3,11 +3,14 @@ import { ArrowLeft, ArrowRight, Wrench, Lightbulb, Cpu, Battery, Settings, BarCh
 import { useLanguage } from '@/i18n/LanguageContext';
 import { cn } from '@/lib/utils';
 import { useParallax } from '@/hooks/use-parallax';
+import { ScrollReveal } from '@/components/ui/ScrollReveal';
+import { useScrollAnimation } from '@/hooks/use-scroll-animation';
 
 export function ServicesSection() {
   const { t, isRTL } = useLanguage();
   const Arrow = isRTL ? ArrowLeft : ArrowRight;
   const parallaxOffset = useParallax({ speed: 0.08, direction: 'up' });
+  const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
 
   const services = [
     { key: 'services.items.design', icon: Lightbulb, color: 'bg-secondary/10 text-secondary' },
@@ -30,17 +33,19 @@ export function ServicesSection() {
       </div>
       
       <div className="container relative">
-        <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 text-accent text-sm font-medium mb-5 animate-fade-in">
-            <Wrench className="h-4 w-4" />
-            <span>{isRTL ? 'خدماتنا' : 'Our Services'}</span>
+        <ScrollReveal animation="fade-in">
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 text-accent text-sm font-medium mb-5">
+              <Wrench className="h-4 w-4" />
+              <span>{isRTL ? 'خدماتنا' : 'Our Services'}</span>
+            </div>
+            <h2 className="text-2xl md:text-4xl font-bold mb-3 tracking-tight">{t('services.title')}</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">{t('services.subtitle')}</p>
+            <div className="w-16 h-1 bg-accent mx-auto rounded-full mt-5" />
           </div>
-          <h2 className="text-2xl md:text-4xl font-bold mb-3 animate-slide-up tracking-tight">{t('services.title')}</h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto animate-slide-up delay-100">{t('services.subtitle')}</p>
-          <div className="w-16 h-1 bg-accent mx-auto rounded-full mt-5" />
-        </div>
+        </ScrollReveal>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5" ref={ref}>
           {services.map((service, index) => (
             <Link
               key={service.key}
@@ -48,9 +53,14 @@ export function ServicesSection() {
               className={cn(
                 "group bg-card border border-border rounded-xl p-6",
                 "hover:border-primary/20 hover:shadow-md hover:-translate-y-1",
-                "transition-all duration-300 animate-slide-up"
+                "transition-all duration-500 will-change-transform"
               )}
-              style={{ animationDelay: `${index * 60}ms` }}
+              style={{ 
+                opacity: isVisible ? 1 : 0,
+                transform: isVisible ? 'translateY(0)' : 'translateY(40px)',
+                transitionDelay: `${index * 80}ms`,
+                transitionTimingFunction: 'cubic-bezier(0.22, 1, 0.36, 1)'
+              }}
             >
               <div className={cn(
                 "inline-flex items-center justify-center h-12 w-12 rounded-xl mb-5 transition-transform duration-300 group-hover:scale-105",

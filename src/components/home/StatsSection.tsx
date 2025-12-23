@@ -2,31 +2,13 @@ import { Zap, Award, MapPin, Clock } from 'lucide-react';
 import { useLanguage } from '@/i18n/LanguageContext';
 import { useParallax } from '@/hooks/use-parallax';
 import { useEffect, useState, useRef } from 'react';
+import { useScrollAnimation } from '@/hooks/use-scroll-animation';
 
-function useAnimatedCounter(end: number, suffix: string = '', duration: number = 2000) {
+function useAnimatedCounter(end: number, suffix: string = '', duration: number = 2000, shouldStart: boolean = false) {
   const [count, setCount] = useState(0);
-  const [hasStarted, setHasStarted] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
   
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !hasStarted) {
-          setHasStarted(true);
-        }
-      },
-      { threshold: 0.3 }
-    );
-    
-    if (ref.current) {
-      observer.observe(ref.current);
-    }
-    
-    return () => observer.disconnect();
-  }, [hasStarted]);
-  
-  useEffect(() => {
-    if (!hasStarted) return;
+    if (!shouldStart) return;
     
     let startTime: number;
     let animationFrame: number;
@@ -46,14 +28,15 @@ function useAnimatedCounter(end: number, suffix: string = '', duration: number =
     animationFrame = requestAnimationFrame(animate);
     
     return () => cancelAnimationFrame(animationFrame);
-  }, [end, duration, hasStarted]);
+  }, [end, duration, shouldStart]);
   
-  return { count, ref, suffix };
+  return count;
 }
 
 export function StatsSection() {
   const { isRTL } = useLanguage();
   const parallaxOffset = useParallax({ speed: 0.15, direction: 'up' });
+  const { ref, isVisible } = useScrollAnimation({ threshold: 0.3 });
   
   const stats = [
     { value: 500, suffix: '+', label: isRTL ? 'مشروع منجز' : 'Projects Completed', icon: Zap },
@@ -76,17 +59,21 @@ export function StatsSection() {
         <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-accent/8 rounded-full blur-[60px]" />
       </div>
       
-      <div className="container relative">
+      <div className="container relative" ref={ref}>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-10">
           {stats.map((stat, index) => {
-            const { count, ref } = useAnimatedCounter(stat.value, stat.suffix, 2000 + index * 200);
+            const count = useAnimatedCounter(stat.value, stat.suffix, 2000 + index * 200, isVisible);
             
             return (
               <div 
                 key={index} 
-                ref={ref}
-                className="text-center group animate-slide-up"
-                style={{ animationDelay: `${index * 80}ms` }}
+                className="text-center group transition-all duration-700 will-change-transform"
+                style={{ 
+                  opacity: isVisible ? 1 : 0,
+                  transform: isVisible ? 'translateY(0)' : 'translateY(30px)',
+                  transitionDelay: `${index * 100}ms`,
+                  transitionTimingFunction: 'cubic-bezier(0.22, 1, 0.36, 1)'
+                }}
               >
                 <div className="inline-flex items-center justify-center h-12 w-12 rounded-xl bg-primary-foreground/8 mb-4 group-hover:bg-primary-foreground/12 transition-colors duration-300">
                   <stat.icon className="h-6 w-6 text-secondary" />

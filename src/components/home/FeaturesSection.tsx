@@ -2,10 +2,13 @@ import { Shield, CheckCircle2, Wrench, MapPin, Sparkles } from 'lucide-react';
 import { useLanguage } from '@/i18n/LanguageContext';
 import { cn } from '@/lib/utils';
 import { useParallax } from '@/hooks/use-parallax';
+import { ScrollReveal } from '@/components/ui/ScrollReveal';
+import { useScrollAnimation } from '@/hooks/use-scroll-animation';
 
 export function FeaturesSection() {
   const { t } = useLanguage();
   const parallaxOffset = useParallax({ speed: 0.1, direction: 'up' });
+  const { ref, isVisible } = useScrollAnimation({ threshold: 0.15 });
 
   const features = [
     { icon: Shield, titleKey: 'features.authorized.title', descKey: 'features.authorized.desc', color: 'bg-primary/10 text-primary' },
@@ -26,25 +29,32 @@ export function FeaturesSection() {
       </div>
       
       <div className="container relative">
-        <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary/10 text-secondary text-sm font-medium mb-5 animate-fade-in">
-            <Sparkles className="h-4 w-4" />
-            <span>{t('features.title')}</span>
+        <ScrollReveal animation="fade-in">
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary/10 text-secondary text-sm font-medium mb-5">
+              <Sparkles className="h-4 w-4" />
+              <span>{t('features.title')}</span>
+            </div>
+            <h2 className="text-2xl md:text-4xl font-bold mb-3 tracking-tight">{t('features.title')}</h2>
+            <div className="w-16 h-1 bg-secondary mx-auto rounded-full" />
           </div>
-          <h2 className="text-2xl md:text-4xl font-bold mb-3 animate-slide-up tracking-tight">{t('features.title')}</h2>
-          <div className="w-16 h-1 bg-secondary mx-auto rounded-full" />
-        </div>
+        </ScrollReveal>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5" ref={ref}>
           {features.map((feature, index) => (
             <div 
               key={feature.titleKey}
               className={cn(
                 "group bg-card border border-border rounded-xl p-6 text-center",
                 "hover:border-primary/20 hover:shadow-lg hover:-translate-y-1",
-                "transition-all duration-300 animate-slide-up"
+                "transition-all duration-500 will-change-transform"
               )}
-              style={{ animationDelay: `${index * 80}ms` }}
+              style={{ 
+                opacity: isVisible ? 1 : 0,
+                transform: isVisible ? 'scale(1)' : 'scale(0.9)',
+                transitionDelay: `${index * 100}ms`,
+                transitionTimingFunction: 'cubic-bezier(0.22, 1, 0.36, 1)'
+              }}
             >
               <div className={cn(
                 "inline-flex items-center justify-center h-14 w-14 rounded-xl mb-5 transition-transform duration-300 group-hover:scale-105",
