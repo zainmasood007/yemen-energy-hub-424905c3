@@ -1,10 +1,11 @@
 import { Link } from 'react-router-dom';
-import { ArrowLeft, ArrowRight, Sun, Shield, Clock, MapPin, Battery, Award, Sparkles, Zap } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Shield, Clock, MapPin, Battery, Award, Sparkles } from 'lucide-react';
 import { useLanguage } from '@/i18n/LanguageContext';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { useParallax } from '@/hooks/use-parallax';
 import { useEffect, useState } from 'react';
+import logo from '@/assets/logo.png';
 
 // Animated counter hook
 function useCounter(end: number, duration: number = 2000, startOnMount: boolean = true) {
@@ -142,17 +143,25 @@ export function HeroSection() {
             style={{ transform: `translateY(${floatingOffset}px)` }}
           >
             <div className="relative w-full max-w-md">
-              {/* Subtle rings */}
-              <div className="absolute inset-0 -m-3 rounded-full border border-primary-foreground/5" />
-              <div className="absolute inset-0 -m-6 rounded-full border border-primary-foreground/3" />
+              {/* Animated rotating ring */}
+              <div className="absolute inset-0 -m-12 rounded-full border border-secondary/20 animate-spin-slow" />
+              <div className="absolute inset-0 -m-6 rounded-full border border-primary-foreground/10" />
               
               {/* Main container */}
               <div className="relative aspect-square rounded-2xl bg-primary-foreground/5 backdrop-blur-sm border border-primary-foreground/10 p-8 animate-scale-in">
                 <div className="absolute inset-0 bg-gradient-to-br from-secondary/5 via-transparent to-accent/3 rounded-2xl" />
                 
                 <div className="relative text-center h-full flex flex-col items-center justify-center">
-                  <div className="inline-flex items-center justify-center h-20 w-20 rounded-xl bg-secondary/20 border border-secondary/30 mb-5 animate-float">
-                    <Sun className="h-10 w-10 text-secondary" />
+                  {/* Logo with glow effect */}
+                  <div className="relative mb-5 animate-float">
+                    {/* Glow effect */}
+                    <div className="absolute inset-0 -m-4 bg-secondary/25 rounded-full blur-xl animate-glow-pulse" />
+                    {/* Logo */}
+                    <img 
+                      src={logo} 
+                      alt="Yemen Energy Hub" 
+                      className="relative h-24 w-24 object-contain drop-shadow-lg transition-transform duration-300 hover:scale-105"
+                    />
                   </div>
                   <div className="text-5xl font-bold text-primary-foreground mb-2">
                     {projectCount}+
