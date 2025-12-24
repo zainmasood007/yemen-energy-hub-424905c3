@@ -4,84 +4,8 @@ import Layout from '@/components/layout/Layout';
 import { useLanguage } from '@/i18n/LanguageContext';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { 
-  Zap, Battery, Sun, BookOpen, 
-  ArrowLeft, ArrowRight, Lightbulb,
-  Calculator, Wrench, RefreshCw, ArrowUpDown
-} from 'lucide-react';
-
-const pillarPages = [
-  {
-    slug: 'inverter-guide',
-    icon: Zap,
-    titleAr: 'دليل اختيار الانفرتر المناسب',
-    titleEn: 'Inverter Selection Guide',
-    descAr: 'كيف تختار الانفرتر الأنسب لمنزلك أو مشروعك؟ جداول توصيات ومقارنات شاملة.',
-    descEn: 'How to choose the right inverter for your home or project? Recommendation tables and comprehensive comparisons.',
-    status: 'published',
-  },
-  {
-    slug: 'lithium-vs-lead-acid',
-    icon: Battery,
-    titleAr: 'بطاريات الليثيوم vs الرصاص',
-    titleEn: 'Lithium vs Lead-Acid Batteries',
-    descAr: 'مقارنة تعليمية شاملة بين تقنيات البطاريات. أيهما يناسبك؟',
-    descEn: 'Comprehensive educational comparison between battery technologies. Which suits you?',
-    status: 'published',
-  },
-  {
-    slug: 'solar-yemen-guide',
-    icon: Sun,
-    titleAr: 'الطاقة الشمسية في اليمن - الدليل الشامل',
-    titleEn: 'Solar Energy in Yemen - Complete Guide',
-    descAr: 'كل ما تحتاج معرفته عن الطاقة الشمسية في اليمن: المناخ، التحديات، الحلول.',
-    descEn: 'Everything you need to know about solar energy in Yemen: climate, challenges, solutions.',
-    status: 'published',
-  },
-];
-
-const supportingArticles = [
-  {
-    slug: 'inverter-sizing',
-    icon: Calculator,
-    titleAr: 'كيف تحسب حجم الانفرتر المناسب',
-    titleEn: 'How to Calculate Inverter Size',
-    pillarAr: 'الانفرترات',
-    pillarEn: 'Inverters',
-  },
-  {
-    slug: 'inverter-common-faults',
-    icon: Wrench,
-    titleAr: 'أعطال الانفرتر الشائعة وحلولها',
-    titleEn: 'Common Inverter Faults & Solutions',
-    pillarAr: 'الانفرترات',
-    pillarEn: 'Inverters',
-  },
-  {
-    slug: 'lithium-battery-lifespan',
-    icon: RefreshCw,
-    titleAr: 'كم تدوم بطارية الليثيوم؟',
-    titleEn: 'How Long Do Lithium Batteries Last?',
-    pillarAr: 'البطاريات',
-    pillarEn: 'Batteries',
-  },
-  {
-    slug: 'series-vs-parallel-batteries',
-    icon: ArrowUpDown,
-    titleAr: 'توصيل البطاريات: توالي vs توازي',
-    titleEn: 'Battery Wiring: Series vs Parallel',
-    pillarAr: 'البطاريات',
-    pillarEn: 'Batteries',
-  },
-  {
-    slug: 'solar-system-cost-yemen',
-    icon: Calculator,
-    titleAr: 'تكلفة نظام الطاقة الشمسية في اليمن',
-    titleEn: 'Solar System Cost in Yemen',
-    pillarAr: 'الطاقة الشمسية',
-    pillarEn: 'Solar Energy',
-  },
-];
+import { BookOpen, ArrowLeft, ArrowRight, Lightbulb } from 'lucide-react';
+import { pillarPages, supportingArticles } from '@/data/articles';
 
 export default function KnowledgeHub() {
   const { lang: language, isRTL } = useLanguage();

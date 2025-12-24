@@ -26,6 +26,7 @@ import LithiumBatteryLifespan from "./pages/knowledge/articles/LithiumBatteryLif
 import SeriesVsParallelBatteries from "./pages/knowledge/articles/SeriesVsParallelBatteries";
 import SolarSystemCostYemen from "./pages/knowledge/articles/SolarSystemCostYemen";
 import NotFound from "./pages/NotFound";
+import AdminLocalRoutes from "./admin/AdminLocalRoutes";
 
 const queryClient = new QueryClient();
 
@@ -61,6 +62,10 @@ const App = () => (
             <Route path="/knowledge/lithium-battery-lifespan" element={<LithiumBatteryLifespan />} />
             <Route path="/knowledge/series-vs-parallel-batteries" element={<SeriesVsParallelBatteries />} />
             <Route path="/knowledge/solar-system-cost-yemen" element={<SolarSystemCostYemen />} />
+            {/* Admin Local Routes - DEV only */}
+            {import.meta.env.DEV && (
+              <Route path="/admin-local/*" element={<AdminLocalRoutes />} />
+            )}
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

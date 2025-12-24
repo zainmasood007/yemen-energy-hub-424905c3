@@ -18,6 +18,7 @@ const navItems = [
   { path: '/admin-local/products', icon: Package, label: 'المنتجات', labelEn: 'Products' },
   { path: '/admin-local/articles', icon: FileText, label: 'المقالات', labelEn: 'Articles' },
   { path: '/admin-local/projects', icon: FolderKanban, label: 'المشاريع', labelEn: 'Projects' },
+  { path: '/admin-local/export', icon: Download, label: 'التصدير', labelEn: 'Export' },
 ];
 
 export default function AdminLayout({ children }: AdminLayoutProps) {
@@ -62,6 +63,11 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
 
   return (
     <div className="min-h-screen bg-background" dir="rtl">
+      {/* DEV Warning Banner */}
+      <div className="bg-amber-500 text-amber-950 px-4 py-2 text-center text-sm font-bold">
+        ⚠️ Local Admin – للتطوير فقط – لا يعمل في الإنتاج ⚠️
+      </div>
+      
       {/* Mobile Header */}
       <header className="lg:hidden fixed top-0 left-0 right-0 h-14 bg-card border-b border-border z-50 flex items-center justify-between px-4">
         <Button variant="ghost" size="icon" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>

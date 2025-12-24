@@ -87,6 +87,8 @@ export interface AdminArticle {
   
   contentAr: string;
   contentEn: string;
+  contentMarkdownAr?: string;
+  contentMarkdownEn?: string;
   
   keyTakeaways: Array<{ ar: string; en: string }>;
   
