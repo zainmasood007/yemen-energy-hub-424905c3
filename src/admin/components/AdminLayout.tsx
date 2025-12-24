@@ -63,13 +63,13 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
 
   return (
     <div className="min-h-screen bg-background" dir="rtl">
-      {/* DEV Warning Banner */}
-      <div className="bg-amber-500 text-amber-950 px-4 py-2 text-center text-sm font-bold">
+      {/* DEV Warning Banner - Fixed at top */}
+      <div className="fixed top-0 left-0 right-0 z-[60] bg-amber-500 text-amber-950 px-4 py-2 text-center text-sm font-bold">
         ⚠️ Local Admin – للتطوير فقط – لا يعمل في الإنتاج ⚠️
       </div>
       
       {/* Mobile Header */}
-      <header className="lg:hidden fixed top-0 left-0 right-0 h-14 bg-card border-b border-border z-50 flex items-center justify-between px-4">
+      <header className="lg:hidden fixed top-10 left-0 right-0 h-14 bg-card border-b border-border z-50 flex items-center justify-between px-4">
         <Button variant="ghost" size="icon" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
           {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </Button>
@@ -83,14 +83,14 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
       {/* Mobile Menu Overlay */}
       {mobileMenuOpen && (
         <div 
-          className="lg:hidden fixed inset-0 bg-foreground/50 z-40"
+          className="lg:hidden fixed inset-0 bg-foreground/50 z-40 mt-10"
           onClick={() => setMobileMenuOpen(false)}
         />
       )}
 
       {/* Sidebar */}
       <aside className={cn(
-        "fixed top-0 right-0 h-full bg-card border-l border-border z-50 transition-all duration-300",
+        "fixed top-10 right-0 h-[calc(100vh-40px)] bg-card border-l border-border z-50 transition-all duration-300",
         "lg:translate-x-0",
         sidebarOpen ? "w-64" : "w-16",
         mobileMenuOpen ? "translate-x-0" : "translate-x-full lg:translate-x-0"
@@ -160,7 +160,7 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
 
       {/* Main Content */}
       <main className={cn(
-        "transition-all duration-300 pt-14 lg:pt-0",
+        "transition-all duration-300 pt-24 lg:pt-14",
         sidebarOpen ? "lg:mr-64" : "lg:mr-16"
       )}>
         <div className="p-4 lg:p-6">
