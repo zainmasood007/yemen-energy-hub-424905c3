@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { ArrowRight, Save, Plus, Trash2, Image as ImageIcon } from 'lucide-react';
+import { ArrowRight, Save, Plus, Trash2, Eye } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -17,6 +17,7 @@ import {
 } from '@/components/ui/select';
 import { useAdmin } from '../context/AdminContext';
 import AdminLayout from '../components/AdminLayout';
+import ProjectPreview from '../components/ProjectPreview';
 import { AdminProject } from '../types';
 import { toast } from '@/hooks/use-toast';
 
@@ -48,6 +49,7 @@ export default function ProjectForm() {
   const isEdit = id && id !== 'new';
 
   const [project, setProject] = useState<AdminProject>(emptyProject);
+  const [showPreview, setShowPreview] = useState(false);
   const [newImageUrl, setNewImageUrl] = useState('');
   const [newFeatureAr, setNewFeatureAr] = useState('');
   const [newFeatureEn, setNewFeatureEn] = useState('');
@@ -142,10 +144,16 @@ export default function ProjectForm() {
               </p>
             </div>
           </div>
-          <Button onClick={handleSave} className="gap-2">
-            <Save className="h-4 w-4" />
-            حفظ
-          </Button>
+          <div className="flex gap-2">
+            <Button variant="outline" onClick={() => setShowPreview(true)} className="gap-2">
+              <Eye className="h-4 w-4" />
+              معاينة
+            </Button>
+            <Button onClick={handleSave} className="gap-2">
+              <Save className="h-4 w-4" />
+              حفظ
+            </Button>
+          </div>
         </div>
 
         <Tabs defaultValue="basic" className="space-y-6">
@@ -460,6 +468,12 @@ export default function ProjectForm() {
             </Card>
           </TabsContent>
         </Tabs>
+
+        <ProjectPreview 
+          project={project} 
+          open={showPreview} 
+          onClose={() => setShowPreview(false)} 
+        />
       </div>
     </AdminLayout>
   );

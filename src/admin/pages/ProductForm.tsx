@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { ArrowRight, Save, Plus, Trash2, Image as ImageIcon } from 'lucide-react';
+import { ArrowRight, Save, Plus, Trash2, Eye } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -17,6 +17,7 @@ import {
 } from '@/components/ui/select';
 import { useAdmin } from '../context/AdminContext';
 import AdminLayout from '../components/AdminLayout';
+import ProductPreview from '../components/ProductPreview';
 import { AdminProduct } from '../types';
 import { toast } from '@/hooks/use-toast';
 
@@ -74,6 +75,7 @@ export default function ProductForm() {
   const isEdit = id && id !== 'new';
 
   const [product, setProduct] = useState<AdminProduct>(emptyProduct);
+  const [showPreview, setShowPreview] = useState(false);
 
   useEffect(() => {
     if (isEdit) {
@@ -194,10 +196,16 @@ export default function ProductForm() {
               </p>
             </div>
           </div>
-          <Button onClick={handleSave} className="gap-2">
-            <Save className="h-4 w-4" />
-            حفظ
-          </Button>
+          <div className="flex gap-2">
+            <Button variant="outline" onClick={() => setShowPreview(true)} className="gap-2">
+              <Eye className="h-4 w-4" />
+              معاينة
+            </Button>
+            <Button onClick={handleSave} className="gap-2">
+              <Save className="h-4 w-4" />
+              حفظ
+            </Button>
+          </div>
         </div>
 
         <Tabs defaultValue="basic" className="space-y-6">
@@ -672,6 +680,12 @@ export default function ProductForm() {
             </Card>
           </TabsContent>
         </Tabs>
+
+        <ProductPreview 
+          product={product} 
+          open={showPreview} 
+          onClose={() => setShowPreview(false)} 
+        />
       </div>
     </AdminLayout>
   );

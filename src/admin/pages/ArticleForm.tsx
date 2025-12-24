@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { ArrowRight, Save, Plus, Trash2 } from 'lucide-react';
+import { ArrowRight, Save, Plus, Trash2, Eye } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -17,6 +17,8 @@ import {
 } from '@/components/ui/select';
 import { useAdmin } from '../context/AdminContext';
 import AdminLayout from '../components/AdminLayout';
+import ArticlePreview from '../components/ArticlePreview';
+import MarkdownEditor from '../components/MarkdownEditor';
 import { AdminArticle } from '../types';
 import { toast } from '@/hooks/use-toast';
 
@@ -57,6 +59,7 @@ export default function ArticleForm() {
   const isEdit = id && id !== 'new';
 
   const [article, setArticle] = useState<AdminArticle>(emptyArticle);
+  const [showPreview, setShowPreview] = useState(false);
 
   useEffect(() => {
     if (isEdit) {
@@ -153,10 +156,16 @@ export default function ArticleForm() {
               </p>
             </div>
           </div>
-          <Button onClick={handleSave} className="gap-2">
-            <Save className="h-4 w-4" />
-            حفظ
-          </Button>
+          <div className="flex gap-2">
+            <Button variant="outline" onClick={() => setShowPreview(true)} className="gap-2">
+              <Eye className="h-4 w-4" />
+              معاينة
+            </Button>
+            <Button onClick={handleSave} className="gap-2">
+              <Save className="h-4 w-4" />
+              حفظ
+            </Button>
+          </div>
         </div>
 
         <Tabs defaultValue="basic" className="space-y-6">
@@ -306,25 +315,24 @@ export default function ArticleForm() {
             <Card>
               <CardHeader>
                 <CardTitle>محتوى المقال</CardTitle>
-                <CardDescription>يمكنك استخدام Markdown</CardDescription>
+                <CardDescription>استخدم Markdown للتنسيق</CardDescription>
               </CardHeader>
-              <CardContent className="space-y-4">
+              <CardContent className="space-y-6">
                 <div className="space-y-2">
                   <Label>المحتوى بالعربي</Label>
-                  <Textarea 
+                  <MarkdownEditor
                     value={article.contentAr}
-                    onChange={(e) => handleChange('contentAr', e.target.value)}
-                    rows={15}
-                    className="font-mono text-sm"
+                    onChange={(value) => handleChange('contentAr', value)}
+                    placeholder="اكتب المحتوى بالعربي..."
+                    dir="rtl"
                   />
                 </div>
                 <div className="space-y-2">
                   <Label>المحتوى بالإنجليزي</Label>
-                  <Textarea 
+                  <MarkdownEditor
                     value={article.contentEn}
-                    onChange={(e) => handleChange('contentEn', e.target.value)}
-                    rows={15}
-                    className="font-mono text-sm"
+                    onChange={(value) => handleChange('contentEn', value)}
+                    placeholder="Write content in English..."
                     dir="ltr"
                   />
                 </div>
@@ -438,6 +446,12 @@ export default function ArticleForm() {
             </Card>
           </TabsContent>
         </Tabs>
+
+        <ArticlePreview 
+          article={article} 
+          open={showPreview} 
+          onClose={() => setShowPreview(false)} 
+        />
       </div>
     </AdminLayout>
   );

@@ -22,9 +22,13 @@ interface AdminContextType {
   updateProject: (id: string, project: Partial<AdminProject>) => void;
   deleteProject: (id: string) => void;
   
-  // Export
+  // Export/Import
   exportData: () => string;
   importData: (jsonString: string) => boolean;
+  
+  // Site Data
+  loadSiteData: (products: AdminProduct[], articles: AdminArticle[], projects: AdminProject[]) => void;
+  clearAllData: () => void;
   
   // Utils
   generateId: () => string;
@@ -121,6 +125,21 @@ export function AdminProvider({ children }: { children: ReactNode }) {
     }
   };
 
+  // Load site data (from siteDataLoader)
+  const loadSiteData = (newProducts: AdminProduct[], newArticles: AdminArticle[], newProjects: AdminProject[]) => {
+    setProducts(newProducts);
+    setArticles(newArticles);
+    setProjects(newProjects);
+  };
+
+  // Clear all data
+  const clearAllData = () => {
+    setProducts([]);
+    setArticles([]);
+    setProjects([]);
+    localStorage.removeItem(STORAGE_KEY);
+  };
+
   return (
     <AdminContext.Provider value={{
       products,
@@ -137,6 +156,8 @@ export function AdminProvider({ children }: { children: ReactNode }) {
       deleteProject,
       exportData,
       importData,
+      loadSiteData,
+      clearAllData,
       generateId,
     }}>
       {children}
