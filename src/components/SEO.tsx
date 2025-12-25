@@ -191,33 +191,112 @@ export const createBreadcrumbSchema = (items: { name: string; url: string }[]) =
   }))
 });
 
-export const createProductSchema = (product: {
+// Advanced Product Schema with offers, ratings, and reviews
+export const createAdvancedProductSchema = (product: {
   name: string;
+  nameAr?: string;
   description: string;
+  descriptionAr?: string;
   image?: string;
   brand?: string;
+  model?: string;
   category?: string;
+  sku?: string;
+  url?: string;
+  isAvailable?: boolean;
+  aggregateRating?: {
+    ratingValue: number;
+    reviewCount: number;
+    bestRating?: number;
+    worstRating?: number;
+  };
+  reviews?: Array<{
+    author: string;
+    datePublished: string;
+    reviewBody: string;
+    ratingValue: number;
+  }>;
 }) => ({
   "@context": "https://schema.org",
   "@type": "Product",
   "name": product.name,
+  "alternateName": product.nameAr,
   "description": product.description,
   "image": product.image || "https://alqatta.com/placeholder.svg",
   "brand": {
     "@type": "Brand",
     "name": product.brand || "Al-Qatta"
   },
+  "manufacturer": {
+    "@type": "Organization",
+    "name": product.brand || "Al-Qatta"
+  },
+  "model": product.model,
+  "sku": product.sku || product.model,
   "category": product.category || "Solar Energy Equipment",
+  "url": product.url ? `https://alqatta.com${product.url}` : undefined,
   "offers": {
     "@type": "Offer",
-    "availability": "https://schema.org/InStock",
+    "availability": product.isAvailable !== false 
+      ? "https://schema.org/InStock" 
+      : "https://schema.org/OutOfStock",
     "priceCurrency": "USD",
+    "priceValidUntil": new Date(Date.now() + 90 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
+    "itemCondition": "https://schema.org/NewCondition",
     "seller": {
       "@type": "Organization",
-      "name": "Al-Qatta Solar Energy"
+      "name": "Al-Qatta Solar Energy",
+      "url": "https://alqatta.com"
+    },
+    "shippingDetails": {
+      "@type": "OfferShippingDetails",
+      "shippingDestination": {
+        "@type": "DefinedRegion",
+        "addressCountry": "YE"
+      }
+    },
+    "hasMerchantReturnPolicy": {
+      "@type": "MerchantReturnPolicy",
+      "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+      "merchantReturnDays": 30
     }
-  }
+  },
+  ...(product.aggregateRating && {
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": product.aggregateRating.ratingValue,
+      "reviewCount": product.aggregateRating.reviewCount,
+      "bestRating": product.aggregateRating.bestRating || 5,
+      "worstRating": product.aggregateRating.worstRating || 1
+    }
+  }),
+  ...(product.reviews && product.reviews.length > 0 && {
+    "review": product.reviews.map(review => ({
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": review.author
+      },
+      "datePublished": review.datePublished,
+      "reviewBody": review.reviewBody,
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": review.ratingValue,
+        "bestRating": 5,
+        "worstRating": 1
+      }
+    }))
+  })
 });
+
+// Simple Product Schema (backward compatibility)
+export const createProductSchema = (product: {
+  name: string;
+  description: string;
+  image?: string;
+  brand?: string;
+  category?: string;
+}) => createAdvancedProductSchema(product);
 
 export const createServiceSchema = (service: {
   name: string;
@@ -249,5 +328,73 @@ export const createFAQSchema = (faqs: { question: string; answer: string }[]) =>
       "@type": "Answer",
       "text": faq.answer
     }
+  }))
+});
+
+// Article Schema for knowledge hub and blog posts
+export const createArticleSchema = (article: {
+  headline: string;
+  headlineAr?: string;
+  description: string;
+  image?: string;
+  datePublished: string;
+  dateModified?: string;
+  author?: string;
+  url?: string;
+}) => ({
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": article.headline,
+  "alternativeHeadline": article.headlineAr,
+  "description": article.description,
+  "image": article.image || "https://alqatta.com/og-image.jpg",
+  "datePublished": article.datePublished,
+  "dateModified": article.dateModified || article.datePublished,
+  "author": {
+    "@type": "Organization",
+    "name": article.author || "Al-Qatta Solar Energy",
+    "url": "https://alqatta.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Al-Qatta Solar Energy",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://alqatta.com/logo.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": article.url ? `https://alqatta.com${article.url}` : "https://alqatta.com"
+  },
+  "inLanguage": ["ar", "en"],
+  "about": {
+    "@type": "Thing",
+    "name": "Solar Energy in Yemen"
+  }
+});
+
+// HowTo Schema for guides
+export const createHowToSchema = (howTo: {
+  name: string;
+  description: string;
+  totalTime?: string;
+  steps: Array<{
+    name: string;
+    text: string;
+    image?: string;
+  }>;
+}) => ({
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": howTo.name,
+  "description": howTo.description,
+  "totalTime": howTo.totalTime || "PT30M",
+  "step": howTo.steps.map((step, index) => ({
+    "@type": "HowToStep",
+    "position": index + 1,
+    "name": step.name,
+    "text": step.text,
+    ...(step.image && { "image": step.image })
   }))
 });

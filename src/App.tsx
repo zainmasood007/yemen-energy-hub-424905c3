@@ -25,6 +25,7 @@ import InverterCommonFaults from "./pages/knowledge/articles/InverterCommonFault
 import LithiumBatteryLifespan from "./pages/knowledge/articles/LithiumBatteryLifespan";
 import SeriesVsParallelBatteries from "./pages/knowledge/articles/SeriesVsParallelBatteries";
 import SolarSystemCostYemen from "./pages/knowledge/articles/SolarSystemCostYemen";
+import Pricing from "./pages/Pricing";
 import NotFound from "./pages/NotFound";
 import AdminLocalRoutes from "./admin/AdminLocalRoutes";
 
@@ -62,6 +63,8 @@ const App = () => (
             <Route path="/knowledge/lithium-battery-lifespan" element={<LithiumBatteryLifespan />} />
             <Route path="/knowledge/series-vs-parallel-batteries" element={<SeriesVsParallelBatteries />} />
             <Route path="/knowledge/solar-system-cost-yemen" element={<SolarSystemCostYemen />} />
+            {/* Pricing Page */}
+            <Route path="/pricing" element={<Pricing />} />
             {/* Admin Local Routes - DEV only */}
             {import.meta.env.DEV && (
               <Route path="/admin-local/*" element={<AdminLocalRoutes />} />
