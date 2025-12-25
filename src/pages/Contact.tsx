@@ -104,9 +104,9 @@ export default function Contact() {
     {
       cityEn: "Sana'a",
       cityAr: 'صنعاء',
-      addressEn: 'Main Office - Al-Zubairi Street',
-      addressAr: 'المكتب الرئيسي - شارع الزبيري',
-      phone: '+967 777 777 777',
+      addressEn: "Main Office - Sho'ub, in front of Military Hospital",
+      addressAr: 'المكتب الرئيسي - شعوب أمام المستشفى العسكري',
+      phone: '+967 777 800 063',
       isMain: true
     },
     {

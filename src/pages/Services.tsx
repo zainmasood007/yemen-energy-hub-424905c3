@@ -290,7 +290,7 @@ export default function Services() {
 
                   {/* CTA */}
                   <Button asChild variant="outline" size="sm" className="w-full group-hover:bg-primary group-hover:text-primary-foreground group-hover:border-primary transition-all duration-300">
-                    <a href="https://wa.me/967777777777" target="_blank" rel="noopener noreferrer">
+                    <a href="https://wa.me/967777800063" target="_blank" rel="noopener noreferrer">
                       <Phone className="h-4 w-4" />
                       {t('common.requestQuote')}
                     </a>

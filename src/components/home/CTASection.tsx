@@ -67,7 +67,7 @@ export function CTASection() {
                     variant="outline"
                     className="border-secondary-foreground/25 text-secondary-foreground hover:bg-secondary-foreground/10 px-7 py-6 text-base font-medium transition-all duration-300"
                   >
-                    <a href="tel:+967777777777">
+                    <a href="tel:+967777800063">
                       <Phone className="h-5 w-5 me-2" />
                       {t('contact.phone')}
                     </a>
