@@ -68,10 +68,8 @@ const App = () => (
             <Route path="/pricing" element={<Pricing />} />
             {/* Calculator Page */}
             <Route path="/calculator" element={<Calculator />} />
-            {/* Admin Local Routes - DEV only */}
-            {import.meta.env.DEV && (
-              <Route path="/admin-local/*" element={<AdminLocalRoutes />} />
-            )}
+            {/* Admin Local Routes */}
+            <Route path="/admin-local/*" element={<AdminLocalRoutes />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

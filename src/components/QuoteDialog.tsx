@@ -59,10 +59,9 @@ export default function QuoteDialog({
     setIsGenerating(true);
 
     try {
-      // Small delay for UX
-      await new Promise((resolve) => setTimeout(resolve, 500));
+      await new Promise((resolve) => setTimeout(resolve, 300));
 
-      generateQuotePdf({
+      await generateQuotePdf({
         customer,
         result,
         systemType,

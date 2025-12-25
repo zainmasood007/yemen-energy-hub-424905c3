@@ -2,6 +2,7 @@ import jsPDF from "jspdf";
 import autoTable from "jspdf-autotable";
 import type { BaseResult } from "./solarSizingEngine";
 import { quoteProductPrices, quoteServicePrices, getProductsByCategory } from "@/data/quotePricing";
+import logoImage from "@/assets/logo.png";
 
 export interface QuoteCustomer {
   name: string;
@@ -15,6 +16,19 @@ export interface QuoteData {
   systemType: string;
   lang: "ar" | "en";
 }
+
+// Company info
+const COMPANY_INFO = {
+  nameEn: "Al-Qatta Solar Energy Systems",
+  nameAr: "مؤسسة القطه لمنظومات الطاقة الشمسية",
+  subtitle: "Authorized Pylontech Agent in Yemen",
+  phone1: "+967 777 800 063",
+  phone2: "+967 1 237 379",
+  website: "www.alqatta-solar.com",
+  email: "info@alqatta-solar.com",
+  addressEn: "Sana'a, Yemen - Taiz Street",
+  addressAr: "صنعاء، اليمن - شارع تعز",
+};
 
 // Generate unique quote number
 function generateQuoteNumber(): string {
@@ -73,9 +87,30 @@ function getBattery() {
   return batteries[0]; // Default to first available
 }
 
-export function generateQuotePdf(data: QuoteData): void {
+// Load logo as base64
+async function loadLogoBase64(): Promise<string> {
+  return new Promise((resolve) => {
+    const img = new Image();
+    img.crossOrigin = "anonymous";
+    img.onload = () => {
+      const canvas = document.createElement("canvas");
+      canvas.width = img.width;
+      canvas.height = img.height;
+      const ctx = canvas.getContext("2d");
+      ctx?.drawImage(img, 0, 0);
+      resolve(canvas.toDataURL("image/png"));
+    };
+    img.onerror = () => resolve("");
+    img.src = logoImage;
+  });
+}
+
+export async function generateQuotePdf(data: QuoteData): Promise<void> {
   const { customer, result, systemType, lang } = data;
   const isRTL = lang === "ar";
+
+  // Load logo
+  const logoBase64 = await loadLogoBase64();
 
   // Create PDF
   const doc = new jsPDF({
@@ -96,26 +131,41 @@ export function generateQuotePdf(data: QuoteData): void {
 
   // Header background
   doc.setFillColor(...primaryColor);
-  doc.rect(0, 0, pageWidth, 45, "F");
+  doc.rect(0, 0, pageWidth, 50, "F");
 
-  // Company name (English for PDF compatibility)
+  // Add logo if loaded
+  if (logoBase64) {
+    try {
+      doc.addImage(logoBase64, "PNG", margin, 8, 35, 35);
+    } catch (e) {
+      console.log("Could not add logo to PDF");
+    }
+  }
+
+  // Company name
   doc.setTextColor(255, 255, 255);
-  doc.setFontSize(20);
+  doc.setFontSize(18);
   doc.setFont("helvetica", "bold");
-  doc.text("Al-Qatta Solar Energy Systems", pageWidth / 2, 20, { align: "center" });
+  doc.text(COMPANY_INFO.nameEn, pageWidth - margin, 18, { align: "right" });
 
   // Subtitle
   doc.setFontSize(10);
   doc.setFont("helvetica", "normal");
-  doc.text("Authorized Pylontech Agent in Yemen", pageWidth / 2, 28, { align: "center" });
+  doc.text(COMPANY_INFO.subtitle, pageWidth - margin, 26, { align: "right" });
 
-  // Contact info
+  // Contact info in header
   doc.setFontSize(8);
-  doc.text("Tel: +967 777 800 063 | www.alqatta.com | info@alqatta.com", pageWidth / 2, 36, {
-    align: "center",
+  doc.text(`Tel: ${COMPANY_INFO.phone1} | ${COMPANY_INFO.phone2}`, pageWidth - margin, 34, {
+    align: "right",
+  });
+  doc.text(`${COMPANY_INFO.website} | ${COMPANY_INFO.email}`, pageWidth - margin, 40, {
+    align: "right",
+  });
+  doc.text(COMPANY_INFO.addressEn, pageWidth - margin, 46, {
+    align: "right",
   });
 
-  yPos = 55;
+  yPos = 60;
 
   // Quotation title
   doc.setTextColor(...secondaryColor);
@@ -320,24 +370,27 @@ export function generateQuotePdf(data: QuoteData): void {
   });
 
   // Footer
-  const footerY = pageHeight - 25;
+  const footerY = pageHeight - 30;
   doc.setDrawColor(...primaryColor);
-  doc.setLineWidth(0.3);
+  doc.setLineWidth(0.5);
   doc.line(margin, footerY, pageWidth - margin, footerY);
 
-  doc.setFontSize(8);
+  // Footer left - company info
+  doc.setFontSize(9);
   doc.setTextColor(...primaryColor);
-  doc.text("Al-Qatta Corporation for Solar Energy Systems", margin, footerY + 6);
-  doc.text("Authorized Pylontech Dealer in Yemen", margin, footerY + 11);
+  doc.setFont("helvetica", "bold");
+  doc.text(COMPANY_INFO.nameEn, margin, footerY + 6);
+  doc.setFont("helvetica", "normal");
+  doc.setFontSize(8);
+  doc.text(COMPANY_INFO.subtitle, margin, footerY + 11);
+  doc.text(COMPANY_INFO.addressEn, margin, footerY + 16);
 
+  // Footer right - contact
   doc.setTextColor(100, 100, 100);
-  doc.text(
-    "Phone: +967 777 800 063 | +967 1 237 379",
-    pageWidth - margin,
-    footerY + 6,
-    { align: "right" }
-  );
-  doc.text("www.alqatta.com | info@alqatta.com", pageWidth - margin, footerY + 11, {
+  doc.setFontSize(8);
+  doc.text(`Phone: ${COMPANY_INFO.phone1}`, pageWidth - margin, footerY + 6, { align: "right" });
+  doc.text(`Phone: ${COMPANY_INFO.phone2}`, pageWidth - margin, footerY + 11, { align: "right" });
+  doc.text(`${COMPANY_INFO.website} | ${COMPANY_INFO.email}`, pageWidth - margin, footerY + 16, {
     align: "right",
   });
 
