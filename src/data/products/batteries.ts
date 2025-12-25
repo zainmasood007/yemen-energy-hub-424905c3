@@ -178,6 +178,7 @@ Specifically designed for hot environments, the US5000 is the optimal choice for
 
     image: '/placeholder.svg',
     gallery: [],
+    datasheetUrl: '/datasheets/pylontech-us-series.pdf',
     
     isAvailable: true,
     isFeatured: true,

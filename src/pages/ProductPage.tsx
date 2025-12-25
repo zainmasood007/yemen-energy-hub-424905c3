@@ -173,18 +173,30 @@ export default function ProductPage() {
               {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-3 mb-6">
                 <Button asChild size="lg" className="flex-1 bg-secondary text-secondary-foreground hover:bg-secondary/90">
-                  <a href="https://wa.me/967777777777" target="_blank" rel="noopener noreferrer">
+                  <a href="https://wa.me/967777800063" target="_blank" rel="noopener noreferrer">
                     <Phone className="h-4 w-4" />
                     {isRTL ? 'طلب عرض سعر' : 'Request Quote'}
                   </a>
                 </Button>
                 <Button asChild size="lg" variant="outline" className="flex-1">
-                  <a href={`tel:+967777777777`}>
+                  <a href={`tel:+967777800063`}>
                     <Phone className="h-4 w-4" />
                     {isRTL ? 'اتصل بنا' : 'Call Us'}
                   </a>
                 </Button>
               </div>
+
+              {/* Download Datasheet */}
+              {product.datasheetUrl && (
+                <div className="mb-6">
+                  <Button asChild size="lg" variant="outline" className="w-full border-primary text-primary hover:bg-primary hover:text-primary-foreground">
+                    <a href={product.datasheetUrl} target="_blank" rel="noopener noreferrer" download>
+                      <FileText className="h-4 w-4" />
+                      {isRTL ? 'تحميل الداتا شيت (PDF)' : 'Download Datasheet (PDF)'}
+                    </a>
+                  </Button>
+                </div>
+              )}
 
               {/* Quick Specs */}
               <div className="grid grid-cols-2 gap-3">

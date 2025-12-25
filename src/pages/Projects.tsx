@@ -286,7 +286,7 @@ export default function Projects() {
                 : 'Contact us now for a free consultation and a custom system design for your needs'}
             </p>
             <Button asChild size="lg" className="bg-secondary-foreground text-secondary hover:bg-secondary-foreground/90">
-              <a href="https://wa.me/967777777777" target="_blank" rel="noopener noreferrer">
+              <a href="https://wa.me/967777800063" target="_blank" rel="noopener noreferrer">
                 <Phone className="h-4 w-4" />
                 {isRTL ? 'تواصل عبر واتساب' : 'Chat on WhatsApp'}
               </a>

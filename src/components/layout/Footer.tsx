@@ -118,13 +118,13 @@ export default function Footer() {
             <ul className="space-y-4">
               <li>
                 <a 
-                  href="tel:+967777777777" 
+                  href="tel:+967777800063" 
                   className="flex items-center gap-3 text-sm opacity-70 hover:opacity-100 hover:text-secondary transition-all duration-300 group"
                 >
                   <span className="h-10 w-10 rounded-xl bg-background/10 backdrop-blur-sm flex items-center justify-center group-hover:bg-secondary group-hover:text-secondary-foreground transition-all duration-300 group-hover:shadow-glow">
                     <Phone className="h-4 w-4" />
                   </span>
-                  <span dir="ltr">+967 777 777 777</span>
+                  <span dir="ltr">+967 777 800 063</span>
                 </a>
               </li>
               <li>
@@ -142,7 +142,7 @@ export default function Footer() {
                 <span className="h-10 w-10 rounded-xl bg-background/10 backdrop-blur-sm flex items-center justify-center">
                   <MapPin className="h-4 w-4" />
                 </span>
-                <span>{isRTL ? 'صنعاء، اليمن' : "Sana'a, Yemen"}</span>
+                <span>{isRTL ? 'صنعاء شعوب، اليمن' : "Sana'a Sho'ub, Yemen"}</span>
               </li>
             </ul>
           </div>

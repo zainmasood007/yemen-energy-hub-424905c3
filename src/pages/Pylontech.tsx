@@ -210,7 +210,7 @@ export default function Pylontech() {
                 </a>
               </Button>
               <Button asChild size="lg" variant="outline" className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 px-8 py-6 text-base font-semibold">
-                <a href="tel:+967777777777">
+                <a href="tel:+967777800063">
                   <Phone className="h-5 w-5" />
                   {isRTL ? 'اتصل الآن' : 'Call Now'}
                 </a>

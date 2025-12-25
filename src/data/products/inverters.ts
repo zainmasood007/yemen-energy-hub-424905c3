@@ -2000,4 +2000,545 @@ export const inverterProducts: Product[] = [
     isAvailable: true,
     isFeatured: true,
   },
+
+  // LiPower 2012EMH - 1.6kW 12V
+  {
+    id: 'lipower-2012emh',
+    slug: 'lipower-2012emh',
+    category: 'inverters',
+    brand: 'LiPower',
+    model: '2012EMH',
+    nameAr: 'انفرتر LiPower 2012EMH (1.6kW - 12V)',
+    nameEn: 'LiPower 2012EMH Inverter (1.6kW - 12V)',
+    
+    shortDescAr: 'انفرتر هجين 1600 واط بموجة صافية - مثالي للاستخدام المنزلي الخفيف',
+    shortDescEn: '1600W hybrid inverter with pure sine wave - ideal for light home use',
+    
+    fullDescAr: `انفرتر LiPower 2012EMH هو الخيار الاقتصادي للمنازل الصغيرة والاستخدامات الخفيفة. بقدرة 1600 واط وموجة صافية، يوفر طاقة نظيفة للأجهزة الإلكترونية.
+
+**المميزات:**
+- موجة صافية لجميع الأجهزة
+- شاحن شمسي MPPT مدمج
+- نظام 12 فولت بطارية واحدة
+- متوافق مع بطاريات الليثيوم
+
+**الوكيل المعتمد: مؤسسة القطاع**`,
+    
+    fullDescEn: `LiPower 2012EMH is the economical choice for small homes and light use. With 1600W power and pure sine wave, it provides clean power for electronic devices.
+
+**Features:**
+- Pure sine wave for all devices
+- Built-in MPPT solar charger
+- 12V single battery system
+- Lithium battery compatible
+
+**Authorized Dealer: Al-Qatta Establishment**`,
+
+    keyTakeaways: [
+      { ar: 'موجة صافية - آمن لجميع الأجهزة الإلكترونية', en: 'Pure sine wave - safe for all electronic devices' },
+      { ar: 'نظام 12 فولت - بطارية واحدة تكفي', en: '12V system - one battery is enough' },
+      { ar: 'متوافق مع بطاريات الليثيوم - عمر أطول', en: 'Lithium compatible - longer lifespan' },
+      { ar: 'تحويل سريع 10ms - حماية الأجهزة', en: 'Fast 10ms switching - device protection' },
+    ],
+
+    specifications: [
+      { keyAr: 'القدرة المستمرة', keyEn: 'Continuous Power', value: '1600', unit: 'W' },
+      { keyAr: 'القدرة اللحظية', keyEn: 'Peak Power', value: '3200', unit: 'VA' },
+      { keyAr: 'جهد البطارية', keyEn: 'Battery Voltage', value: '12', unit: 'V' },
+      { keyAr: 'نوع الموجة', keyEn: 'Wave Type', value: 'موجة صافية / Pure Sine Wave' },
+      { keyAr: 'وقت التحويل', keyEn: 'Switching Time', value: '10', unit: 'ms' },
+      { keyAr: 'كفاءة التحويل', keyEn: 'Conversion Efficiency', value: '93+', unit: '%' },
+      { keyAr: 'جهد الشحن الثابت', keyEn: 'Constant Charging Voltage', value: '14.1', unit: 'V' },
+      { keyAr: 'التوافق', keyEn: 'Compatibility', value: 'بطاريات ليثيوم / Lithium Batteries' },
+    ],
+
+    yemenSuitability: {
+      ratings: {
+        heatResistance: 4,
+        coastalSuitability: 4,
+        powerOutageSupport: 3,
+        dustResistance: 4,
+      },
+      explanationAr: 'انفرتر مثالي للبداية في اليمن. سهل التركيب ومناسب للأحمال الخفيفة.',
+      explanationEn: 'Ideal starter inverter for Yemen. Easy to install and suitable for light loads.',
+      bestRegionsAr: ['جميع المناطق'],
+      bestRegionsEn: ['All regions'],
+      climateNotesAr: 'يعمل بكفاءة في جميع مناخات اليمن',
+      climateNotesEn: 'Works efficiently in all Yemen climates',
+    },
+
+    useCases: [
+      {
+        titleAr: 'الإضاءة والمراوح',
+        titleEn: 'Lighting & Fans',
+        descAr: 'تشغيل إضاءة LED ومراوح سقفية',
+        descEn: 'Run LED lighting and ceiling fans',
+        icon: 'Lamp',
+      },
+      {
+        titleAr: 'التلفزيون والإنترنت',
+        titleEn: 'TV & Internet',
+        descAr: 'تشغيل التلفزيون وراوتر الإنترنت',
+        descEn: 'Run TV and internet router',
+        icon: 'Monitor',
+      },
+      {
+        titleAr: 'شحن الأجهزة',
+        titleEn: 'Device Charging',
+        descAr: 'شحن الهواتف والأجهزة اللوحية',
+        descEn: 'Charge phones and tablets',
+        icon: 'Smartphone',
+      },
+    ],
+
+    recommendedForAr: [
+      'المنازل الصغيرة ذات الأحمال الخفيفة',
+      'الميزانيات المحدودة',
+      'نظام احتياطي بسيط',
+    ],
+    recommendedForEn: [
+      'Small homes with light loads',
+      'Limited budgets',
+      'Simple backup system',
+    ],
+    notRecommendedForAr: [
+      'المكيفات والثلاجات الكبيرة',
+      'الأحمال عالية الاستهلاك',
+    ],
+    notRecommendedForEn: [
+      'ACs and large refrigerators',
+      'High-consumption loads',
+    ],
+
+    faqs: [
+      {
+        questionAr: 'هل يشغل الثلاجة؟',
+        questionEn: 'Can it run a refrigerator?',
+        answerAr: 'ثلاجة صغيرة (8-10 قدم) نعم. الثلاجات الكبيرة تحتاج قدرة أعلى.',
+        answerEn: 'Small refrigerator (8-10ft) yes. Large refrigerators need higher capacity.',
+      },
+    ],
+
+    comparisons: [],
+
+    relatedProductSlugs: ['lipower-3024emh', 'lipower-bz4024'],
+    relatedServiceKeys: ['installation', 'maintenance'],
+    relatedLocationSlugs: ['sanaa', 'aden', 'taiz'],
+
+    seoTitleAr: 'انفرتر LiPower 2012EMH 1.6kW - انفرتر منزلي اقتصادي في اليمن',
+    seoTitleEn: 'LiPower 2012EMH 1.6kW - Economical Home Inverter in Yemen',
+    seoDescriptionAr: 'انفرتر LiPower 2012EMH بقدرة 1600 واط. موجة صافية، متوافق مع الليثيوم، مثالي للمنازل الصغيرة.',
+    seoDescriptionEn: 'LiPower 2012EMH with 1600W power. Pure sine wave, lithium compatible, ideal for small homes.',
+    seoKeywordsAr: ['انفرتر LiPower', 'انفرتر 1600 واط', 'انفرتر منزلي اليمن'],
+    seoKeywordsEn: ['LiPower inverter', '1600W inverter', 'home inverter Yemen'],
+
+    image: '/placeholder.svg',
+    gallery: [],
+    datasheetUrl: '/datasheets/lipower-2012emh-1.6kw.pdf',
+    
+    isAvailable: true,
+    isFeatured: false,
+  },
+
+  // LiPower 3024EMH - 3kW 24V
+  {
+    id: 'lipower-3024emh',
+    slug: 'lipower-3024emh',
+    category: 'inverters',
+    brand: 'LiPower',
+    model: '3024EMH',
+    nameAr: 'انفرتر LiPower 3024EMH (3kW - 24V)',
+    nameEn: 'LiPower 3024EMH Inverter (3kW - 24V)',
+    
+    shortDescAr: 'انفرتر هجين 3000 واط - الخيار المتوازن للمنازل المتوسطة',
+    shortDescEn: '3000W hybrid inverter - balanced choice for medium homes',
+    
+    fullDescAr: `انفرتر LiPower 3024EMH يوفر توازن مثالي بين القدرة والتكلفة. بنظام 24 فولت، يشغل معظم الأجهزة المنزلية بكفاءة عالية.
+
+**المميزات:**
+- قدرة 3000 واط مستمرة
+- قدرة لحظية 6000VA
+- شاحن شمسي MPPT مدمج
+- متوافق مع بطاريات الليثيوم
+
+**الوكيل المعتمد: مؤسسة القطاع**`,
+    
+    fullDescEn: `LiPower 3024EMH provides the perfect balance between power and cost. With 24V system, it runs most home appliances efficiently.
+
+**Features:**
+- 3000W continuous power
+- 6000VA peak power
+- Built-in MPPT solar charger
+- Lithium battery compatible
+
+**Authorized Dealer: Al-Qatta Establishment**`,
+
+    keyTakeaways: [
+      { ar: 'قدرة 3000 واط - تشغيل معظم الأجهزة المنزلية', en: '3000W power - runs most home appliances' },
+      { ar: 'نظام 24 فولت - كفاءة أعلى من 12 فولت', en: '24V system - higher efficiency than 12V' },
+      { ar: 'قدرة لحظية 6000VA - بدء تشغيل الأجهزة الثقيلة', en: '6000VA peak - start heavy appliances' },
+      { ar: 'متوافق مع Pylontech - أفضل توافق', en: 'Pylontech compatible - best compatibility' },
+    ],
+
+    specifications: [
+      { keyAr: 'القدرة المستمرة', keyEn: 'Continuous Power', value: '3000', unit: 'W' },
+      { keyAr: 'القدرة اللحظية', keyEn: 'Peak Power', value: '6000', unit: 'VA' },
+      { keyAr: 'جهد البطارية', keyEn: 'Battery Voltage', value: '24', unit: 'V' },
+      { keyAr: 'نوع الموجة', keyEn: 'Wave Type', value: 'موجة صافية / Pure Sine Wave' },
+      { keyAr: 'وقت التحويل', keyEn: 'Switching Time', value: '10', unit: 'ms' },
+      { keyAr: 'كفاءة التحويل', keyEn: 'Conversion Efficiency', value: '93+', unit: '%' },
+      { keyAr: 'جهد الشحن الثابت', keyEn: 'Constant Charging Voltage', value: '28.2', unit: 'V' },
+      { keyAr: 'التوافق', keyEn: 'Compatibility', value: 'Pylontech - Pytes - BYD' },
+    ],
+
+    yemenSuitability: {
+      ratings: {
+        heatResistance: 4,
+        coastalSuitability: 4,
+        powerOutageSupport: 4,
+        dustResistance: 4,
+      },
+      explanationAr: 'خيار ممتاز للمنازل المتوسطة في اليمن. يشغل الثلاجة والتلفزيون والإنارة.',
+      explanationEn: 'Excellent choice for medium homes in Yemen. Runs fridge, TV, and lighting.',
+      bestRegionsAr: ['جميع المناطق'],
+      bestRegionsEn: ['All regions'],
+      climateNotesAr: 'يعمل بكفاءة في جميع مناخات اليمن',
+      climateNotesEn: 'Works efficiently in all Yemen climates',
+    },
+
+    useCases: [
+      {
+        titleAr: 'المنازل المتوسطة',
+        titleEn: 'Medium Homes',
+        descAr: 'ثلاجة + إضاءة + تلفزيون + مراوح',
+        descEn: 'Fridge + lighting + TV + fans',
+        icon: 'Home',
+      },
+      {
+        titleAr: 'المحلات الصغيرة',
+        titleEn: 'Small Shops',
+        descAr: 'إضاءة وأجهزة كمبيوتر وتبريد',
+        descEn: 'Lighting, computers, and cooling',
+        icon: 'Store',
+      },
+    ],
+
+    recommendedForAr: [
+      'المنازل المتوسطة',
+      'من يريد توازن بين القدرة والسعر',
+      'الثلاجات والأجهزة المتوسطة',
+    ],
+    recommendedForEn: [
+      'Medium homes',
+      'Those wanting balance between power and price',
+      'Refrigerators and medium appliances',
+    ],
+    notRecommendedForAr: [
+      'المكيفات الكبيرة',
+      'المنازل الكبيرة',
+    ],
+    notRecommendedForEn: [
+      'Large ACs',
+      'Large homes',
+    ],
+
+    faqs: [
+      {
+        questionAr: 'هل يشغل الثلاجة والتلفزيون معاً؟',
+        questionEn: 'Can it run fridge and TV together?',
+        answerAr: 'نعم، يشغل ثلاجة متوسطة + تلفزيون + إضاءة + مراوح بسهولة.',
+        answerEn: 'Yes, it easily runs medium fridge + TV + lighting + fans.',
+      },
+    ],
+
+    comparisons: [],
+
+    relatedProductSlugs: ['lipower-2012emh', 'lipower-bz4024'],
+    relatedServiceKeys: ['installation', 'maintenance'],
+    relatedLocationSlugs: ['sanaa', 'aden', 'taiz'],
+
+    seoTitleAr: 'انفرتر LiPower 3024EMH 3kW - انفرتر منزلي متوسط في اليمن',
+    seoTitleEn: 'LiPower 3024EMH 3kW - Medium Home Inverter in Yemen',
+    seoDescriptionAr: 'انفرتر LiPower 3024EMH بقدرة 3000 واط. موجة صافية، متوافق مع Pylontech، مثالي للمنازل المتوسطة.',
+    seoDescriptionEn: 'LiPower 3024EMH with 3000W power. Pure sine wave, Pylontech compatible, ideal for medium homes.',
+    seoKeywordsAr: ['انفرتر LiPower 3kW', 'انفرتر 3000 واط', 'انفرتر منزلي اليمن'],
+    seoKeywordsEn: ['LiPower 3kW inverter', '3000W inverter', 'home inverter Yemen'],
+
+    image: '/placeholder.svg',
+    gallery: [],
+    datasheetUrl: '/datasheets/lipower-3024emh-3kw.pdf',
+    
+    isAvailable: true,
+    isFeatured: false,
+  },
+
+  // LiPower BZ4024 - 4kW 24V
+  {
+    id: 'lipower-bz4024',
+    slug: 'lipower-bz4024',
+    category: 'inverters',
+    brand: 'LiPower',
+    model: 'BZ4024-24V',
+    nameAr: 'انفرتر LiPower BZ4024 (4kW - 24V)',
+    nameEn: 'LiPower BZ4024 Inverter (4kW - 24V)',
+    
+    shortDescAr: 'انفرتر هجين 4000 واط مع WiFi - قوة وذكاء للمنازل الكبيرة',
+    shortDescEn: '4000W hybrid inverter with WiFi - power and intelligence for large homes',
+    
+    fullDescAr: `انفرتر LiPower BZ4024 هو الخيار القوي للمنازل الكبيرة. بقدرة 4000 واط وتقنية WiFi للمراقبة عن بعد، يوفر تحكم كامل في نظام الطاقة.
+
+**المميزات:**
+- قدرة 4000 واط مستمرة
+- قدرة لحظية 8000VA
+- WiFi مدمج للمراقبة
+- MPPT بقدرة 6500 واط
+- متوافق مع Pylontech
+
+**الوكيل المعتمد: مؤسسة القطاع**`,
+    
+    fullDescEn: `LiPower BZ4024 is the powerful choice for large homes. With 4000W power and WiFi technology for remote monitoring, it provides complete control over the energy system.
+
+**Features:**
+- 4000W continuous power
+- 8000VA peak power
+- Built-in WiFi for monitoring
+- 6500W MPPT capacity
+- Pylontech compatible
+
+**Authorized Dealer: Al-Qatta Establishment**`,
+
+    keyTakeaways: [
+      { ar: 'قدرة 4000 واط - تشغيل جميع الأجهزة المنزلية', en: '4000W power - runs all home appliances' },
+      { ar: 'WiFi مدمج - مراقبة عن بعد عبر الهاتف', en: 'Built-in WiFi - remote monitoring via phone' },
+      { ar: 'MPPT 6500 واط - أقصى استفادة من الألواح', en: '6500W MPPT - maximum panel utilization' },
+      { ar: 'كفاءة 98% - توفير في الطاقة', en: '98% efficiency - energy savings' },
+    ],
+
+    specifications: [
+      { keyAr: 'القدرة المستمرة', keyEn: 'Continuous Power', value: '4000', unit: 'W' },
+      { keyAr: 'القدرة اللحظية', keyEn: 'Peak Power', value: '8000', unit: 'VA' },
+      { keyAr: 'جهد البطارية', keyEn: 'Battery Voltage', value: '24', unit: 'V' },
+      { keyAr: 'أقصى قدرة PV', keyEn: 'Max PV Power', value: '6500', unit: 'W' },
+      { keyAr: 'مدى MPPT', keyEn: 'MPPT Range', value: '60-500', unit: 'V' },
+      { keyAr: 'أقصى تيار شحن', keyEn: 'Max Charge Current', value: '120', unit: 'A' },
+      { keyAr: 'كفاءة التحويل', keyEn: 'Conversion Efficiency', value: '98', unit: '%' },
+      { keyAr: 'التوافق', keyEn: 'Compatibility', value: 'Pylontech - Pytes - BYD - Dyness' },
+      { keyAr: 'الاتصال', keyEn: 'Communication', value: 'WiFi - RS485 - RS232' },
+    ],
+
+    yemenSuitability: {
+      ratings: {
+        heatResistance: 5,
+        coastalSuitability: 4,
+        powerOutageSupport: 5,
+        dustResistance: 4,
+      },
+      explanationAr: 'خيار ممتاز للمنازل الكبيرة في اليمن. يشغل معظم الأجهزة بما فيها المكيفات الصغيرة.',
+      explanationEn: 'Excellent choice for large homes in Yemen. Runs most appliances including small ACs.',
+      bestRegionsAr: ['جميع المناطق'],
+      bestRegionsEn: ['All regions'],
+      climateNotesAr: 'مصمم للعمل في درجات حرارة تصل إلى 50 درجة',
+      climateNotesEn: 'Designed to work at temperatures up to 50°C',
+    },
+
+    useCases: [
+      {
+        titleAr: 'المنازل الكبيرة',
+        titleEn: 'Large Homes',
+        descAr: 'ثلاجة + مكيف صغير + غسالة + إضاءة',
+        descEn: 'Fridge + small AC + washer + lighting',
+        icon: 'Home',
+      },
+      {
+        titleAr: 'الفلل',
+        titleEn: 'Villas',
+        descAr: 'تشغيل متعدد الطوابق',
+        descEn: 'Multi-floor operation',
+        icon: 'Building',
+      },
+    ],
+
+    recommendedForAr: [
+      'المنازل الكبيرة والفلل',
+      'من يريد مراقبة عن بعد',
+      'أنظمة الألواح الكبيرة (4-6 كيلوواط)',
+    ],
+    recommendedForEn: [
+      'Large homes and villas',
+      'Those wanting remote monitoring',
+      'Large panel systems (4-6kW)',
+    ],
+    notRecommendedForAr: [
+      'المنازل الصغيرة (مبالغة في القدرة)',
+      'الميزانيات المحدودة جداً',
+    ],
+    notRecommendedForEn: [
+      'Small homes (overkill)',
+      'Very limited budgets',
+    ],
+
+    faqs: [
+      {
+        questionAr: 'هل يشغل المكيف؟',
+        questionEn: 'Can it run an AC?',
+        answerAr: 'مكيف 1 طن (12000 BTU) نعم. المكيفات الأكبر تحتاج BZ6248.',
+        answerEn: '1 ton AC (12000 BTU) yes. Larger ACs need BZ6248.',
+      },
+    ],
+
+    comparisons: [],
+
+    relatedProductSlugs: ['lipower-3024emh', 'lipower-bz6248', 'us5000'],
+    relatedServiceKeys: ['installation', 'maintenance'],
+    relatedLocationSlugs: ['sanaa', 'aden', 'taiz'],
+
+    seoTitleAr: 'انفرتر LiPower BZ4024 4kW - انفرتر ذكي للمنازل الكبيرة في اليمن',
+    seoTitleEn: 'LiPower BZ4024 4kW - Smart Inverter for Large Homes in Yemen',
+    seoDescriptionAr: 'انفرتر LiPower BZ4024 بقدرة 4000 واط مع WiFi. موجة صافية، MPPT 6500W، مثالي للمنازل الكبيرة.',
+    seoDescriptionEn: 'LiPower BZ4024 with 4000W power and WiFi. Pure sine wave, 6500W MPPT, ideal for large homes.',
+    seoKeywordsAr: ['انفرتر LiPower 4kW', 'انفرتر 4000 واط', 'انفرتر ذكي اليمن'],
+    seoKeywordsEn: ['LiPower 4kW inverter', '4000W inverter', 'smart inverter Yemen'],
+
+    image: '/placeholder.svg',
+    gallery: [],
+    datasheetUrl: '/datasheets/lipower-bz4024-4kw.pdf',
+    
+    isAvailable: true,
+    isFeatured: true,
+  },
+
+  // LiPower BZ6248 - 6kW 48V
+  {
+    id: 'lipower-bz6248',
+    slug: 'lipower-bz6248',
+    category: 'inverters',
+    brand: 'LiPower',
+    model: 'BZ6248-48V',
+    nameAr: 'انفرتر LiPower BZ6248 (6.2kW - 48V)',
+    nameEn: 'LiPower BZ6248 Inverter (6.2kW - 48V)',
+    
+    shortDescAr: 'انفرتر هجين 6200 واط - الأقوى للفلل والمنازل الكبيرة',
+    shortDescEn: '6200W hybrid inverter - the most powerful for villas and large homes',
+    
+    fullDescAr: `انفرتر LiPower BZ6248 هو الأقوى في سلسلة LiPower. بقدرة 6200 واط ونظام 48 فولت، يشغل جميع الأجهزة بما فيها المكيفات.
+
+**المميزات:**
+- قدرة 6200 واط مستمرة
+- قدرة لحظية 12400VA
+- MPPT بقدرة 8500 واط
+- WiFi مدمج للمراقبة
+- يدعم التوصيل بالشبكة
+
+**الوكيل المعتمد: مؤسسة القطاع**`,
+    
+    fullDescEn: `LiPower BZ6248 is the most powerful in the LiPower series. With 6200W power and 48V system, it runs all appliances including air conditioners.
+
+**Features:**
+- 6200W continuous power
+- 12400VA peak power
+- 8500W MPPT capacity
+- Built-in WiFi for monitoring
+- Grid-tie support
+
+**Authorized Dealer: Al-Qatta Establishment**`,
+
+    keyTakeaways: [
+      { ar: 'قدرة 6200 واط - يشغل المكيفات الكبيرة', en: '6200W power - runs large air conditioners' },
+      { ar: 'نظام 48 فولت - أعلى كفاءة وأقل فقد', en: '48V system - highest efficiency and lowest loss' },
+      { ar: 'MPPT 8500 واط - لألواح كبيرة', en: '8500W MPPT - for large panel arrays' },
+      { ar: 'يدعم Grid-Tie - بيع الفائض للشبكة', en: 'Grid-Tie support - sell excess to grid' },
+    ],
+
+    specifications: [
+      { keyAr: 'القدرة المستمرة', keyEn: 'Continuous Power', value: '6200', unit: 'W' },
+      { keyAr: 'القدرة اللحظية', keyEn: 'Peak Power', value: '12400', unit: 'VA' },
+      { keyAr: 'جهد البطارية', keyEn: 'Battery Voltage', value: '48', unit: 'V' },
+      { keyAr: 'أقصى قدرة PV', keyEn: 'Max PV Power', value: '8500', unit: 'W' },
+      { keyAr: 'مدى MPPT', keyEn: 'MPPT Range', value: '60-500', unit: 'V' },
+      { keyAr: 'أقصى تيار شحن', keyEn: 'Max Charge Current', value: '120', unit: 'A' },
+      { keyAr: 'كفاءة التحويل', keyEn: 'Conversion Efficiency', value: '98', unit: '%' },
+      { keyAr: 'التوافق', keyEn: 'Compatibility', value: 'Pylontech - Pytes - BYD - Dyness' },
+      { keyAr: 'Grid-Tie', keyEn: 'Grid-Tie', value: 'مدعوم / Supported' },
+    ],
+
+    yemenSuitability: {
+      ratings: {
+        heatResistance: 5,
+        coastalSuitability: 4,
+        powerOutageSupport: 5,
+        dustResistance: 4,
+      },
+      explanationAr: 'الخيار الأمثل للفلل والمنازل الكبيرة في اليمن. يشغل مكيفات متعددة.',
+      explanationEn: 'Optimal choice for villas and large homes in Yemen. Runs multiple ACs.',
+      bestRegionsAr: ['جميع المناطق'],
+      bestRegionsEn: ['All regions'],
+      climateNotesAr: 'مصمم للعمل في درجات حرارة تصل إلى 50 درجة',
+      climateNotesEn: 'Designed to work at temperatures up to 50°C',
+    },
+
+    useCases: [
+      {
+        titleAr: 'الفلل الكبيرة',
+        titleEn: 'Large Villas',
+        descAr: 'تشغيل كامل الفيلا مع مكيفات',
+        descEn: 'Full villa operation with ACs',
+        icon: 'Building',
+      },
+      {
+        titleAr: 'المحلات والمكاتب',
+        titleEn: 'Shops & Offices',
+        descAr: 'تشغيل مكاتب متعددة بكفاءة',
+        descEn: 'Run multiple offices efficiently',
+        icon: 'Briefcase',
+      },
+    ],
+
+    recommendedForAr: [
+      'الفلل والمنازل الكبيرة',
+      'من يريد تشغيل مكيفات',
+      'أنظمة الألواح الكبيرة (6-8 كيلوواط)',
+    ],
+    recommendedForEn: [
+      'Villas and large homes',
+      'Those wanting to run ACs',
+      'Large panel systems (6-8kW)',
+    ],
+    notRecommendedForAr: [
+      'المنازل الصغيرة والمتوسطة',
+      'الميزانيات المحدودة',
+    ],
+    notRecommendedForEn: [
+      'Small and medium homes',
+      'Limited budgets',
+    ],
+
+    faqs: [
+      {
+        questionAr: 'كم مكيف يشغل؟',
+        questionEn: 'How many ACs can it run?',
+        answerAr: 'يشغل 2 مكيف 1.5 طن أو مكيف واحد 2 طن مع باقي الأجهزة.',
+        answerEn: 'Runs 2x 1.5 ton ACs or 1x 2 ton AC with other appliances.',
+      },
+    ],
+
+    comparisons: [],
+
+    relatedProductSlugs: ['lipower-bz4024', 'us5000'],
+    relatedServiceKeys: ['installation', 'maintenance'],
+    relatedLocationSlugs: ['sanaa', 'aden', 'taiz'],
+
+    seoTitleAr: 'انفرتر LiPower BZ6248 6kW - أقوى انفرتر للفلل في اليمن',
+    seoTitleEn: 'LiPower BZ6248 6kW - Most Powerful Villa Inverter in Yemen',
+    seoDescriptionAr: 'انفرتر LiPower BZ6248 بقدرة 6200 واط. نظام 48 فولت، MPPT 8500W، Grid-Tie، مثالي للفلل.',
+    seoDescriptionEn: 'LiPower BZ6248 with 6200W power. 48V system, 8500W MPPT, Grid-Tie, ideal for villas.',
+    seoKeywordsAr: ['انفرتر LiPower 6kW', 'انفرتر 6000 واط', 'انفرتر فلل اليمن'],
+    seoKeywordsEn: ['LiPower 6kW inverter', '6000W inverter', 'villa inverter Yemen'],
+
+    image: '/placeholder.svg',
+    gallery: [],
+    datasheetUrl: '/datasheets/lipower-bz6248-6kw.pdf',
+    
+    isAvailable: true,
+    isFeatured: true,
+  },
 ];

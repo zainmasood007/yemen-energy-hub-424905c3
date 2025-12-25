@@ -138,7 +138,7 @@ export const organizationSchema = {
   },
   "contactPoint": {
     "@type": "ContactPoint",
-    "telephone": "+967-777-777-777",
+    "telephone": "+967-777-800-063",
     "contactType": "sales",
     "availableLanguage": ["Arabic", "English"]
   },
@@ -156,11 +156,11 @@ export const localBusinessSchema = {
   "alternateName": "القطع للطاقة الشمسية",
   "image": "https://alqatta.com/logo.png",
   "url": "https://alqatta.com",
-  "telephone": "+967-777-777-777",
+  "telephone": "+967-777-800-063",
   "email": "info@alqatta.com",
   "address": {
     "@type": "PostalAddress",
-    "streetAddress": "Sana'a",
+    "streetAddress": "Sho'ub, in front of Military Hospital",
     "addressLocality": "Sana'a",
     "addressCountry": "YE"
   },
