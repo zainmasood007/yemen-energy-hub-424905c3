@@ -750,34 +750,42 @@ Light and powerful - ideal for camping, road trips, and power outages.`,
     nameAr: 'بطارية ليثيوم Pylontech US3000C (3.55kWh)',
     nameEn: 'Pylontech US3000C Lithium Battery (3.55kWh)',
     
-    shortDescAr: 'بطارية تخزين الطاقة الشمسية المتوسطة - 48 فولت بسعة 3.55 كيلوواط ساعة',
-    shortDescEn: 'Medium solar energy storage battery - 48V with 3.55kWh capacity',
+    shortDescAr: 'بطارية تخزين الطاقة الشمسية المتوسطة - 48 فولت بسعة 3.55 كيلوواط ساعة مع عمر 15+ سنة',
+    shortDescEn: 'Medium solar energy storage battery - 48V with 3.55kWh capacity and 15+ years lifespan',
     
-    fullDescAr: `بطارية Pylontech US3000C هي الخيار الأمثل للأنظمة المتوسطة. تتميز بتقنية ليثيوم فوسفات الحديد (LiFePO4) الآمنة مع عمر افتراضي يتجاوز 8000 دورة.
+    fullDescAr: `بطارية Pylontech US3000C هي الخيار الأمثل للمنازل الصغيرة والمتوسطة في اليمن. تتميز بتقنية ليثيوم فوسفات الحديد (LiFePO4) الآمنة والموثوقة، مع عمر افتراضي يتجاوز 8000 دورة شحن وتفريغ.
 
-**المميزات:**
-- سعة 3.55 كيلوواط ساعة
-- متوافقة مع 19 بوصة Rack
-- قابلة للتوسيع حتى 16 بطارية
-- BMS مدمج ذكي
+**لماذا تختار US3000C؟**
+- سعة 3.55 كيلوواط ساعة - تكفي لتشغيل إضاءة ومراوح وتلفزيون لأكثر من 8 ساعات
+- متوافقة مع Rack 19 بوصة القياسي - سهولة التركيب والتوسعة
+- قابلة للتوسيع حتى 16 بطارية متوازية - تصل السعة الإجمالية لـ 56.8 كيلوواط ساعة
+- BMS مدمج ذكي - حماية شاملة من الشحن الزائد والتفريغ العميق والحرارة
+- اتصال RS485/CAN - توافق مع جميع الانفرترات الحديثة
 
-**الوكيل المعتمد: مؤسسة القطاع**`,
+**التوازن المثالي بين السعة والسعر**
+US3000C تقدم أفضل قيمة مقابل السعر في سلسلة US. أكبر من US2000C وأقل تكلفة من US5000.
+
+**المنتج الأصلي بضمان الوكيل المعتمد: مؤسسة القطاع**`,
     
-    fullDescEn: `Pylontech US3000C is the optimal choice for medium systems. It features safe Lithium Iron Phosphate (LiFePO4) technology with a lifespan exceeding 8000 cycles.
+    fullDescEn: `Pylontech US3000C is the optimal choice for small and medium homes in Yemen. It features safe and reliable Lithium Iron Phosphate (LiFePO4) technology, with a lifespan exceeding 8000 charge/discharge cycles.
 
-**Features:**
-- 3.55kWh capacity
-- 19-inch rack compatible
-- Expandable up to 16 batteries
-- Integrated smart BMS
+**Why choose US3000C?**
+- 3.55kWh capacity - enough to run lights, fans, and TV for over 8 hours
+- 19-inch standard rack compatible - easy installation and expansion
+- Expandable up to 16 batteries in parallel - total capacity up to 56.8kWh
+- Integrated smart BMS - comprehensive protection from overcharge, deep discharge, and heat
+- RS485/CAN communication - compatible with all modern inverters
 
-**Authorized Dealer: Al-Qatta Establishment**`,
+**The perfect balance between capacity and price**
+US3000C offers the best value for money in the US series. Larger than US2000C and more affordable than US5000.
+
+**Original product with authorized dealer warranty: Al-Qatta Establishment**`,
 
     keyTakeaways: [
-      { ar: 'سعة 3.55 كيلوواط ساعة - مثالية للمنازل الصغيرة', en: '3.55kWh capacity - ideal for small homes' },
-      { ar: 'عمر افتراضي +8000 دورة - استثمار طويل الأمد', en: '8000+ cycle lifespan - long-term investment' },
-      { ar: 'تقنية LiFePO4 الآمنة - لا خطر حريق', en: 'Safe LiFePO4 technology - no fire risk' },
-      { ar: 'متوافقة مع Rack 19 بوصة', en: '19-inch rack compatible' },
+      { ar: 'سعة 3.55 كيلوواط ساعة - مثالية للمنازل الصغيرة والمتوسطة', en: '3.55kWh capacity - ideal for small and medium homes' },
+      { ar: 'عمر افتراضي +8000 دورة - استثمار يدوم أكثر من 15 سنة', en: '8000+ cycle lifespan - investment lasting over 15 years' },
+      { ar: 'تقنية LiFePO4 الآمنة - لا خطر حريق أو انفجار', en: 'Safe LiFePO4 technology - no fire or explosion risk' },
+      { ar: 'قابلة للتوسيع حتى 16 بطارية متوازية', en: 'Expandable up to 16 batteries in parallel' },
     ],
 
     specifications: [
@@ -787,10 +795,17 @@ Light and powerful - ideal for camping, road trips, and power outages.`,
       { keyAr: 'التيار الاسمي', keyEn: 'Nominal Current', value: '74', unit: 'Ah' },
       { keyAr: 'دورات الشحن', keyEn: 'Cycle Life', value: '8000+', unit: 'cycles' },
       { keyAr: 'عمق التفريغ', keyEn: 'Depth of Discharge', value: '95', unit: '%' },
-      { keyAr: 'تيار الشحن/التفريغ', keyEn: 'Charge/Discharge Current', value: '37', unit: 'A' },
+      { keyAr: 'تيار الشحن/التفريغ العادي', keyEn: 'Normal Charge/Discharge Current', value: '37', unit: 'A' },
+      { keyAr: 'تيار الشحن/التفريغ الأقصى', keyEn: 'Max Charge/Discharge Current', value: '74-89', unit: 'A @60s' },
+      { keyAr: 'درجة حرارة التشغيل (شحن)', keyEn: 'Operating Temperature (Charge)', value: '0~55', unit: '°C' },
+      { keyAr: 'درجة حرارة التشغيل (تفريغ)', keyEn: 'Operating Temperature (Discharge)', value: '-10~55', unit: '°C' },
       { keyAr: 'الأبعاد', keyEn: 'Dimensions', value: '442×410×132', unit: 'mm' },
       { keyAr: 'الوزن', keyEn: 'Weight', value: '32', unit: 'kg' },
+      { keyAr: 'التوصيل المتوازي', keyEn: 'Parallel Connection', value: 'حتى 16 وحدة / Up to 16 units' },
+      { keyAr: 'منفذ الاتصال', keyEn: 'Communication Port', value: 'RS485 / CAN' },
+      { keyAr: 'نوع الخلايا', keyEn: 'Cell Type', value: 'LiFePO4' },
       { keyAr: 'العمر التصميمي', keyEn: 'Design Life', value: '15+', unit: 'سنة / Years' },
+      { keyAr: 'الضمان', keyEn: 'Warranty', value: '10 سنوات / 10 Years' },
     ],
 
     yemenSuitability: {
@@ -800,77 +815,124 @@ Light and powerful - ideal for camping, road trips, and power outages.`,
         powerOutageSupport: 4,
         dustResistance: 4,
       },
-      explanationAr: 'مثالية للمنازل الصغيرة والمتوسطة في اليمن. تعمل بكفاءة في درجات حرارة تصل إلى 55 درجة.',
-      explanationEn: 'Ideal for small and medium homes in Yemen. Works efficiently at temperatures up to 55°C.',
-      bestRegionsAr: ['صنعاء', 'عدن', 'تعز', 'الحديدة'],
-      bestRegionsEn: ['Sanaa', 'Aden', 'Taiz', 'Hudaydah'],
-      climateNotesAr: 'مصممة للعمل في البيئات الحارة',
-      climateNotesEn: 'Designed for hot environments',
+      explanationAr: 'بطارية US3000C مصممة للعمل في درجات حرارة تصل إلى 55 درجة مئوية، مما يجعلها مثالية لمناخ اليمن الحار. تقنية LiFePO4 أكثر استقراراً من بطاريات الليثيوم العادية في الحرارة العالية.',
+      explanationEn: 'US3000C is designed to operate at temperatures up to 55°C, making it ideal for Yemen\'s hot climate. LiFePO4 technology is more stable than regular lithium batteries in high heat.',
+      bestRegionsAr: ['صنعاء', 'عدن', 'تعز', 'الحديدة', 'مأرب'],
+      bestRegionsEn: ['Sanaa', 'Aden', 'Taiz', 'Hudaydah', 'Marib'],
+      climateNotesAr: 'تعمل بكفاءة في جميع مناطق اليمن، مع أداء ممتاز في المناطق الساحلية الحارة مثل عدن والحديدة',
+      climateNotesEn: 'Works efficiently in all regions of Yemen, with excellent performance in hot coastal areas like Aden and Hudaydah',
     },
 
     useCases: [
       {
-        titleAr: 'المنازل الصغيرة',
-        titleEn: 'Small Homes',
-        descAr: 'تخزين الطاقة للإضاءة والأجهزة الأساسية',
-        descEn: 'Energy storage for lighting and basic appliances',
+        titleAr: 'المنازل الصغيرة والمتوسطة',
+        titleEn: 'Small & Medium Homes',
+        descAr: 'تشغيل الإضاءة والمراوح والتلفزيون والثلاجة الصغيرة',
+        descEn: 'Run lighting, fans, TV, and small fridge',
         icon: 'Home',
       },
       {
         titleAr: 'الشقق السكنية',
         titleEn: 'Apartments',
-        descAr: 'حل مثالي للمساحات المحدودة',
-        descEn: 'Ideal solution for limited spaces',
+        descAr: 'حل مثالي للمساحات المحدودة مع تركيب Rack',
+        descEn: 'Ideal solution for limited spaces with rack mounting',
         icon: 'Building',
+      },
+      {
+        titleAr: 'المحلات الصغيرة',
+        titleEn: 'Small Shops',
+        descAr: 'ضمان استمرارية العمل أثناء انقطاع الكهرباء',
+        descEn: 'Ensure business continuity during power outages',
+        icon: 'Store',
+      },
+      {
+        titleAr: 'العيادات الصغيرة',
+        titleEn: 'Small Clinics',
+        descAr: 'طاقة مستمرة للأجهزة الطبية الأساسية',
+        descEn: 'Continuous power for essential medical equipment',
+        icon: 'Heart',
       },
     ],
 
     recommendedForAr: [
-      'المنازل الصغيرة',
-      'الأنظمة الشمسية 2-3 كيلوواط',
-      'الميزانيات المتوسطة',
+      'المنازل التي تحتاج طاقة احتياطية 4-6 ساعات',
+      'الأنظمة الشمسية بقدرة 2-4 كيلوواط',
+      'من يبحث عن توازن بين السعة والسعر',
+      'المناطق ذات انقطاعات الكهرباء المتكررة',
     ],
     recommendedForEn: [
-      'Small homes',
-      'Solar systems 2-3kW',
-      'Medium budgets',
+      'Homes needing 4-6 hours backup power',
+      'Solar systems with 2-4kW capacity',
+      'Those seeking balance between capacity and price',
+      'Areas with frequent power outages',
     ],
     notRecommendedForAr: [
-      'المنازل الكبيرة (استخدم US5000)',
-      'الأحمال العالية',
+      'المنازل الكبيرة والفلل (استخدم US5000)',
+      'تشغيل المكيفات الكبيرة',
+      'الميزانيات المحدودة جداً (استخدم US2000C)',
     ],
     notRecommendedForEn: [
-      'Large homes (use US5000)',
-      'High loads',
+      'Large homes and villas (use US5000)',
+      'Running large air conditioners',
+      'Very limited budgets (use US2000C)',
     ],
 
     faqs: [
       {
         questionAr: 'ما الفرق بين US3000C و US5000؟',
         questionEn: 'What is the difference between US3000C and US5000?',
-        answerAr: 'US5000 أكبر سعة (4.8 مقابل 3.55 كيلوواط) وأحدث. US3000C أخف وأرخص.',
-        answerEn: 'US5000 has larger capacity (4.8 vs 3.55kWh) and is newer. US3000C is lighter and cheaper.',
+        answerAr: 'US5000 أكبر سعة (4.8 مقابل 3.55 كيلوواط ساعة) وأحدث مع تحسينات في BMS وكفاءة الشحن. US3000C أخف (32 مقابل 52 كجم) وأقل تكلفة.',
+        answerEn: 'US5000 has larger capacity (4.8 vs 3.55kWh) and is newer with improvements in BMS and charging efficiency. US3000C is lighter (32 vs 52kg) and more affordable.',
+      },
+      {
+        questionAr: 'كم ساعة تشغل البطارية المنزل؟',
+        questionEn: 'How many hours can the battery run a home?',
+        answerAr: 'يعتمد على الاستهلاك. للإضاءة والمراوح والتلفزيون (300 واط تقريباً) تكفي 10+ ساعات. مع ثلاجة صغيرة تكفي 5-7 ساعات.',
+        answerEn: 'Depends on consumption. For lights, fans, and TV (about 300W) it lasts 10+ hours. With a small fridge, it lasts 5-7 hours.',
+      },
+      {
+        questionAr: 'هل يمكن ربط أكثر من بطارية معاً؟',
+        questionEn: 'Can multiple batteries be connected together?',
+        answerAr: 'نعم، يمكن ربط حتى 16 بطارية US3000C بالتوازي للحصول على سعة تصل إلى 56.8 كيلوواط ساعة.',
+        answerEn: 'Yes, up to 16 US3000C batteries can be connected in parallel for a capacity of up to 56.8kWh.',
+      },
+      {
+        questionAr: 'هل البطارية آمنة في الحرارة العالية؟',
+        questionEn: 'Is the battery safe in high temperatures?',
+        answerAr: 'نعم، تقنية LiFePO4 هي الأكثر أماناً واستقراراً في درجات الحرارة العالية (حتى 55 درجة)، ولا خطر حريق أو انفجار.',
+        answerEn: 'Yes, LiFePO4 technology is the safest and most stable at high temperatures (up to 55°C), with no risk of fire or explosion.',
+      },
+      {
+        questionAr: 'كم تستغرق البطارية لتشحن بالكامل؟',
+        questionEn: 'How long does it take to fully charge?',
+        answerAr: 'تعتمد على قدرة الألواح والانفرتر. عادةً 3-5 ساعات في يوم مشمس مع نظام 3 كيلوواط.',
+        answerEn: 'Depends on panel and inverter capacity. Typically 3-5 hours on a sunny day with a 3kW system.',
       },
     ],
 
     comparisons: [
       {
         productSlug: 'us5000',
-        pros: { ar: ['أخف وزناً', 'أرخص'], en: ['Lighter', 'Cheaper'] },
-        cons: { ar: ['سعة أقل'], en: ['Lower capacity'] },
+        pros: { ar: ['أخف وزناً (32 مقابل 52 كجم)', 'أقل تكلفة', 'أسهل في التركيب'], en: ['Lighter (32 vs 52kg)', 'More affordable', 'Easier to install'] },
+        cons: { ar: ['سعة أقل (3.55 مقابل 4.8 كيلوواط)', 'تيار أقصى أقل'], en: ['Lower capacity (3.55 vs 4.8kWh)', 'Lower max current'] },
+      },
+      {
+        productSlug: 'us2000c',
+        pros: { ar: ['سعة أكبر', 'قيمة أفضل للسعة'], en: ['Larger capacity', 'Better value per capacity'] },
+        cons: { ar: ['أثقل وزناً', 'سعر أعلى'], en: ['Heavier', 'Higher price'] },
       },
     ],
 
-    relatedProductSlugs: ['us5000', 'us2000c', 'pelio-l'],
-    relatedServiceKeys: ['installation', 'maintenance'],
-    relatedLocationSlugs: ['sanaa', 'aden', 'taiz'],
+    relatedProductSlugs: ['us5000', 'us2000c', 'pelio-l', 'lipower-3024emh'],
+    relatedServiceKeys: ['installation', 'maintenance', 'consultation'],
+    relatedLocationSlugs: ['sanaa', 'aden', 'taiz', 'hudaydah'],
 
-    seoTitleAr: 'بطارية Pylontech US3000C (3.55kWh) - بطارية ليثيوم متوسطة في اليمن',
-    seoTitleEn: 'Pylontech US3000C (3.55kWh) - Medium Lithium Battery in Yemen',
-    seoDescriptionAr: 'بطارية Pylontech US3000C بسعة 3.55 كيلوواط ساعة. 8000+ دورة، متوافقة مع Rack 19 بوصة. الوكيل المعتمد مؤسسة القطاع.',
-    seoDescriptionEn: 'Pylontech US3000C with 3.55kWh capacity. 8000+ cycles, 19-inch rack compatible. Authorized dealer Al-Qatta.',
-    seoKeywordsAr: ['Pylontech US3000C', 'بطارية ليثيوم', 'بطارية 48 فولت'],
-    seoKeywordsEn: ['Pylontech US3000C', 'lithium battery', '48V battery'],
+    seoTitleAr: 'بطارية Pylontech US3000C (3.55kWh) - أفضل بطارية ليثيوم متوسطة في اليمن',
+    seoTitleEn: 'Pylontech US3000C (3.55kWh) - Best Medium Lithium Battery in Yemen',
+    seoDescriptionAr: 'بطارية ليثيوم Pylontech US3000C بسعة 3.55 كيلوواط ساعة. 8000+ دورة، 15+ سنة عمر افتراضي. ضمان 10 سنوات من الوكيل المعتمد مؤسسة القطاع.',
+    seoDescriptionEn: 'Pylontech US3000C lithium battery with 3.55kWh capacity. 8000+ cycles, 15+ years lifespan. 10-year warranty from authorized dealer Al-Qatta.',
+    seoKeywordsAr: ['بطارية ليثيوم', 'Pylontech US3000C', 'تخزين الطاقة الشمسية', 'بطارية 48 فولت', 'بطارية شمسية اليمن'],
+    seoKeywordsEn: ['lithium battery', 'Pylontech US3000C', 'solar energy storage', '48V battery', 'solar battery Yemen'],
 
     image: '/placeholder.svg',
     gallery: [],
@@ -890,34 +952,44 @@ Light and powerful - ideal for camping, road trips, and power outages.`,
     nameAr: 'بطارية ليثيوم Pylontech US2000C (2.4kWh)',
     nameEn: 'Pylontech US2000C Lithium Battery (2.4kWh)',
     
-    shortDescAr: 'بطارية تخزين اقتصادية - 48 فولت بسعة 2.4 كيلوواط ساعة',
-    shortDescEn: 'Economical storage battery - 48V with 2.4kWh capacity',
+    shortDescAr: 'البداية الاقتصادية في عالم بطاريات الليثيوم - 48 فولت بسعة 2.4 كيلوواط ساعة',
+    shortDescEn: 'Economical entry into lithium batteries - 48V with 2.4kWh capacity',
     
-    fullDescAr: `بطارية Pylontech US2000C هي الخيار الاقتصادي لتخزين الطاقة. بسعة 2.4 كيلوواط ساعة، مثالية للأنظمة الصغيرة والمبتدئين.
+    fullDescAr: `بطارية Pylontech US2000C هي الخيار الاقتصادي والمثالي للمبتدئين في عالم الطاقة الشمسية. بسعة 2.4 كيلوواط ساعة ووزن 22.5 كجم فقط، تعتبر الأخف في سلسلة US.
 
-**المميزات:**
-- سعة 2.4 كيلوواط ساعة
-- أخف بطارية في سلسلة US
-- سعر اقتصادي
-- قابلة للتوسيع
+**لماذا تختار US2000C؟**
+- أخف بطارية في سلسلة US - سهولة في التركيب والنقل
+- سعر اقتصادي - بداية ممتازة بميزانية محدودة
+- قابلة للتوسيع - ابدأ ببطارية واحدة وأضف لاحقاً حتى 16 بطارية
+- نفس جودة وموثوقية سلسلة US الشهيرة
 
-**الوكيل المعتمد: مؤسسة القطاع**`,
+**متى تختار US2000C؟**
+- إذا كانت أحمالك خفيفة (إضاءة ومراوح وتلفزيون)
+- إذا كانت ميزانيتك محدودة وتريد البدء تدريجياً
+- إذا كانت المساحة محدودة وتريد بطارية صغيرة
+
+**المنتج الأصلي بضمان الوكيل المعتمد: مؤسسة القطاع**`,
     
-    fullDescEn: `Pylontech US2000C is the economical choice for energy storage. With 2.4kWh capacity, it's ideal for small systems and beginners.
+    fullDescEn: `Pylontech US2000C is the economical and ideal choice for beginners in solar energy. With 2.4kWh capacity and only 22.5kg weight, it's the lightest in the US series.
 
-**Features:**
-- 2.4kWh capacity
-- Lightest battery in US series
-- Economical price
-- Expandable
+**Why choose US2000C?**
+- Lightest battery in US series - easy to install and move
+- Economical price - excellent start with limited budget
+- Expandable - start with one battery and add up to 16 later
+- Same quality and reliability as the famous US series
 
-**Authorized Dealer: Al-Qatta Establishment**`,
+**When to choose US2000C?**
+- If your loads are light (lighting, fans, and TV)
+- If your budget is limited and you want to start gradually
+- If space is limited and you want a small battery
+
+**Original product with authorized dealer warranty: Al-Qatta Establishment**`,
 
     keyTakeaways: [
-      { ar: 'سعة 2.4 كيلوواط ساعة - للأنظمة الصغيرة', en: '2.4kWh capacity - for small systems' },
-      { ar: 'أخف وزناً (22.5 كجم) - سهلة التركيب', en: 'Lightest (22.5kg) - easy to install' },
-      { ar: 'سعر اقتصادي - بداية ممتازة', en: 'Economical price - excellent start' },
-      { ar: 'قابلة للتوسيع حتى 16 بطارية', en: 'Expandable up to 16 batteries' },
+      { ar: 'سعة 2.4 كيلوواط ساعة - للأنظمة الصغيرة والإضاءة', en: '2.4kWh capacity - for small systems and lighting' },
+      { ar: 'أخف وزناً (22.5 كجم) - سهلة التركيب والنقل', en: 'Lightest (22.5kg) - easy to install and move' },
+      { ar: 'سعر اقتصادي - بداية ممتازة بميزانية محدودة', en: 'Economical price - excellent start with limited budget' },
+      { ar: 'قابلة للتوسيع حتى 16 بطارية متوازية', en: 'Expandable up to 16 batteries in parallel' },
     ],
 
     specifications: [
@@ -927,10 +999,17 @@ Light and powerful - ideal for camping, road trips, and power outages.`,
       { keyAr: 'التيار الاسمي', keyEn: 'Nominal Current', value: '50', unit: 'Ah' },
       { keyAr: 'دورات الشحن', keyEn: 'Cycle Life', value: '8000+', unit: 'cycles' },
       { keyAr: 'عمق التفريغ', keyEn: 'Depth of Discharge', value: '95', unit: '%' },
-      { keyAr: 'تيار الشحن/التفريغ', keyEn: 'Charge/Discharge Current', value: '25', unit: 'A' },
+      { keyAr: 'تيار الشحن/التفريغ العادي', keyEn: 'Normal Charge/Discharge Current', value: '25', unit: 'A' },
+      { keyAr: 'تيار الشحن/التفريغ الأقصى', keyEn: 'Max Charge/Discharge Current', value: '50-89', unit: 'A @60s' },
+      { keyAr: 'درجة حرارة التشغيل (شحن)', keyEn: 'Operating Temperature (Charge)', value: '0~55', unit: '°C' },
+      { keyAr: 'درجة حرارة التشغيل (تفريغ)', keyEn: 'Operating Temperature (Discharge)', value: '-10~55', unit: '°C' },
       { keyAr: 'الأبعاد', keyEn: 'Dimensions', value: '442×410×89', unit: 'mm' },
       { keyAr: 'الوزن', keyEn: 'Weight', value: '22.5', unit: 'kg' },
+      { keyAr: 'التوصيل المتوازي', keyEn: 'Parallel Connection', value: 'حتى 16 وحدة / Up to 16 units' },
+      { keyAr: 'منفذ الاتصال', keyEn: 'Communication Port', value: 'RS485 / CAN' },
+      { keyAr: 'نوع الخلايا', keyEn: 'Cell Type', value: 'LiFePO4' },
       { keyAr: 'العمر التصميمي', keyEn: 'Design Life', value: '15+', unit: 'سنة / Years' },
+      { keyAr: 'الضمان', keyEn: 'Warranty', value: '10 سنوات / 10 Years' },
     ],
 
     yemenSuitability: {
@@ -940,20 +1019,20 @@ Light and powerful - ideal for camping, road trips, and power outages.`,
         powerOutageSupport: 3,
         dustResistance: 4,
       },
-      explanationAr: 'مثالية للبدء في الطاقة الشمسية. خفيفة وسهلة التركيب.',
-      explanationEn: 'Ideal for starting with solar energy. Light and easy to install.',
-      bestRegionsAr: ['جميع المناطق'],
-      bestRegionsEn: ['All regions'],
-      climateNotesAr: 'تعمل بكفاءة في درجات حرارة تصل إلى 55 درجة',
-      climateNotesEn: 'Works efficiently at temperatures up to 55°C',
+      explanationAr: 'مثالية للبدء في الطاقة الشمسية في اليمن. خفيفة وسهلة التركيب، تعمل بكفاءة في درجات حرارة تصل إلى 55 درجة.',
+      explanationEn: 'Ideal for starting with solar energy in Yemen. Light and easy to install, works efficiently at temperatures up to 55°C.',
+      bestRegionsAr: ['صنعاء', 'عدن', 'تعز', 'الحديدة', 'إب'],
+      bestRegionsEn: ['Sanaa', 'Aden', 'Taiz', 'Hudaydah', 'Ibb'],
+      climateNotesAr: 'تعمل بكفاءة في جميع مناطق اليمن',
+      climateNotesEn: 'Works efficiently in all regions of Yemen',
     },
 
     useCases: [
       {
-        titleAr: 'الإضاءة الأساسية',
-        titleEn: 'Basic Lighting',
-        descAr: 'تشغيل الإضاءة والمراوح لساعات',
-        descEn: 'Run lighting and fans for hours',
+        titleAr: 'الإضاءة والمراوح',
+        titleEn: 'Lighting & Fans',
+        descAr: 'تشغيل الإضاءة LED والمراوح لأكثر من 15 ساعة',
+        descEn: 'Run LED lighting and fans for over 15 hours',
         icon: 'Lamp',
       },
       {
@@ -963,54 +1042,101 @@ Light and powerful - ideal for camping, road trips, and power outages.`,
         descEn: 'Excellent start in solar energy world',
         icon: 'Zap',
       },
+      {
+        titleAr: 'الغرف الصغيرة',
+        titleEn: 'Small Rooms',
+        descAr: 'طاقة احتياطية لغرفة أو شقة صغيرة',
+        descEn: 'Backup power for a room or small apartment',
+        icon: 'Home',
+      },
+      {
+        titleAr: 'أجهزة الاتصالات',
+        titleEn: 'Telecom Equipment',
+        descAr: 'تشغيل راوتر الإنترنت والهواتف',
+        descEn: 'Run internet router and phones',
+        icon: 'Radio',
+      },
     ],
 
     recommendedForAr: [
       'المبتدئين في الطاقة الشمسية',
       'الميزانيات المحدودة',
-      'الأحمال الخفيفة',
+      'الأحمال الخفيفة (إضاءة ومراوح وتلفزيون)',
+      'من يريد البدء تدريجياً والتوسع لاحقاً',
     ],
     recommendedForEn: [
       'Solar energy beginners',
       'Limited budgets',
-      'Light loads',
+      'Light loads (lighting, fans, and TV)',
+      'Those wanting to start gradually and expand later',
     ],
     notRecommendedForAr: [
-      'المنازل المتوسطة والكبيرة',
-      'الثلاجات والمكيفات',
+      'المنازل المتوسطة والكبيرة (استخدم US3000C أو US5000)',
+      'الثلاجات الكبيرة والمكيفات',
+      'الأحمال العالية المستمرة',
     ],
     notRecommendedForEn: [
-      'Medium and large homes',
-      'Refrigerators and ACs',
+      'Medium and large homes (use US3000C or US5000)',
+      'Large refrigerators and ACs',
+      'High continuous loads',
     ],
 
     faqs: [
       {
         questionAr: 'كم ساعة تشغل الإضاءة؟',
         questionEn: 'How many hours can it run lighting?',
-        answerAr: 'تشغل 10 لمبات LED (10 واط لكل واحدة) لمدة 20+ ساعة.',
-        answerEn: 'Runs 10 LED bulbs (10W each) for 20+ hours.',
+        answerAr: 'تشغل 10 لمبات LED (10 واط لكل واحدة) لمدة 20+ ساعة. أو 5 لمبات + مروحة + تلفزيون لمدة 8 ساعات.',
+        answerEn: 'Runs 10 LED bulbs (10W each) for 20+ hours. Or 5 bulbs + fan + TV for 8 hours.',
+      },
+      {
+        questionAr: 'هل يمكن تشغيل الثلاجة؟',
+        questionEn: 'Can it run a refrigerator?',
+        answerAr: 'ثلاجة صغيرة جداً (100 لتر) فقط ولساعات محدودة. للثلاجات العادية يُنصح بـ US3000C أو أكبر.',
+        answerEn: 'Very small fridge (100L) only and for limited hours. For regular fridges, US3000C or larger is recommended.',
+      },
+      {
+        questionAr: 'ما الفرق بين US2000C و US3000C؟',
+        questionEn: 'What is the difference between US2000C and US3000C?',
+        answerAr: 'US3000C أكبر سعة (3.55 مقابل 2.4 كيلوواط) وتيار أعلى. US2000C أخف (22.5 مقابل 32 كجم) وأرخص.',
+        answerEn: 'US3000C has larger capacity (3.55 vs 2.4kWh) and higher current. US2000C is lighter (22.5 vs 32kg) and cheaper.',
+      },
+      {
+        questionAr: 'هل يمكن إضافة بطاريات لاحقاً؟',
+        questionEn: 'Can batteries be added later?',
+        answerAr: 'نعم! يمكن البدء ببطارية واحدة وإضافة حتى 15 بطارية إضافية بالتوازي.',
+        answerEn: 'Yes! You can start with one battery and add up to 15 additional batteries in parallel.',
+      },
+      {
+        questionAr: 'ما الانفرتر المناسب؟',
+        questionEn: 'What inverter is suitable?',
+        answerAr: 'أي انفرتر 48 فولت متوافق مع Pylontech. مثل OPTI-Solar SP3000 أو SP5000 أو LiPower.',
+        answerEn: 'Any 48V inverter compatible with Pylontech. Such as OPTI-Solar SP3000 or SP5000 or LiPower.',
       },
     ],
 
     comparisons: [
       {
         productSlug: 'us3000c',
-        pros: { ar: ['أخف', 'أرخص'], en: ['Lighter', 'Cheaper'] },
-        cons: { ar: ['سعة أقل'], en: ['Lower capacity'] },
+        pros: { ar: ['أخف وزناً (22.5 مقابل 32 كجم)', 'أقل تكلفة', 'أصغر حجماً'], en: ['Lighter (22.5 vs 32kg)', 'Lower cost', 'Smaller size'] },
+        cons: { ar: ['سعة أقل (2.4 مقابل 3.55 كيلوواط)', 'تيار أقل'], en: ['Lower capacity (2.4 vs 3.55kWh)', 'Lower current'] },
+      },
+      {
+        productSlug: 'us5000',
+        pros: { ar: ['أخف بكثير', 'أرخص بكثير'], en: ['Much lighter', 'Much cheaper'] },
+        cons: { ar: ['نصف السعة تقريباً'], en: ['About half the capacity'] },
       },
     ],
 
-    relatedProductSlugs: ['us3000c', 'us5000'],
-    relatedServiceKeys: ['installation'],
-    relatedLocationSlugs: ['sanaa', 'aden'],
+    relatedProductSlugs: ['us3000c', 'us5000', 'lipower-2012emh', 'sp3000'],
+    relatedServiceKeys: ['installation', 'maintenance', 'consultation'],
+    relatedLocationSlugs: ['sanaa', 'aden', 'taiz', 'ibb'],
 
-    seoTitleAr: 'بطارية Pylontech US2000C (2.4kWh) - بطارية ليثيوم اقتصادية في اليمن',
-    seoTitleEn: 'Pylontech US2000C (2.4kWh) - Economical Lithium Battery in Yemen',
-    seoDescriptionAr: 'بطارية Pylontech US2000C بسعة 2.4 كيلوواط ساعة. سعر اقتصادي، خفيفة الوزن، 8000+ دورة.',
-    seoDescriptionEn: 'Pylontech US2000C with 2.4kWh capacity. Economical price, lightweight, 8000+ cycles.',
-    seoKeywordsAr: ['Pylontech US2000C', 'بطارية ليثيوم اقتصادية'],
-    seoKeywordsEn: ['Pylontech US2000C', 'economical lithium battery'],
+    seoTitleAr: 'بطارية Pylontech US2000C (2.4kWh) - أفضل بطارية ليثيوم اقتصادية في اليمن',
+    seoTitleEn: 'Pylontech US2000C (2.4kWh) - Best Economical Lithium Battery in Yemen',
+    seoDescriptionAr: 'بطارية ليثيوم Pylontech US2000C بسعة 2.4 كيلوواط ساعة. أخف بطارية في سلسلة US، سعر اقتصادي، 8000+ دورة. ضمان 10 سنوات من الوكيل المعتمد.',
+    seoDescriptionEn: 'Pylontech US2000C lithium battery with 2.4kWh capacity. Lightest in US series, economical price, 8000+ cycles. 10-year warranty from authorized dealer.',
+    seoKeywordsAr: ['بطارية ليثيوم اقتصادية', 'Pylontech US2000C', 'بطارية 48 فولت', 'بطارية شمسية اليمن', 'بطارية للمبتدئين'],
+    seoKeywordsEn: ['economical lithium battery', 'Pylontech US2000C', '48V battery', 'solar battery Yemen', 'beginner battery'],
 
     image: '/placeholder.svg',
     gallery: [],
@@ -1030,49 +1156,62 @@ Light and powerful - ideal for camping, road trips, and power outages.`,
     nameAr: 'بطارية Pylontech RV12100 (12V 100Ah)',
     nameEn: 'Pylontech RV12100 Battery (12V 100Ah)',
     
-    shortDescAr: 'بطارية ليثيوم 12 فولت للكرفانات والسيارات - بديل مثالي لبطاريات الرصاص',
-    shortDescEn: '12V lithium battery for RVs and vehicles - ideal replacement for lead batteries',
+    shortDescAr: 'بطارية ليثيوم 12 فولت للكرفانات والقوارب - أخف 60% من بطاريات الرصاص',
+    shortDescEn: '12V lithium battery for RVs and boats - 60% lighter than lead batteries',
     
-    fullDescAr: `بطارية Pylontech RV12100 مصممة خصيصاً للكرفانات والمركبات الترفيهية والقوارب. تقنية LiFePO4 توفر أماناً عالياً وعمراً افتراضياً طويلاً.
+    fullDescAr: `بطارية Pylontech RV12100 مصممة خصيصاً للتطبيقات المتنقلة مثل الكرفانات والمركبات الترفيهية والقوارب والسيارات. تقنية LiFePO4 توفر أماناً عالياً وعمراً افتراضياً طويلاً.
 
-**المميزات:**
-- سعة 100 أمبير ساعة
-- جهد 12.8 فولت
-- خفيفة الوزن (≤15 كجم)
-- 4000 دورة شحن
-- تدعم التوصيل المتوازي
+**لماذا تختار RV12100؟**
+- خفيفة الوزن (≤15 كجم) - أخف 60% من بطاريات الرصاص المماثلة
+- 4000 دورة شحن - عمر أطول 4 مرات من بطاريات الرصاص
+- تعمل في درجات حرارة من -20 إلى 50 درجة مئوية
+- شاشة LED مدمجة لعرض حالة الشحن
+- تدعم التوصيل المتوازي لزيادة السعة
+- BMS مدمج للحماية الشاملة
+
+**البديل المثالي لبطاريات الرصاص والجل**
+وداعاً للبطاريات الثقيلة التي تحتاج صيانة! RV12100 خفيفة، لا تحتاج صيانة، وتدوم أطول.
 
 **الوكيل المعتمد: مؤسسة القطاع**`,
     
-    fullDescEn: `Pylontech RV12100 is specifically designed for RVs, recreational vehicles, and boats. LiFePO4 technology provides high safety and long lifespan.
+    fullDescEn: `Pylontech RV12100 is specifically designed for mobile applications like RVs, recreational vehicles, boats, and cars. LiFePO4 technology provides high safety and long lifespan.
 
-**Features:**
-- 100Ah capacity
-- 12.8V voltage
-- Lightweight (≤15kg)
-- 4000 charge cycles
-- Parallel connection support
+**Why choose RV12100?**
+- Lightweight (≤15kg) - 60% lighter than similar lead batteries
+- 4000 charge cycles - 4x longer lifespan than lead batteries
+- Works at temperatures from -20 to 50°C
+- Built-in LED display for charge status
+- Supports parallel connection to increase capacity
+- Integrated BMS for comprehensive protection
+
+**The perfect replacement for lead and gel batteries**
+Goodbye to heavy batteries that need maintenance! RV12100 is light, maintenance-free, and lasts longer.
 
 **Authorized Dealer: Al-Qatta Establishment**`,
 
     keyTakeaways: [
-      { ar: 'سعة 100 أمبير ساعة - طاقة كافية للرحلات', en: '100Ah capacity - enough power for trips' },
-      { ar: 'خفيفة الوزن (≤15 كجم) - أخف 60% من الرصاص', en: 'Lightweight (≤15kg) - 60% lighter than lead' },
-      { ar: '4000 دورة شحن - عمر طويل', en: '4000 charge cycles - long lifespan' },
-      { ar: 'شاشة LED لحالة الشحن', en: 'LED display for charge status' },
+      { ar: 'سعة 100 أمبير ساعة (1.28 كيلوواط) - طاقة كافية للرحلات', en: '100Ah capacity (1.28kWh) - enough power for trips' },
+      { ar: 'خفيفة الوزن (≤15 كجم) - أخف 60% من بطاريات الرصاص', en: 'Lightweight (≤15kg) - 60% lighter than lead batteries' },
+      { ar: '4000 دورة شحن - عمر أطول 4 مرات من الرصاص', en: '4000 charge cycles - 4x longer than lead' },
+      { ar: 'شاشة LED مدمجة لعرض حالة الشحن', en: 'Built-in LED display for charge status' },
     ],
 
     specifications: [
       { keyAr: 'السعة الاسمية', keyEn: 'Nominal Capacity', value: '100', unit: 'Ah' },
       { keyAr: 'الجهد الاسمي', keyEn: 'Nominal Voltage', value: '12.8', unit: 'V' },
+      { keyAr: 'الطاقة الكلية', keyEn: 'Total Energy', value: '1.28', unit: 'kWh' },
       { keyAr: 'مدى الجهد', keyEn: 'Voltage Range', value: '10~14.8', unit: 'V' },
+      { keyAr: 'جهد الشحن الموصى به', keyEn: 'Recommended Charge Voltage', value: '10~14.4', unit: 'V' },
       { keyAr: 'تيار الشحن المستمر', keyEn: 'Continuous Charge Current', value: '50', unit: 'A' },
       { keyAr: 'تيار التفريغ المستمر', keyEn: 'Continuous Discharge Current', value: '100', unit: 'A' },
       { keyAr: 'درجة حرارة التشغيل', keyEn: 'Working Temperature', value: '-20~50', unit: '°C' },
+      { keyAr: 'الرطوبة', keyEn: 'Humidity', value: '5~95', unit: '%' },
       { keyAr: 'الأبعاد', keyEn: 'Dimensions', value: '300×173×220', unit: 'mm' },
       { keyAr: 'الوزن', keyEn: 'Weight', value: '≤15', unit: 'kg' },
       { keyAr: 'دورات الشحن', keyEn: 'Cycle Life', value: '4000', unit: 'cycles' },
-      { keyAr: 'الاتصال', keyEn: 'Communication', value: 'اختياري / Optional' },
+      { keyAr: 'التوصيل المتوازي', keyEn: 'Parallel Connection', value: 'مدعوم / Supported' },
+      { keyAr: 'نوع الخلايا', keyEn: 'Cell Type', value: 'LiFePO4' },
+      { keyAr: 'درجة الحماية', keyEn: 'IP Rating', value: 'IP20' },
     ],
 
     yemenSuitability: {
@@ -1082,78 +1221,111 @@ Light and powerful - ideal for camping, road trips, and power outages.`,
         powerOutageSupport: 4,
         dustResistance: 4,
       },
-      explanationAr: 'مثالية للكرفانات والسيارات في اليمن. تعمل في درجات حرارة من -20 إلى 50 درجة.',
-      explanationEn: 'Ideal for RVs and vehicles in Yemen. Works at temperatures from -20 to 50°C.',
+      explanationAr: 'مثالية للكرفانات والسيارات في اليمن. تعمل بكفاءة في درجات حرارة من -20 إلى 50 درجة، مما يجعلها مناسبة لجميع المناطق.',
+      explanationEn: 'Ideal for RVs and vehicles in Yemen. Works efficiently at temperatures from -20 to 50°C, making it suitable for all regions.',
       bestRegionsAr: ['جميع المناطق'],
       bestRegionsEn: ['All regions'],
-      climateNotesAr: 'مقاومة للحرارة والبرودة الشديدة',
-      climateNotesEn: 'Resistant to extreme heat and cold',
+      climateNotesAr: 'مقاومة للحرارة الشديدة والبرودة، مثالية للرحلات في مختلف المناطق',
+      climateNotesEn: 'Resistant to extreme heat and cold, ideal for trips in various regions',
     },
 
     useCases: [
       {
-        titleAr: 'الكرفانات',
-        titleEn: 'RVs/Caravans',
-        descAr: 'طاقة للرحلات الطويلة',
-        descEn: 'Power for long trips',
+        titleAr: 'الكرفانات والمركبات الترفيهية',
+        titleEn: 'RVs & Recreational Vehicles',
+        descAr: 'طاقة موثوقة للرحلات الطويلة والتخييم',
+        descEn: 'Reliable power for long trips and camping',
         icon: 'Car',
       },
       {
-        titleAr: 'القوارب',
-        titleEn: 'Boats',
-        descAr: 'بطارية بحرية موثوقة',
-        descEn: 'Reliable marine battery',
+        titleAr: 'القوارب واليخوت',
+        titleEn: 'Boats & Yachts',
+        descAr: 'بطارية بحرية آمنة ومقاومة للرطوبة',
+        descEn: 'Safe marine battery resistant to humidity',
         icon: 'Anchor',
       },
       {
-        titleAr: 'السيارات',
-        titleEn: 'Vehicles',
-        descAr: 'بديل لبطارية السيارة المساعدة',
-        descEn: 'Replacement for auxiliary car battery',
-        icon: 'Car',
+        titleAr: 'السيارات الكهربائية الخفيفة',
+        titleEn: 'Light Electric Vehicles',
+        descAr: 'عربات الجولف والدراجات الكهربائية',
+        descEn: 'Golf carts and electric bikes',
+        icon: 'Zap',
+      },
+      {
+        titleAr: 'أنظمة الطاقة الشمسية الصغيرة',
+        titleEn: 'Small Solar Systems',
+        descAr: 'أنظمة 12 فولت للإضاءة والأجهزة الصغيرة',
+        descEn: '12V systems for lighting and small devices',
+        icon: 'Sun',
       },
     ],
 
     recommendedForAr: [
       'الكرفانات والمركبات الترفيهية',
       'القوارب واليخوت',
-      'أنظمة 12 فولت',
+      'أنظمة الطاقة الشمسية 12 فولت',
+      'بديل لبطاريات الرصاص والجل',
     ],
     recommendedForEn: [
       'RVs and recreational vehicles',
       'Boats and yachts',
-      '12V systems',
+      '12V solar systems',
+      'Replacement for lead and gel batteries',
     ],
     notRecommendedForAr: [
-      'الأنظمة المنزلية الكبيرة',
-      'الاستخدام الثابت (استخدم US Series)',
+      'الأنظمة المنزلية الكبيرة (استخدم US Series 48V)',
+      'بطارية بدء تشغيل السيارة الرئيسية',
     ],
     notRecommendedForEn: [
-      'Large home systems',
-      'Stationary use (use US Series)',
+      'Large home systems (use US Series 48V)',
+      'Main car starter battery',
     ],
 
     faqs: [
       {
         questionAr: 'هل تصلح كبطارية سيارة رئيسية؟',
-        questionEn: 'Is it suitable as main car battery?',
-        answerAr: 'مصممة للاستخدام المساعد. لبطارية البدء الرئيسية يُنصح ببطارية ليثيوم مخصصة.',
-        answerEn: 'Designed for auxiliary use. For main starter battery, dedicated lithium battery is recommended.',
+        questionEn: 'Is it suitable as main car starter battery?',
+        answerAr: 'مصممة للاستخدام المساعد وليس لبدء التشغيل. لبطارية البدء الرئيسية يُنصح ببطارية ليثيوم مخصصة للسيارات.',
+        answerEn: 'Designed for auxiliary use, not for starting. For main starter battery, a lithium battery designed for cars is recommended.',
+      },
+      {
+        questionAr: 'كم تدوم مقارنة ببطارية الجل؟',
+        questionEn: 'How long does it last compared to gel battery?',
+        answerAr: 'تدوم 4 أضعاف عمر بطارية الجل (4000 دورة مقابل 1000)، مما يجعلها أوفر على المدى الطويل.',
+        answerEn: 'Lasts 4x longer than gel battery (4000 vs 1000 cycles), making it more economical long-term.',
+      },
+      {
+        questionAr: 'هل يمكن ربط أكثر من بطارية؟',
+        questionEn: 'Can multiple batteries be connected?',
+        answerAr: 'نعم، تدعم التوصيل المتوازي لزيادة السعة. يمكن ربط عدة بطاريات للحصول على سعة أكبر.',
+        answerEn: 'Yes, supports parallel connection to increase capacity. Multiple batteries can be connected for larger capacity.',
+      },
+      {
+        questionAr: 'كيف أعرف حالة شحن البطارية؟',
+        questionEn: 'How do I know the battery charge state?',
+        answerAr: 'شاشة LED مدمجة تعرض حالة الشحن بأضواء ملونة. اضغط الزر لثانية واحدة لرؤية الحالة.',
+        answerEn: 'Built-in LED display shows charge status with colored lights. Press button for 1 second to see status.',
       },
     ],
 
-    comparisons: [],
+    comparisons: [
+      {
+        productSlug: '12v-100ah-lithium',
+        pros: { ar: ['علامة تجارية معروفة', 'شاشة LED مدمجة'], en: ['Well-known brand', 'Built-in LED display'] },
+        cons: { ar: ['سعر أعلى قليلاً'], en: ['Slightly higher price'] },
+      },
+    ],
 
-    relatedProductSlugs: ['12v-100ah-lithium', 'amber-rock'],
-    relatedServiceKeys: ['installation'],
-    relatedLocationSlugs: ['sanaa', 'aden'],
+    relatedProductSlugs: ['12v-100ah-lithium', 'amber-rock', 'sp1000', 'sp1200'],
+    relatedServiceKeys: ['installation', 'consultation'],
+    relatedLocationSlugs: ['sanaa', 'aden', 'taiz'],
 
-    seoTitleAr: 'بطارية Pylontech RV12100 (12V 100Ah) - بطارية كرفانات في اليمن',
-    seoTitleEn: 'Pylontech RV12100 (12V 100Ah) - RV Battery in Yemen',
-    seoDescriptionAr: 'بطارية Pylontech RV12100 للكرفانات والقوارب. 100 أمبير، خفيفة الوزن، 4000 دورة شحن.',
-    seoDescriptionEn: 'Pylontech RV12100 for RVs and boats. 100Ah, lightweight, 4000 charge cycles.',
-    seoKeywordsAr: ['بطارية كرفان', 'Pylontech RV12100', 'بطارية 12 فولت'],
-    seoKeywordsEn: ['RV battery', 'Pylontech RV12100', '12V battery'],
+    seoTitleAr: 'بطارية Pylontech RV12100 (12V 100Ah) - أفضل بطارية كرفانات في اليمن',
+    seoTitleEn: 'Pylontech RV12100 (12V 100Ah) - Best RV Battery in Yemen',
+    seoDescriptionAr: 'بطارية Pylontech RV12100 للكرفانات والقوارب. 100 أمبير، خفيفة الوزن (15 كجم)، 4000 دورة شحن. الوكيل المعتمد مؤسسة القطاع.',
+    seoDescriptionEn: 'Pylontech RV12100 for RVs and boats. 100Ah, lightweight (15kg), 4000 charge cycles. Authorized dealer Al-Qatta.',
+    seoKeywordsAr: ['بطارية كرفان', 'Pylontech RV12100', 'بطارية 12 فولت', 'بطارية قوارب', 'بديل بطارية الجل'],
+    seoKeywordsEn: ['RV battery', 'Pylontech RV12100', '12V battery', 'boat battery', 'gel battery replacement'],
 
     image: '/placeholder.svg',
     gallery: [],
