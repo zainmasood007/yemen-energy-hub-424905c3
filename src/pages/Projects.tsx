@@ -11,9 +11,13 @@ import { Badge } from '@/components/ui/badge';
 import SEO, { createBreadcrumbSchema, createFAQSchema } from '@/components/SEO';
 import { cn } from '@/lib/utils';
 import { projects, typeIcons, typeLabels, typeColors, Project } from '@/data/projects';
+import { useLocation } from 'react-router-dom';
 
 export default function Projects() {
   const { t, isRTL } = useLanguage();
+  const location = useLocation();
+  const isEnPath = location.pathname.startsWith('/en');
+  const pageLang: 'ar' | 'en' = isEnPath ? 'en' : 'ar';
   const Arrow = isRTL ? ArrowLeft : ArrowRight;
   const [activeFilter, setActiveFilter] = useState<string>('all');
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
@@ -24,26 +28,26 @@ export default function Projects() {
     : projects.filter(p => p.type === activeFilter);
 
   const breadcrumbSchema = createBreadcrumbSchema([
-    { name: isRTL ? 'الرئيسية' : 'Home', url: '/' },
-    { name: isRTL ? 'مشاريعنا' : 'Our Projects', url: '/projects' },
+    { name: pageLang === 'ar' ? 'الرئيسية' : 'Home', url: '/' },
+    { name: pageLang === 'ar' ? 'مشاريعنا' : 'Our Projects', url: '/projects' },
   ]);
 
   const projectsFaqSchema = createFAQSchema([
     {
-      question: isRTL ? 'ما أنواع المشاريع التي تنفذونها؟' : 'What types of projects do you implement?',
-      answer: isRTL
+      question: pageLang === 'ar' ? 'ما أنواع المشاريع التي تنفذونها؟' : 'What types of projects do you implement?',
+      answer: pageLang === 'ar'
         ? 'ننّفذ مشاريع طاقة شمسية سكنية وتجارية وصناعية، من الأنظمة الصغيرة للمنازل إلى الأنظمة المتكاملة للمصانع والمنشآت.'
         : 'We implement residential, commercial, and industrial solar projects, from small home systems to large-scale integrated systems.',
     },
     {
-      question: isRTL ? 'هل تعملون في جميع محافظات اليمن؟' : 'Do you work in all Yemeni governorates?',
-      answer: isRTL
+      question: pageLang === 'ar' ? 'هل تعملون في جميع محافظات اليمن؟' : 'Do you work in all Yemeni governorates?',
+      answer: pageLang === 'ar'
         ? 'نعم، لدينا مشاريع في أغلب محافظات اليمن، ويمكننا تنفيذ المشاريع في المدن الرئيسية والمناطق البعيدة مع ترتيب اللوجستيات المناسبة.'
         : 'Yes, we have projects in most Yemeni governorates and can work in major cities and remote areas with appropriate logistics.',
     },
     {
-      question: isRTL ? 'هل يمكن زيارة أحد مشاريعكم؟' : 'Can I visit one of your projects?',
-      answer: isRTL
+      question: pageLang === 'ar' ? 'هل يمكن زيارة أحد مشاريعكم؟' : 'Can I visit one of your projects?',
+      answer: pageLang === 'ar'
         ? 'يمكن ترتيب زيارة لبعض المشاريع المناسبة بالتنسيق المسبق، حتى تتعرّف على جودة التنفيذ على أرض الواقع.'
         : 'We can arrange visits to selected reference projects upon prior coordination so you can see the quality of our work in reality.',
     },
@@ -79,7 +83,8 @@ export default function Projects() {
         descriptionAr="شاهد مشاريع الطاقة الشمسية المنجزة في اليمن. تركيبات طاقة شمسية سكنية وتجارية وصناعية مع بطاريات Pylontech."
         keywords="solar projects yemen, solar installation portfolio, pylontech projects yemen"
         keywordsAr="مشاريع طاقة شمسية اليمن، معرض تركيبات شمسية، مشاريع بايلونتيك اليمن"
-        canonical="/projects"
+        canonical={isEnPath ? '/en/projects' : '/projects'}
+        lang={pageLang}
         jsonLd={[breadcrumbSchema, projectsFaqSchema]}
       />
 

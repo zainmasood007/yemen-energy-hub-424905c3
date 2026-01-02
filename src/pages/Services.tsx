@@ -8,7 +8,7 @@ import {
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import SEO, { createBreadcrumbSchema, createServiceSchema } from '@/components/SEO';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import PageHero from '@/components/ui/PageHero';
 import GlassCard from '@/components/ui/GlassCard';
 
@@ -147,11 +147,14 @@ const processSteps = [
 
 export default function Services() {
   const { t, isRTL } = useLanguage();
+  const location = useLocation();
+  const isEnPath = location.pathname.startsWith('/en');
+  const pageLang: 'ar' | 'en' = isEnPath ? 'en' : 'ar';
   const Arrow = isRTL ? ArrowLeft : ArrowRight;
 
   const breadcrumbSchema = createBreadcrumbSchema([
-    { name: isRTL ? 'الرئيسية' : 'Home', url: '/' },
-    { name: isRTL ? 'خدماتنا' : 'Our Services', url: '/services' },
+    { name: pageLang === 'ar' ? 'الرئيسية' : 'Home', url: '/' },
+    { name: pageLang === 'ar' ? 'خدماتنا' : 'Our Services', url: '/services' },
   ]);
 
   const servicesSchemas = services.map(service => createServiceSchema({
@@ -169,7 +172,8 @@ export default function Services() {
         descriptionAr="خدمات طاقة شمسية متكاملة في اليمن: تصميم الأنظمة، التركيب الاحترافي، حلول تخزين الطاقة، الاستشارات الفنية، الصيانة، ودراسة الجدوى."
         keywords="solar installation yemen, solar system design yemen, energy storage installation, solar maintenance yemen, solar consultation yemen"
         keywordsAr="تركيب طاقة شمسية اليمن، تصميم أنظمة شمسية اليمن، تركيب تخزين الطاقة، صيانة طاقة شمسية اليمن، استشارات طاقة شمسية اليمن"
-        canonical="/services"
+        canonical={isEnPath ? '/en/services' : '/services'}
+        lang={pageLang}
         jsonLd={[breadcrumbSchema, ...servicesSchemas]}
       />
 

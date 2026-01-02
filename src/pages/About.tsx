@@ -11,14 +11,18 @@ import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import PageHero from '@/components/ui/PageHero';
 import GlassCard from '@/components/ui/GlassCard';
+import { useLocation } from 'react-router-dom';
 
 export default function About() {
   const { t, isRTL } = useLanguage();
+  const location = useLocation();
+  const isEnPath = location.pathname.startsWith('/en');
+  const pageLang: 'ar' | 'en' = isEnPath ? 'en' : 'ar';
   const Arrow = isRTL ? ArrowLeft : ArrowRight;
   
   const breadcrumbSchema = createBreadcrumbSchema([
-    { name: isRTL ? 'الرئيسية' : 'Home', url: '/' },
-    { name: isRTL ? 'من نحن' : 'About Us', url: '/about' },
+    { name: pageLang === 'ar' ? 'الرئيسية' : 'Home', url: '/' },
+    { name: pageLang === 'ar' ? 'من نحن' : 'About Us', url: '/about' },
   ]);
 
   const aboutJsonLd = [
@@ -27,8 +31,8 @@ export default function About() {
     {
       "@context": "https://schema.org",
       "@type": "AboutPage",
-      "name": isRTL ? "من نحن - القطاع للطاقة الشمسية" : "About Us - Al-Qatta Solar Energy",
-      "description": isRTL 
+      "name": pageLang === 'ar' ? "من نحن - القطاع للطاقة الشمسية" : "About Us - Al-Qatta Solar Energy",
+      "description": pageLang === 'ar'
         ? "تعرف على القطاع للطاقة الشمسية، الوكيل المعتمد الوحيد لـ Pylontech في اليمن"
         : "Learn about Al-Qatta Solar Energy, the only authorized Pylontech agent in Yemen",
       "mainEntity": organizationSchema
@@ -137,7 +141,8 @@ export default function About() {
         descriptionAr="تعرف على القطاع للطاقة الشمسية، الوكيل المعتمد الوحيد لـ Pylontech في اليمن. أكثر من 10 سنوات خبرة في حلول الطاقة الشمسية."
         keywords="about al-qatta, solar company yemen, pylontech authorized agent, solar energy experts yemen"
         keywordsAr="عن القطاع، شركة طاقة شمسية اليمن، وكيل بايلونتيك معتمد، خبراء الطاقة الشمسية اليمن"
-        canonical="/about"
+        canonical={isEnPath ? '/en/about' : '/about'}
+        lang={pageLang}
         jsonLd={aboutJsonLd}
       />
 

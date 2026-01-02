@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import Layout from '@/components/layout/Layout';
 import { useLanguage } from '@/i18n/LanguageContext';
 import { ArrowLeft, ArrowRight, Battery, Sun, Zap, Gauge, Sparkles, Shield, Award, Phone } from 'lucide-react';
@@ -16,14 +16,17 @@ const categoryIcons: Record<string, typeof Battery> = {
 
 export default function ProductsMain() {
   const { isRTL } = useLanguage();
+  const location = useLocation();
+  const isEnPath = location.pathname.startsWith('/en');
+  const pageLang: 'ar' | 'en' = isEnPath ? 'en' : 'ar';
   const Arrow = isRTL ? ArrowLeft : ArrowRight;
   
   const featuredProducts = getFeaturedProducts();
   const productCounts = getProductsCountByCategory();
-
+ 
   const breadcrumbSchema = createBreadcrumbSchema([
-    { name: isRTL ? 'الرئيسية' : 'Home', url: '/' },
-    { name: isRTL ? 'منتجاتنا' : 'Our Products', url: '/products' },
+    { name: pageLang === 'ar' ? 'الرئيسية' : 'Home', url: '/' },
+    { name: pageLang === 'ar' ? 'منتجاتنا' : 'Our Products', url: '/products' },
   ]);
 
   return (
@@ -35,7 +38,8 @@ export default function ProductsMain() {
         descriptionAr="كتالوج منتجات الطاقة الشمسية الشامل في اليمن. بطاريات Pylontech الأصلية بضمان 10 سنوات، ألواح شمسية عالية الكفاءة، انفرترات هجينة، ومنظمات شحن."
         keywords="solar products yemen, pylontech batteries, solar panels yemen, inverters, charge controllers, energy storage"
         keywordsAr="منتجات طاقة شمسية اليمن، بطاريات بايلونتيك، ألواح شمسية، انفرترات، منظمات شحن، تخزين طاقة"
-        canonical="/products"
+        canonical={isEnPath ? '/en/products' : '/products'}
+        lang={pageLang}
         jsonLd={[breadcrumbSchema]}
       />
 

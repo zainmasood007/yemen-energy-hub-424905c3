@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import Layout from '@/components/layout/Layout';
 import { useLanguage } from '@/i18n/LanguageContext';
 import { MapPin, Users, Building2, Wrench, Phone, ArrowLeft, ArrowRight, Sun, CheckCircle } from 'lucide-react';
@@ -124,11 +124,14 @@ const stats = [
 
 export default function Locations() {
   const { isRTL } = useLanguage();
+  const location = useLocation();
+  const isEnPath = location.pathname.startsWith('/en');
+  const pageLang: 'ar' | 'en' = isEnPath ? 'en' : 'ar';
   const Arrow = isRTL ? ArrowLeft : ArrowRight;
 
   const breadcrumbSchema = createBreadcrumbSchema([
-    { name: isRTL ? 'الرئيسية' : 'Home', url: '/' },
-    { name: isRTL ? 'مواقعنا' : 'Locations', url: '/locations' },
+    { name: pageLang === 'ar' ? 'الرئيسية' : 'Home', url: '/' },
+    { name: pageLang === 'ar' ? 'مواقعنا' : 'Locations', url: '/locations' },
   ]);
 
   return (
@@ -140,7 +143,8 @@ export default function Locations() {
         descriptionAr="اعثر على فروع القطاع للطاقة الشمسية في جميع أنحاء اليمن. نخدم صنعاء، عدن، تعز، الحديدة، مأرب، إب، وذمار بخدمات تركيب طاقة شمسية احترافية."
         keywords="solar energy yemen, al-qatta branches, solar installation yemen, pylontech yemen locations"
         keywordsAr="طاقة شمسية اليمن، فروع القطاع، تركيب طاقة شمسية اليمن، بايلونتيك اليمن مواقع"
-        canonical="/locations"
+        canonical={isEnPath ? '/en/locations' : '/locations'}
+        lang={pageLang}
         jsonLd={[breadcrumbSchema, organizationSchema]}
       />
 

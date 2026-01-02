@@ -14,6 +14,7 @@ import { Label } from '@/components/ui/label';
 import { useToast } from '@/hooks/use-toast';
 import SEO, { localBusinessSchema, createBreadcrumbSchema } from '@/components/SEO';
 import { z } from 'zod';
+import { useLocation } from 'react-router-dom';
 
 // Form validation schema
 const contactSchema = z.object({
@@ -29,6 +30,9 @@ type ContactFormData = z.infer<typeof contactSchema>;
 export default function Contact() {
   const { t, isRTL } = useLanguage();
   const { toast } = useToast();
+  const location = useLocation();
+  const isEnPath = location.pathname.startsWith('/en');
+  const pageLang: 'ar' | 'en' = isEnPath ? 'en' : 'ar';
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState<ContactFormData>({
     name: '',
@@ -40,8 +44,8 @@ export default function Contact() {
   const [errors, setErrors] = useState<Partial<Record<keyof ContactFormData, string>>>({});
 
   const breadcrumbSchema = createBreadcrumbSchema([
-    { name: isRTL ? 'الرئيسية' : 'Home', url: '/' },
-    { name: isRTL ? 'اتصل بنا' : 'Contact Us', url: '/contact' },
+    { name: pageLang === 'ar' ? 'الرئيسية' : 'Home', url: '/' },
+    { name: pageLang === 'ar' ? 'اتصل بنا' : 'Contact Us', url: '/contact' },
   ]);
 
   const contactJsonLd = [
@@ -50,8 +54,8 @@ export default function Contact() {
     {
       "@context": "https://schema.org",
       "@type": "ContactPage",
-      "name": isRTL ? "اتصل بنا - القطاع للطاقة الشمسية" : "Contact Us - Al-Qatta Solar Energy",
-      "description": isRTL 
+      "name": pageLang === 'ar' ? "اتصل بنا - القطاع للطاقة الشمسية" : "Contact Us - Al-Qatta Solar Energy",
+      "description": pageLang === 'ar'
         ? "تواصل مع القطاع للطاقة الشمسية - الوكيل المعتمد الوحيد لـ Pylontech في اليمن"
         : "Contact Al-Qatta Solar Energy - The only authorized Pylontech agent in Yemen",
       "mainEntity": localBusinessSchema
@@ -187,7 +191,8 @@ ${formData.message}`;
         descriptionAr="تواصل مع القطاع للطاقة الشمسية للاستفسارات وطلب عروض الأسعار والدعم الفني. واتساب: +967 777 777 777. الوكيل المعتمد الوحيد لـ Pylontech في اليمن."
         keywords="contact al-qatta, solar company yemen contact, pylontech yemen phone, solar energy support yemen"
         keywordsAr="اتصل بالقطاع، تواصل شركة طاقة شمسية اليمن، هاتف بايلونتيك اليمن، دعم طاقة شمسية اليمن"
-        canonical="/contact"
+        canonical={isEnPath ? '/en/contact' : '/contact'}
+        lang={pageLang}
         jsonLd={contactJsonLd}
       />
 

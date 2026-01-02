@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import Layout from '@/components/layout/Layout';
 import { useLanguage } from '@/i18n/LanguageContext';
 import SEO from '@/components/SEO';
@@ -8,14 +8,17 @@ import { BookOpen, ArrowLeft, ArrowRight, Lightbulb } from 'lucide-react';
 import { pillarPages, supportingArticles } from '@/data/articles';
 
 export default function KnowledgeHub() {
-  const { lang: language, isRTL } = useLanguage();
+  const { lang: uiLang, isRTL } = useLanguage();
+  const location = useLocation();
+  const isEnPath = location.pathname.startsWith('/en');
+  const pageLang: 'ar' | 'en' = isEnPath ? 'en' : 'ar';
   const ArrowIcon = isRTL ? ArrowLeft : ArrowRight;
   
-  const pageTitle = language === 'ar' 
+  const pageTitle = pageLang === 'ar' 
     ? 'مركز المعرفة | القطاع للطاقة الشمسية'
     : 'Knowledge Hub | Al-Qatta Solar Energy';
   
-  const pageDescription = language === 'ar'
+  const pageDescription = pageLang === 'ar'
     ? 'أدلة ومقالات تعليمية شاملة عن الطاقة الشمسية وتخزين الطاقة في اليمن. معلومات موثوقة من الخبراء.'
     : 'Comprehensive educational guides and articles about solar energy and energy storage in Yemen. Reliable information from experts.';
 
@@ -24,7 +27,8 @@ export default function KnowledgeHub() {
       <SEO
         title={pageTitle}
         description={pageDescription}
-        canonical="/knowledge"
+        canonical={isEnPath ? '/en/knowledge' : '/knowledge'}
+        lang={pageLang}
         ogType="article"
       />
 
@@ -34,11 +38,11 @@ export default function KnowledgeHub() {
           <div className="container py-3">
             <nav className="flex items-center gap-2 text-sm text-muted-foreground">
               <Link to="/" className="hover:text-primary transition-colors">
-                {language === 'ar' ? 'الرئيسية' : 'Home'}
+                {uiLang === 'ar' ? 'الرئيسية' : 'Home'}
               </Link>
               <span>/</span>
               <span className="text-foreground font-medium">
-                {language === 'ar' ? 'مركز المعرفة' : 'Knowledge Hub'}
+                {uiLang === 'ar' ? 'مركز المعرفة' : 'Knowledge Hub'}
               </span>
             </nav>
           </div>
@@ -50,17 +54,17 @@ export default function KnowledgeHub() {
             <div className="max-w-3xl mx-auto text-center">
               <Badge className="mb-4 bg-primary/10 text-primary border-primary/20">
                 <BookOpen className="h-3 w-3 me-1" />
-                {language === 'ar' ? 'تعلّم من الخبراء' : 'Learn from Experts'}
+                {uiLang === 'ar' ? 'تعلّم من الخبراء' : 'Learn from Experts'}
               </Badge>
               
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
-                {language === 'ar' 
+                {uiLang === 'ar' 
                   ? 'مركز المعرفة'
                   : 'Knowledge Hub'}
               </h1>
               
               <p className="text-lg md:text-xl text-muted-foreground">
-                {language === 'ar'
+                {uiLang === 'ar'
                   ? 'أدلة ومقالات تعليمية شاملة عن الطاقة الشمسية وتخزين الطاقة في اليمن. معلومات موثوقة تساعدك على اتخاذ القرار الصحيح.'
                   : 'Comprehensive educational guides and articles about solar energy and energy storage in Yemen. Reliable information to help you make the right decision.'}
               </p>
@@ -77,7 +81,7 @@ export default function KnowledgeHub() {
                   <Lightbulb className="h-5 w-5 text-primary" />
                 </div>
                 <h2 className="text-2xl font-bold">
-                  {language === 'ar' ? 'الأدلة الشاملة' : 'Comprehensive Guides'}
+                  {uiLang === 'ar' ? 'الأدلة الشاملة' : 'Comprehensive Guides'}
                 </h2>
               </div>
               
@@ -99,11 +103,11 @@ export default function KnowledgeHub() {
                             </div>
                             <div>
                               <CardTitle className="text-xl">
-                                {language === 'ar' ? page.titleAr : page.titleEn}
+                                {uiLang === 'ar' ? page.titleAr : page.titleEn}
                               </CardTitle>
                               {!isPublished && (
                                 <Badge variant="secondary" className="mt-1">
-                                  {language === 'ar' ? 'قريباً' : 'Coming Soon'}
+                                  {uiLang === 'ar' ? 'قريباً' : 'Coming Soon'}
                                 </Badge>
                               )}
                             </div>
@@ -113,7 +117,7 @@ export default function KnowledgeHub() {
                           )}
                         </div>
                         <CardDescription className="mt-3 text-base">
-                          {language === 'ar' ? page.descAr : page.descEn}
+                          {uiLang === 'ar' ? page.descAr : page.descEn}
                         </CardDescription>
                       </CardHeader>
                       {isPublished && (
@@ -122,7 +126,7 @@ export default function KnowledgeHub() {
                             to={`/knowledge/${page.slug}`}
                             className="inline-flex items-center gap-2 text-primary hover:underline font-medium"
                           >
-                            {language === 'ar' ? 'اقرأ الدليل' : 'Read Guide'}
+                            {uiLang === 'ar' ? 'اقرأ الدليل' : 'Read Guide'}
                             <ArrowIcon className="h-4 w-4" />
                           </Link>
                         </CardContent>
@@ -144,7 +148,7 @@ export default function KnowledgeHub() {
                   <BookOpen className="h-5 w-5 text-primary" />
                 </div>
                 <h2 className="text-2xl font-bold">
-                  {language === 'ar' ? 'مقالات داعمة' : 'Supporting Articles'}
+                  {uiLang === 'ar' ? 'مقالات داعمة' : 'Supporting Articles'}
                 </h2>
               </div>
               
@@ -165,10 +169,10 @@ export default function KnowledgeHub() {
                             </div>
                             <div>
                               <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors">
-                                {language === 'ar' ? article.titleAr : article.titleEn}
+                                {uiLang === 'ar' ? article.titleAr : article.titleEn}
                               </h3>
                               <Badge variant="secondary" className="mt-2 text-xs">
-                                {language === 'ar' ? article.pillarAr : article.pillarEn}
+                                {uiLang === 'ar' ? article.pillarAr : article.pillarEn}
                               </Badge>
                             </div>
                           </div>
