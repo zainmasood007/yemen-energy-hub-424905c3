@@ -1,5 +1,5 @@
 import { Head } from "vite-react-ssg";
-import { useLanguage } from '@/i18n/LanguageContext';
+import { useLocation } from 'react-router-dom';
 
 interface SEOProps {
   title: string;
@@ -14,6 +14,7 @@ interface SEOProps {
   noIndex?: boolean;
   jsonLd?: object | object[];
   hreflang?: { lang: string; href: string }[];
+  lang?: 'ar' | 'en';
 }
 
 export default function SEO({
@@ -29,14 +30,33 @@ export default function SEO({
   noIndex = false,
   jsonLd,
   hreflang,
+  lang,
 }: SEOProps) {
-  const { isRTL } = useLanguage();
-
-  const currentTitle = isRTL && titleAr ? titleAr : title;
-  const currentDescription = isRTL && descriptionAr ? descriptionAr : description;
-  const currentKeywords = isRTL && keywordsAr ? keywordsAr : keywords;
   const baseUrl = 'https://alqatta.com';
-  const currentUrl = canonical ? `${baseUrl}${canonical}` : baseUrl;
+  const location = typeof window === 'undefined' ? undefined : window.location;
+  const pathnameFromLocation = location?.pathname;
+
+  let path = canonical || pathnameFromLocation || '/';
+  if (!path.startsWith('/')) {
+    try {
+      const url = new URL(path, baseUrl);
+      path = url.pathname || '/';
+    } catch {
+      path = '/';
+    }
+  }
+
+  const pageLang: 'ar' | 'en' = lang ?? (path.startsWith('/en') ? 'en' : 'ar');
+  const isArabic = pageLang === 'ar';
+
+  const currentTitle = isArabic && titleAr ? titleAr : title;
+  const currentDescription = isArabic && descriptionAr ? descriptionAr : description;
+  const currentKeywords = isArabic && keywordsAr ? keywordsAr : keywords;
+
+  const currentUrl = `${baseUrl}${path}`;
+
+  const arabicPath = path.startsWith('/en') ? path.replace(/^\/en/, '') || '/' : path || '/';
+  const englishPath = path.startsWith('/en') ? path : (path === '/' ? '/en' : `/en${path}`);
 
   const schemas = jsonLd
     ? Array.isArray(jsonLd)
@@ -48,7 +68,7 @@ export default function SEO({
 
   return (
     <Head>
-      <html lang={isRTL ? 'ar' : 'en'} />
+      <html lang={isArabic ? 'ar' : 'en'} />
 
       <title>{currentTitle}</title>
       <meta name="description" content={currentDescription} />
@@ -61,8 +81,8 @@ export default function SEO({
       <meta property="og:type" content={ogType} />
       <meta property="og:url" content={currentUrl} />
       <meta property="og:image" content={fullOgImage} />
-      <meta property="og:site_name" content={isRTL ? 'القطع للطاقة الشمسية' : 'Al-Qatta Solar Energy'} />
-      <meta property="og:locale" content={isRTL ? 'ar_YE' : 'en_US'} />
+      <meta property="og:site_name" content={isArabic ? 'القطع للطاقة الشمسية' : 'Al-Qatta Solar Energy'} />
+      <meta property="og:locale" content={isArabic ? 'ar_YE' : 'en_US'} />
 
       {/* Twitter Card */}
       <meta name="twitter:card" content="summary_large_image" />
@@ -72,9 +92,9 @@ export default function SEO({
 
       {/* Canonical & hreflang */}
       <link rel="canonical" href={currentUrl} />
-      <link rel="alternate" hrefLang="ar" href={currentUrl} />
-      <link rel="alternate" hrefLang="en" href={currentUrl} />
-      <link rel="alternate" hrefLang="x-default" href={currentUrl} />
+      <link rel="alternate" hrefLang="ar-YE" href={`${baseUrl}${arabicPath}`} />
+      <link rel="alternate" hrefLang="en" href={`${baseUrl}${englishPath}`} />
+      <link rel="alternate" hrefLang="x-default" href={`${baseUrl}${arabicPath}`} />
       {hreflang?.map((h) => (
         <link key={h.lang} rel="alternate" hrefLang={h.lang} href={h.href} />
       ))}
@@ -90,7 +110,6 @@ export default function SEO({
     </Head>
   );
 }
-
 
 // ============ JSON-LD Schema Helpers ============
 
