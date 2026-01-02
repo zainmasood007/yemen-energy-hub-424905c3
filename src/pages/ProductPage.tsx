@@ -1,4 +1,4 @@
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useLocation } from 'react-router-dom';
 import Layout from '@/components/layout/Layout';
 import { useLanguage } from '@/i18n/LanguageContext';
 import { 
@@ -47,6 +47,9 @@ const RatingBar = ({ value, label }: { value: number; label: string }) => (
 export default function ProductPage() {
   const { category, slug } = useParams<{ category: string; slug: string }>();
   const { isRTL } = useLanguage();
+  const location = useLocation();
+  const isEnPath = location.pathname.startsWith('/en');
+  const pageLang: 'ar' | 'en' = isEnPath ? 'en' : 'ar';
   const Arrow = isRTL ? ArrowLeft : ArrowRight;
 
   const product = getProductBySlug(category || '', slug || '');
@@ -67,12 +70,16 @@ export default function ProductPage() {
 
   const relatedProducts = getRelatedProducts(product);
 
+  const canonicalPath = isEnPath
+    ? `/en/products/${category}/${slug}`
+    : `/products/${category}/${slug}`;
+
   // SEO Schemas
   const breadcrumbSchema = createBreadcrumbSchema([
-    { name: isRTL ? 'الرئيسية' : 'Home', url: '/' },
-    { name: isRTL ? 'منتجاتنا' : 'Products', url: '/products' },
-    { name: isRTL ? categoryData.nameAr : categoryData.nameEn, url: `/products/${category}` },
-    { name: isRTL ? product.nameAr : product.nameEn, url: `/products/${category}/${slug}` },
+    { name: pageLang === 'ar' ? 'الرئيسية' : 'Home', url: '/' },
+    { name: pageLang === 'ar' ? 'منتجاتنا' : 'Products', url: '/products' },
+    { name: pageLang === 'ar' ? categoryData.nameAr : categoryData.nameEn, url: `/products/${category}` },
+    { name: pageLang === 'ar' ? product.nameAr : product.nameEn, url: canonicalPath },
   ]);
 
   // Advanced Product Schema - Google Compliant (NO fake reviews)
@@ -86,23 +93,24 @@ export default function ProductPage() {
     model: product.model,
     category: categoryData.nameEn,
     sku: product.id,
-    url: `/products/${category}/${slug}`,
+    url: canonicalPath,
     isAvailable: product.isAvailable,
     // Yemen Suitability as additionalProperty (Google compliant)
     yemenSuitability: product.yemenSuitability.ratings,
     // Key specifications as additionalProperty
     specifications: product.specifications.slice(0, 6).map(spec => ({
-      name: isRTL ? spec.keyAr : spec.keyEn,
+      name: pageLang === 'ar' ? spec.keyAr : spec.keyEn,
       value: spec.value,
       unit: spec.unit,
     })),
+    inLanguage: pageLang === 'ar' ? 'ar-YE' : 'en',
   });
 
-  // FAQ Schema - current language only (to avoid mixing languages)
+  // FAQ Schema - current page language only (to avoid mixing languages)
   const faqSchema = createFAQSchema(
     product.faqs.map(faq => ({
-      question: isRTL ? faq.questionAr : faq.questionEn,
-      answer: isRTL ? faq.answerAr : faq.answerEn,
+      question: pageLang === 'ar' ? faq.questionAr : faq.questionEn,
+      answer: pageLang === 'ar' ? faq.answerAr : faq.answerEn,
     }))
   );
 
@@ -115,12 +123,9 @@ export default function ProductPage() {
         descriptionAr={product.seoDescriptionAr}
         keywords={product.seoKeywordsEn.join(', ')}
         keywordsAr={product.seoKeywordsAr.join('، ')}
-        canonical={`/products/${category}/${slug}`}
+        canonical={canonicalPath}
+        lang={pageLang}
         jsonLd={[breadcrumbSchema, productSchema, faqSchema]}
-        hreflang={[
-          { lang: 'ar', href: `/products/${category}/${slug}` },
-          { lang: 'en', href: `/products/${category}/${slug}` },
-        ]}
       />
 
       {/* Breadcrumb */}

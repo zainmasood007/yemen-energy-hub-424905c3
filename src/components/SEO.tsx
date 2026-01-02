@@ -256,6 +256,7 @@ export const createAdvancedProductSchema = (product: {
   isAvailable?: boolean;
   yemenSuitability?: YemenSuitabilityRatings;
   specifications?: Array<{ name: string; value: string; unit?: string }>;
+  inLanguage?: string;
 }) => {
   const schema: Record<string, any> = {
     "@context": "https://schema.org",
@@ -278,6 +279,7 @@ export const createAdvancedProductSchema = (product: {
     "sku": product.sku || product.model,
     "category": product.category || "Solar Energy Equipment",
     "url": product.url ? `https://alqatta.com${product.url}` : undefined,
+    "inLanguage": product.inLanguage,
     "offers": {
       "@type": "Offer",
       "availability": product.isAvailable !== false 

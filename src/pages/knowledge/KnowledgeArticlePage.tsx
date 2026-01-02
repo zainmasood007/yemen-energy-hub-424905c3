@@ -2,7 +2,7 @@ import Layout from '@/components/layout/Layout';
 import SEO, { createBreadcrumbSchema } from '@/components/SEO';
 import MarkdownRenderer from '@/components/MarkdownRenderer';
 import { useLanguage } from '@/i18n/LanguageContext';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useLocation } from 'react-router-dom';
 import { getPillarBySlug, getSupportingBySlug } from '@/data/articles';
 
 function buildFaqSchemaFromMarkdown(content?: string) {
@@ -76,6 +76,10 @@ function buildFaqSchemaFromMarkdown(content?: string) {
 export default function KnowledgeArticlePage() {
   const { slug } = useParams<{ slug: string }>();
   const { isRTL } = useLanguage();
+  const location = useLocation();
+  const isEnPath = location.pathname.startsWith('/en');
+  const pageLang: 'ar' | 'en' = isEnPath ? 'en' : 'ar';
+  const isArabicPage = pageLang === 'ar';
 
   const pillar = slug ? getPillarBySlug(slug) : undefined;
   const supporting = !pillar && slug ? getSupportingBySlug(slug) : undefined;
@@ -86,19 +90,19 @@ export default function KnowledgeArticlePage() {
       <Layout>
         <div className="container py-20 text-center">
           <h1 className="text-2xl font-bold mb-4">
-            {isRTL ? 'المقال غير موجود' : 'Article Not Found'}
+            {pageLang === 'ar' ? 'المقال غير موجود' : 'Article Not Found'}
           </h1>
-          <Link to="/knowledge" className="text-primary hover:underline">
-            {isRTL ? 'العودة لمركز المعرفة' : 'Back to Knowledge Hub'}
+          <Link to={pageLang === 'ar' ? '/knowledge' : '/en/knowledge'} className="text-primary hover:underline">
+            {pageLang === 'ar' ? 'العودة لمركز المعرفة' : 'Back to Knowledge Hub'}
           </Link>
         </div>
       </Layout>
     );
   }
 
-  const title = isRTL ? article.titleAr : article.titleEn;
+  const title = isArabicPage ? article.titleAr : article.titleEn;
 
-  const bodyMarkdown = isRTL
+  const bodyMarkdown = isArabicPage
     ? article.contentMarkdownAr ?? ''
     : article.contentMarkdownEn ?? '';
 
@@ -108,21 +112,24 @@ export default function KnowledgeArticlePage() {
     pillar?.descAr ?? pillar?.contentMarkdownAr ?? supporting?.contentMarkdownAr ?? '';
 
   const baseUrl = 'https://alqatta.com';
-  const articlePath = `/knowledge/${slug}`;
+  const basePath = `/knowledge/${slug}`;
+  const articlePath = isEnPath ? `/en${basePath}` : basePath;
   const articleUrl = `${baseUrl}${articlePath}`;
-  const primaryDescription = isRTL
+  const primaryDescription = isArabicPage
     ? descriptionArMeta || descriptionEnMeta
     : descriptionEnMeta || descriptionArMeta;
 
   const articleSchema = {
     '@context': 'https://schema.org',
     '@type': 'Article',
-    headline: article.titleAr || article.titleEn,
-    inLanguage: isRTL ? 'ar' : 'en',
+    headline: isArabicPage ? article.titleAr : article.titleEn,
+    inLanguage: isArabicPage ? 'ar-YE' : 'en',
     mainEntityOfPage: articleUrl,
     url: articleUrl,
     description: primaryDescription,
-    articleSection: supporting?.pillarAr || supporting?.pillarEn || pillar?.titleAr || pillar?.titleEn,
+    articleSection: isArabicPage
+      ? supporting?.pillarAr || pillar?.titleAr
+      : supporting?.pillarEn || pillar?.titleEn,
     author: {
       '@type': 'Organization',
       name: 'Al-Qatta Solar Energy',
@@ -137,14 +144,17 @@ export default function KnowledgeArticlePage() {
     },
   };
 
+  const homePath = isArabicPage ? '/' : '/en';
+  const knowledgePath = isArabicPage ? '/knowledge' : '/en/knowledge';
+
   const breadcrumbSchema = createBreadcrumbSchema([
     {
-      name: isRTL ? 'الرئيسية' : 'Home',
-      url: '/',
+      name: isArabicPage ? 'الرئيسية' : 'Home',
+      url: homePath,
     },
     {
-      name: isRTL ? 'مركز المعرفة' : 'Knowledge Hub',
-      url: '/knowledge',
+      name: isArabicPage ? 'مركز المعرفة' : 'Knowledge Hub',
+      url: knowledgePath,
     },
     {
       name: title,
@@ -166,6 +176,7 @@ export default function KnowledgeArticlePage() {
         description={descriptionEnMeta}
         descriptionAr={descriptionArMeta}
         canonical={articlePath}
+        lang={pageLang}
         ogType="article"
         jsonLd={jsonLdSchemas}
       />
@@ -180,7 +191,7 @@ export default function KnowledgeArticlePage() {
             <MarkdownRenderer
               content={bodyMarkdown}
               className="prose prose-lg dark:prose-invert"
-              dir={isRTL ? 'rtl' : 'ltr'}
+              dir={isArabicPage ? 'rtl' : 'ltr'}
             />
           )}
         </section>
