@@ -97,6 +97,68 @@ export const routes: RouteRecord[] = [
       { path: "*", Component: NotFound },
     ],
   },
+  {
+    path: "/en",
+    Component: RootLayout,
+    children: [
+      { index: true, Component: Index },
+      { path: "about", Component: About },
+      { path: "services", Component: Services },
+      // Products Routes
+      { path: "products", Component: ProductsMain },
+      {
+        path: "products/:category",
+        Component: ProductCategory,
+        getStaticPaths: () => {
+          const categories = Array.from(new Set(allProducts.map((p) => p.category)));
+          return categories.map((category) => `products/${category}`);
+        },
+      },
+      {
+        path: "products/:category/:slug",
+        Component: ProductPage,
+        getStaticPaths: () =>
+          allProducts.map((product) => `products/${product.category}/${product.slug}`),
+      },
+      { path: "pylontech", Component: Pylontech },
+      { path: "contact", Component: Contact },
+      { path: "projects", Component: Projects },
+      { path: "locations", Component: Locations },
+      {
+        path: "locations/:citySlug",
+        Component: LocationPage,
+        getStaticPaths: () =>
+          citySlugs.filter(Boolean).map((slug) => `locations/${slug}`),
+      },
+      // Knowledge Hub Routes
+      { path: "knowledge", Component: KnowledgeHub },
+      // Legacy knowledge static pages (SEO aliases)
+      { path: "knowledge/inverter-guide", Component: InverterGuide },
+      { path: "knowledge/lithium-vs-lead-acid", Component: LithiumVsLeadAcid },
+      { path: "knowledge/solar-yemen-guide", Component: SolarYemenGuide },
+      { path: "knowledge/inverter-sizing", Component: InverterSizingGuide },
+      { path: "knowledge/solar-system-cost-yemen", Component: SolarSystemCostYemen },
+      { path: "knowledge/lithium-battery-lifespan", Component: LithiumBatteryLifespan },
+      { path: "knowledge/series-vs-parallel-batteries", Component: SeriesVsParallelBatteries },
+      { path: "knowledge/inverter-common-faults", Component: InverterCommonFaults },
+      {
+        path: "knowledge/:slug",
+        Component: KnowledgeArticlePage,
+        getStaticPaths: () => {
+          const slugs = [
+            ...pillarPages.map((p) => p.slug),
+            ...supportingArticles.map((a) => a.slug),
+          ].filter(Boolean);
+          return slugs.map((slug) => `knowledge/${slug}`);
+        },
+      },
+      // Pricing & Calculator
+      { path: "pricing", Component: Pricing },
+      { path: "calculator", Component: Calculator },
+      // Catch-all route for /en
+      { path: "*", Component: NotFound },
+    ],
+  },
 ];
 
 export default routes;

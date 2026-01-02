@@ -66,7 +66,18 @@ export function getStaticRoutes(): string[] {
   // Legacy knowledge static pages (SEO aliases)
   legacyKnowledgeRoutes.forEach((path) => routes.add(path));
  
-  return Array.from(routes).sort();
+  const arabicRoutes = Array.from(routes).sort();
+
+  const englishRoutes = arabicRoutes
+    .filter((path) => !path.startsWith('/admin-local'))
+    .map((path) => {
+      if (path === '/') return '/en';
+      return `/en${path}`;
+    });
+
+  const allRoutes = new Set<string>([...arabicRoutes, ...englishRoutes]);
+
+  return Array.from(allRoutes).sort();
 }
 
 // Alias used by Vite SSG config to get all static routes
