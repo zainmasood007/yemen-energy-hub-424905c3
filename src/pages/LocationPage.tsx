@@ -177,6 +177,8 @@ const cities = {
   },
 };
 
+export const citySlugs = Object.keys(cities);
+
 type CityKey = keyof typeof cities;
 
 export default function LocationPage() {

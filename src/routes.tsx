@@ -13,19 +13,14 @@ import Projects from "./pages/Projects";
 import Locations from "./pages/Locations";
 import LocationPage from "./pages/LocationPage";
 import KnowledgeHub from "./pages/knowledge";
-import InverterGuide from "./pages/knowledge/InverterGuide";
-import LithiumVsLeadAcid from "./pages/knowledge/LithiumVsLeadAcid";
-import SolarYemenGuide from "./pages/knowledge/SolarYemenGuide";
-import InverterSizingGuide from "./pages/knowledge/articles/InverterSizingGuide";
-import InverterCommonFaults from "./pages/knowledge/articles/InverterCommonFaults";
-import LithiumBatteryLifespan from "./pages/knowledge/articles/LithiumBatteryLifespan";
-import SeriesVsParallelBatteries from "./pages/knowledge/articles/SeriesVsParallelBatteries";
-import SolarSystemCostYemen from "./pages/knowledge/articles/SolarSystemCostYemen";
+import KnowledgeArticlePage from "./pages/knowledge/KnowledgeArticlePage";
 import Pricing from "./pages/Pricing";
 import Calculator from "./pages/Calculator";
 import NotFound from "./pages/NotFound";
 import AdminLocalRoutes from "./admin/AdminLocalRoutes";
 import { allProducts } from "@/data/products";
+import { pillarPages, supportingArticles } from "@/data/articles";
+import { citySlugs } from "./pages/LocationPage";
 
 export const routes: RouteRecord[] = [
   {
@@ -55,18 +50,25 @@ export const routes: RouteRecord[] = [
       { path: "contact", Component: Contact },
       { path: "projects", Component: Projects },
       { path: "locations", Component: Locations },
-      { path: "locations/:citySlug", Component: LocationPage },
+      {
+        path: "locations/:citySlug",
+        Component: LocationPage,
+        getStaticPaths: () =>
+          citySlugs.filter(Boolean).map((slug) => `locations/${slug}`),
+      },
       // Knowledge Hub Routes
       { path: "knowledge", Component: KnowledgeHub },
-      { path: "knowledge/inverter-guide", Component: InverterGuide },
-      { path: "knowledge/lithium-vs-lead-acid", Component: LithiumVsLeadAcid },
-      { path: "knowledge/solar-yemen-guide", Component: SolarYemenGuide },
-      // Supporting Articles
-      { path: "knowledge/inverter-sizing", Component: InverterSizingGuide },
-      { path: "knowledge/inverter-common-faults", Component: InverterCommonFaults },
-      { path: "knowledge/lithium-battery-lifespan", Component: LithiumBatteryLifespan },
-      { path: "knowledge/series-vs-parallel-batteries", Component: SeriesVsParallelBatteries },
-      { path: "knowledge/solar-system-cost-yemen", Component: SolarSystemCostYemen },
+      {
+        path: "knowledge/:slug",
+        Component: KnowledgeArticlePage,
+        getStaticPaths: () => {
+          const slugs = [
+            ...pillarPages.map((p) => p.slug),
+            ...supportingArticles.map((a) => a.slug),
+          ].filter(Boolean);
+          return slugs.map((slug) => `knowledge/${slug}`);
+        },
+      },
       // Pricing & Calculator
       { path: "pricing", Component: Pricing },
       { path: "calculator", Component: Calculator },

@@ -26,26 +26,30 @@ export function getStaticRoutes(): string[] {
 
   // Product category listing pages
   categories.forEach((category) => {
-    routes.add(`/products/${category.slug}`);
+    if (category.slug) {
+      routes.add(`/products/${category.slug}`);
+    }
   });
-
+ 
   // Individual product pages
   allProducts.forEach((product) => {
     if (product.category && product.slug) {
       routes.add(`/products/${product.category}/${product.slug}`);
     }
   });
-
+ 
   // Knowledge pillar pages (only published)
   pillarPages
-    .filter((page) => page.status === 'published')
+    .filter((page) => page.status === 'published' && page.slug)
     .forEach((page) => {
       routes.add(`/knowledge/${page.slug}`);
     });
-
+ 
   // Supporting knowledge articles
   supportingArticles.forEach((article) => {
-    routes.add(`/knowledge/${article.slug}`);
+    if (article.slug) {
+      routes.add(`/knowledge/${article.slug}`);
+    }
   });
 
   return Array.from(routes).sort();

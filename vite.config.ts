@@ -13,7 +13,8 @@ export default defineConfig(({ mode }) => ({
   plugins: [react(), mode === "development" && componentTagger()].filter(Boolean),
   ssgOptions: {
     script: "async",
-    includedRoutes: (paths: string[]) => getAllStaticRoutes(),
+    includedRoutes: (paths: string[]) =>
+      Array.from(new Set([...paths, ...getAllStaticRoutes()])),
   },
   resolve: {
     alias: {
