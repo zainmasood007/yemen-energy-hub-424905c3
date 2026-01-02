@@ -8,7 +8,7 @@ import {
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import SEO, { createBreadcrumbSchema } from '@/components/SEO';
+import SEO, { createBreadcrumbSchema, createFAQSchema } from '@/components/SEO';
 import { cn } from '@/lib/utils';
 import { projects, typeIcons, typeLabels, typeColors, Project } from '@/data/projects';
 
@@ -28,6 +28,26 @@ export default function Projects() {
     { name: isRTL ? 'مشاريعنا' : 'Our Projects', url: '/projects' },
   ]);
 
+  const projectsFaqSchema = createFAQSchema([
+    {
+      question: isRTL ? 'ما أنواع المشاريع التي تنفذونها؟' : 'What types of projects do you implement?',
+      answer: isRTL
+        ? 'ننّفذ مشاريع طاقة شمسية سكنية وتجارية وصناعية، من الأنظمة الصغيرة للمنازل إلى الأنظمة المتكاملة للمصانع والمنشآت.'
+        : 'We implement residential, commercial, and industrial solar projects, from small home systems to large-scale integrated systems.',
+    },
+    {
+      question: isRTL ? 'هل تعملون في جميع محافظات اليمن؟' : 'Do you work in all Yemeni governorates?',
+      answer: isRTL
+        ? 'نعم، لدينا مشاريع في أغلب محافظات اليمن، ويمكننا تنفيذ المشاريع في المدن الرئيسية والمناطق البعيدة مع ترتيب اللوجستيات المناسبة.'
+        : 'Yes, we have projects in most Yemeni governorates and can work in major cities and remote areas with appropriate logistics.',
+    },
+    {
+      question: isRTL ? 'هل يمكن زيارة أحد مشاريعكم؟' : 'Can I visit one of your projects?',
+      answer: isRTL
+        ? 'يمكن ترتيب زيارة لبعض المشاريع المناسبة بالتنسيق المسبق، حتى تتعرّف على جودة التنفيذ على أرض الواقع.'
+        : 'We can arrange visits to selected reference projects upon prior coordination so you can see the quality of our work in reality.',
+    },
+  ]);
   const openGallery = (project: Project, imageIndex: number = 0) => {
     setSelectedProject(project);
     setCurrentImageIndex(imageIndex);
@@ -60,7 +80,7 @@ export default function Projects() {
         keywords="solar projects yemen, solar installation portfolio, pylontech projects yemen"
         keywordsAr="مشاريع طاقة شمسية اليمن، معرض تركيبات شمسية، مشاريع بايلونتيك اليمن"
         canonical="/projects"
-        jsonLd={[breadcrumbSchema]}
+        jsonLd={[breadcrumbSchema, projectsFaqSchema]}
       />
 
       {/* Hero */}
